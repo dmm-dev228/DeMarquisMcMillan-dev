@@ -18,6 +18,17 @@ function BlueprintBackground() {
         >
             <div className="blueprint-background__glow" />
             <div className="blueprint-background__grid" />
+            <div className="blueprint-background__scan-line" />
+
+            <div className="blueprint-background__annotation blueprint-background__annotation--top-left">
+                <span>SYS-01</span>
+                <div className="blueprint-background__annotation-line" />
+            </div>
+
+            <div className="blueprint-background__annotation blueprint-background__annotation--bottom-right">
+                <span>ARCHITECTURE / ACTIVE</span>
+                <div className="blueprint-background__annotation-line" />
+            </div>
         </div>
     );
 }
