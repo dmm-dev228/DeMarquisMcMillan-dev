@@ -256,3 +256,110 @@ img{
         display: none;
     }
 }
+/* ==========================================================================
+   Portfolio Navigation
+   ========================================================================== */
+
+.portfolio-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    padding: 1rem 1.5rem;
+}
+
+.portfolio-navbar__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(100%, 76rem);
+    min-height: 4.5rem;
+    margin-inline: auto;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(97, 217, 255, 0.16);
+    border-radius: 1rem;
+    background: rgba(5, 11, 20, 0.7);
+    box-shadow:
+        0 1rem 3rem rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+}
+
+.portfolio-navbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    text-decoration: none;
+}
+
+.portfolio-navbar__monogram {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(97, 217, 255, 0.5);
+    border-radius: 0.75rem;
+    color: rgb(97, 217, 255);
+    background: rgba(97, 217, 255, 0.08);
+    font-family: "Courier New", monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    box-shadow:
+        inset 0 0 1.5rem rgba(97, 217, 255, 0.08),
+        0 0 1.5rem rgba(97, 217, 255, 0.05);
+}
+
+.portfolio-navbar__name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.portfolio-navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+}
+
+.portfolio-navbar__links a {
+    position: relative;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition:
+        color 180ms ease,
+        transform 180ms ease;
+}
+
+.portfolio-navbar__links a:hover,
+.portfolio-navbar__links a:focus-visible {
+    color: white;
+    transform: translateY(-1px);
+}
+
+.portfolio-navbar__resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(97, 217, 255, 0.45);
+    border-radius: 0.75rem;
+    color: rgb(97, 217, 255);
+    background: rgba(97, 217, 255, 0.07);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+.portfolio-navbar__resume:hover,
+.portfolio-navbar__resume:focus-visible {
+    border-color: rgba(97, 217, 255, 0.75);
+    background: rgba(97, 217, 255, 0.13);
+    transform: translateY(-1px);
+}

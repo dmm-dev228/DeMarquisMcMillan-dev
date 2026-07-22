@@ -1,4 +1,5 @@
-import BlueprintBackground from "../components/common/BlueprintBackground";
+import BlueprintBackground from "./BlueprintBackground";
+import Navbar from "./Navbar";
 
 /*
  * ============================================================================
@@ -23,6 +24,8 @@ function MainLayout({ children }) {
             <BlueprintBackground />
 
             <div className="relative z-10">
+                <Navbar />
+
                 {children}
             </div>
         </div>
