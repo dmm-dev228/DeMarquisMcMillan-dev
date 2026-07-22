@@ -1,23 +1,31 @@
+import BlueprintBackground from "../components/common/BlueprintBackground";
+
 /*
+ * ============================================================================
  * MainLayout
- * ----------
- * Provides the shared application structure.
+ * ============================================================================
+ *
+ * Shared layout used across the portfolio.
  *
  * Responsibilities:
- * - Render the global navigation
- * - Render the blueprint background
+ * - Render the global blueprint background
+ * - Render navigation
  * - Render page content
- * - Render the global footer
+ * - Render the footer
  *
- * Every public page should use this layout.
+ * All public pages should be wrapped with this layout.
+ * ============================================================================
  */
 
 function MainLayout({ children }) {
     return (
-        <>
-            {children}
-        </>
+        <div className="relative min-h-screen overflow-x-hidden">
+            <BlueprintBackground />
+
+            <div className="relative z-10">
+                {children}
+            </div>
+        </div>
     );
 }
-
 export default MainLayout;

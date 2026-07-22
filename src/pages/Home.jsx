@@ -1,16 +1,26 @@
+import Section from "../components/common/Section";
+
 /*
+ * ============================================================================
  * Home
- * ----
+ * ============================================================================
+ *
  * Landing page for the portfolio.
  *
- * This page will introduce DeMarquis McMillan,
- * showcase featured work,
- * and guide recruiters through the portfolio.
+ * This page introduces DeMarquis McMillan and guides recruiters through
+ * featured engineering projects, technical experience, and contact information.
+ * ============================================================================
  */
 
 function Home() {
     return (
-        <h1>Home</h1>
+        <main>
+            <Section>
+                <h1 className="text-5xl font-bold text-white">
+                    DeMarquis McMillan
+                </h1>
+            </Section>
+        </main>
     );
 }
 
