@@ -1,3 +1,9 @@
+import javaLogo from "../../assets/technologies/java.png";
+import springBootLogo from "../../assets/technologies/spring-boot.png";
+import mysqlLogo from "../../assets/technologies/mysql.png";
+import dockerLogo from "../../assets/technologies/docker.png";
+import openaiLogo from "../../assets/technologies/openai.png";
+
 function Hero() {
     return (
         <section
@@ -38,7 +44,7 @@ function Hero() {
                     </p>
 
                     <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                        {/* Primary CTA: guides recruiters directly to featured engineering work. */}
+                        {/* Primary CTA */}
                         <a
                             href="#projects"
                             className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-300 to-blue-500 px-6 py-3.5 font-semibold text-slate-950 shadow-[0_0_30px_rgba(56,189,248,0.18)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(56,189,248,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
@@ -53,7 +59,7 @@ function Hero() {
                             </span>
                         </a>
 
-                        {/* Secondary CTA: provides quick access to the downloadable resume. */}
+                        {/* Secondary CTA */}
                         <a
                             href="/DeMarquis-McMillan-Resume.pdf"
                             download
@@ -63,71 +69,177 @@ function Hero() {
                             <span aria-hidden="true">↓</span>
                         </a>
                     </div>
+<div className="mt-10">
+    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+        Core Stack
+    </p>
 
-                 <div className="mt-10">
-  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-    Core Stack
-  </p>
+    <ul
+        aria-label="Primary technologies"
+        className="grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-3"
+    >
+        {[
+            { name: "Java", logo: javaLogo },
+            { name: "Spring Boot", logo: springBootLogo },
+            { name: "React", symbol: "⚛" },
+            { name: "MySQL", logo: mysqlLogo },
+            { name: "Docker", logo: dockerLogo },
+            { name: "OpenAI", logo: openaiLogo },
+        ].map((technology) => (
+            <li
+                key={technology.name}
+                className="group flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.025] px-4 py-3 text-sm font-semibold text-slate-200 backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/35 hover:bg-cyan-300/[0.06] hover:shadow-[0_0_20px_rgba(34,211,238,0.08)]"
+            >
+                <span
+                    aria-hidden="true"
+                    className="grid h-8 w-8 shrink-0 place-items-center"
+                >
+                    {technology.logo ? (
+                        <img
+                            src={technology.logo}
+                            alt=""
+                            className="h-7 w-7 object-contain"
+                        />
+                    ) : (
+                        <span className="text-2xl text-cyan-300">
+                            {technology.symbol}
+                        </span>
+                    )}
+                </span>
 
-  <ul
-    aria-label="Primary technologies"
-    className="flex flex-wrap gap-3"
-  >
-    {["Java", "Spring Boot", "React", "MySQL", "Docker", "OpenAI"].map(
-      (technology) => (
-        <li
-          key={technology}
-          className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-slate-300 backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/30 hover:bg-cyan-300/5 hover:text-cyan-100"
-        >
-          {technology}
-        </li>
-      )
-    )}
-  </ul>
+                <span>{technology.name}</span>
+            </li>
+        ))}
+    </ul>
 </div>
                 </div>
 
                 {/* Right side: flagship product showcase */}
                 <article
                     aria-labelledby="cognihaven-title"
-                    className="relative z-10 rounded-3xl border border-cyan-300/15 bg-slate-950/55 p-6 shadow-2xl shadow-cyan-500/10 backdrop-blur-xl"
+                    className="
+                        relative z-10
+                        overflow-hidden
+                        rounded-[1.75rem]
+                        border border-cyan-400/70
+                        bg-[#050b18]/90
+                        p-8
+                        shadow-[0_0_45px_rgba(34,211,238,0.10)]
+                        backdrop-blur-xl
+                        lg:p-10
+                    "
                 >
-                    <div>
-                        <div>
-                            <p>Flagship Project</p>
+                    {/* Ambient cyan glow */}
+                    <div
+                        aria-hidden="true"
+                        className="
+                            pointer-events-none
+                            absolute
+                            -right-16
+                            top-8
+                            h-64
+                            w-64
+                            rounded-full
+                            bg-cyan-400/15
+                            blur-[80px]
+                        "
+                    />
 
+                    <div className="relative z-10">
+                        {/* Showcase header */}
+                        <div className="flex items-start justify-between gap-6">
                             <div>
-                                <h2 id="cognihaven-title">CogniHaven</h2>
+                                <p className="text-sm font-bold uppercase tracking-[0.18em] text-cyan-400">
+                                    Flagship Project
+                                </p>
 
-                                <span>
+                                <h2
+                                    id="cognihaven-title"
+                                    className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+                                >
+                                    CogniHaven
+                                </h2>
+                            </div>
+
+                            <div
+                                className="
+                                    inline-flex
+                                    items-center
+                                    gap-2
+                                    rounded-full
+                                    border border-emerald-400/50
+                                    bg-emerald-400/10
+                                    px-4
+                                    py-2
+                                    shadow-[0_0_24px_rgba(52,211,153,0.16)]
+                                "
+                            >
+                                <span
+                                    aria-hidden="true"
+                                    className="
+                                        h-2.5
+                                        w-2.5
+                                        rounded-full
+                                        bg-emerald-400
+                                        shadow-[0_0_14px_rgba(52,211,153,1)]
+                                    "
+                                />
+
+                                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-emerald-300">
                                     Live
                                 </span>
                             </div>
-
-                            <p>
-                                A calm, AI-powered cognitive wellness and daily support
-                                platform.
-                            </p>
                         </div>
 
-                        <div>
-                            <p>CogniHaven application preview coming next.</p>
+                        {/* Product description */}
+                        <p className="mt-5 max-w-xl text-base leading-7 text-slate-300">
+                            A deployed AI-powered cognitive wellness platform built with Java,
+                            Spring Boot, React, MySQL, Docker, secure authentication, cloud
+                            infrastructure, and production focused engineering practices.
+                        </p>
+
+                        {/* Temporary product preview */}
+                        <div className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70">
+                            <div className="flex min-h-64 items-center justify-center px-6 text-center">
+                                <div>
+                                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+                                        Product Preview
+                                    </p>
+
+                                    <p className="mt-3 text-lg font-medium text-slate-300">
+                                        CogniHaven interface preview coming next
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        <dl>
+                        {/* Engineering proof */}
+                        <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-7">
                             <div>
-                                <dt>Integrated systems</dt>
-                                <dd>15+</dd>
+                                <dd className="text-2xl font-bold text-white sm:text-3xl">
+                                    15+
+                                </dd>
+                                <dt className="mt-2 text-xs uppercase tracking-[0.12em] text-slate-500">
+                                    Systems
+                                </dt>
                             </div>
 
                             <div>
-                                <dt>Automated tests</dt>
-                                <dd>30</dd>
+                                <dd className="text-2xl font-bold text-white sm:text-3xl">
+                                    30
+                                </dd>
+                                <dt className="mt-2 text-xs uppercase tracking-[0.12em] text-slate-500">
+                                    Tests
+                                </dt>
                             </div>
 
                             <div>
-                                <dt>Deployment</dt>
-                                <dd>Cloud</dd>
+                                <dd className="text-2xl font-bold text-white sm:text-3xl">
+                                    Cloud
+                                </dd>
+                                <dt className="mt-2 text-xs uppercase tracking-[0.12em] text-slate-500">
+                                    Deployed
+                                </dt>
                             </div>
                         </dl>
                     </div>
