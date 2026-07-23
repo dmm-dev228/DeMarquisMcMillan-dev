@@ -1,4 +1,4 @@
-import Section from "../components/common/Section";
+import Hero from "../components/home/Hero";
 
 /*
  * ============================================================================
@@ -15,16 +15,7 @@ import Section from "../components/common/Section";
 function Home() {
     return (
         <main id="home">
-            <Section>
-               {/*} <h1 className="text-5xl font-bold text-white">
-                    DeMarquis McMillan
-                </h1>
-               */}
-            </Section>
-
-            <Section>
-                <div className="min-h-screen" />
-            </Section>
+            <Hero />
         </main>
     );
 }
