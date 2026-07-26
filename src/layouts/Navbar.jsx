@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 /*
  * ============================================================================
@@ -13,6 +14,7 @@ import { useEffect, useState } from "react";
  * - Provide access to the resume
  * - Adjust presentation when the page is scrolled
  * - Manage accessible mobile navigation behavior
+ * - Support navigation between portfolio routes
  * ============================================================================
  */
 
@@ -28,7 +30,7 @@ function Navbar() {
         handleScroll();
 
         window.addEventListener("scroll", handleScroll, {
-            passive: true
+            passive: true,
         });
 
         return () => {
@@ -81,8 +83,9 @@ function Navbar() {
                     className="portfolio-navbar__container"
                     aria-label="Primary navigation"
                 >
-                    <a
-                        href="#home"
+                    {/* Brand / Home */}
+                    <Link
+                        to="/"
                         className="portfolio-navbar__brand"
                         aria-label="DeMarquis McMillan home"
                         onClick={closeMenu}
@@ -94,15 +97,28 @@ function Navbar() {
                         <span className="portfolio-navbar__name">
                             DeMarquis McMillan
                         </span>
-                    </a>
+                    </Link>
 
+                    {/* Desktop navigation */}
                     <div className="portfolio-navbar__links">
-                        <a href="#about">About</a>
-                        <a href="#projects">Projects</a>
-                        <a href="#experience">Experience</a>
-                        <a href="#contact">Contact</a>
+                        <a href="/#about">
+                            About
+                        </a>
+
+                        <Link to="/projects">
+                            Projects
+                        </Link>
+
+                        <a href="/#experience">
+                            Experience
+                        </a>
+
+                        <a href="/#contact">
+                            Contact
+                        </a>
                     </div>
 
+                    {/* Desktop resume action */}
                     <a
                         href="/resume.pdf"
                         className="portfolio-navbar__resume"
@@ -113,6 +129,7 @@ function Navbar() {
                         <span aria-hidden="true">↗</span>
                     </a>
 
+                    {/* Mobile menu button */}
                     <button
                         type="button"
                         className={`portfolio-navbar__menu-button ${
@@ -137,6 +154,7 @@ function Navbar() {
                     </button>
                 </nav>
 
+                {/* Mobile navigation */}
                 <div
                     id="mobile-navigation"
                     className={`portfolio-navbar__mobile-menu ${
@@ -146,19 +164,31 @@ function Navbar() {
                     }`}
                     aria-hidden={!isMenuOpen}
                 >
-                    <a href="#about" onClick={closeMenu}>
+                    <a
+                        href="/#about"
+                        onClick={closeMenu}
+                    >
                         About
                     </a>
 
-                    <a href="#projects" onClick={closeMenu}>
+                    <Link
+                        to="/projects"
+                        onClick={closeMenu}
+                    >
                         Projects
-                    </a>
+                    </Link>
 
-                    <a href="#experience" onClick={closeMenu}>
+                    <a
+                        href="/#experience"
+                        onClick={closeMenu}
+                    >
                         Experience
                     </a>
 
-                    <a href="#contact" onClick={closeMenu}>
+                    <a
+                        href="/#contact"
+                        onClick={closeMenu}
+                    >
                         Contact
                     </a>
 
@@ -174,6 +204,7 @@ function Navbar() {
                 </div>
             </header>
 
+            {/* Mobile menu backdrop */}
             <button
                 type="button"
                 className={`portfolio-navbar__overlay ${

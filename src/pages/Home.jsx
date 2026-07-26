@@ -1,4 +1,5 @@
 import Hero from "../components/home/Hero";
+import FeaturedWork from "../components/home/FeaturedWork";
 
 /*
  * ============================================================================
@@ -16,6 +17,7 @@ function Home() {
     return (
         <main id="home">
             <Hero />
+            <FeaturedWork />
         </main>
     );
 }
