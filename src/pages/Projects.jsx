@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 import cogniHavenScreenshot from "../assets/projects/cognihaven-dashboard.png";
+import connectMScreenshot from "../assets/projects/ConnectM.png";
 
 /*
  * ============================================================================
@@ -13,8 +14,9 @@ import cogniHavenScreenshot from "../assets/projects/cognihaven-dashboard.png";
  * Responsibilities:
  * - Present DeMarquis McMillan's strongest engineering work
  * - Give recruiters a quick understanding of each project
- * - Provide technology context
- * - Route visitors into detailed project case studies
+ * - Preserve an image-first desktop hover experience
+ * - Provide accessible project information on touch/mobile devices
+ * - Route visitors into detailed engineering case studies
  * ============================================================================
  */
 
@@ -37,6 +39,7 @@ const projects = [
         image: cogniHavenScreenshot,
         route: "/projects/cognihaven",
         featured: true,
+        wide: false,
     },
     {
         id: "munchify",
@@ -54,6 +57,7 @@ const projects = [
         ],
         route: "/projects/munchify",
         featured: false,
+        wide: false,
     },
     {
         id: "weather-subscription",
@@ -71,6 +75,7 @@ const projects = [
         ],
         route: "/projects/weather-subscription",
         featured: false,
+        wide: false,
     },
     {
         id: "stock-housing",
@@ -88,6 +93,26 @@ const projects = [
         ],
         route: "/projects/stock-housing-predictor",
         featured: false,
+        wide: false,
+    },
+    {
+        id: "connectm",
+        title: "ConnectM",
+        eyebrow: "Algorithms & AI",
+        category: "Adversarial Search Strategy Game",
+        description:
+            "A configurable C++ strategy game with an AI opponent powered by depth-limited Minimax search and Alpha-Beta pruning, using recursive game-state simulation, backtracking, and generalized win detection.",
+        technologies: [
+            "C++17",
+            "Minimax",
+            "Alpha-Beta",
+            "Recursion",
+            "Backtracking",
+        ],
+        image: connectMScreenshot,
+        route: "/projects/connectm",
+        featured: false,
+        wide: false,
     },
 ];
 
@@ -95,7 +120,9 @@ function Projects() {
     return (
         <main className="relative px-6 pb-28 pt-32 sm:px-8 lg:px-12">
             <div className="mx-auto w-full max-w-7xl">
-                {/* Page introduction */}
+                {/* ============================================================
+                    Page Introduction
+                ============================================================= */}
                 <motion.header
                     className="max-w-4xl"
                     initial={{
@@ -125,12 +152,14 @@ function Projects() {
                     <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
                         Full-stack products, backend systems, networking
                         applications, algorithms, and data-focused software.
-                        Hover over a project for the story, then open the case
-                        study for the engineering behind it.
+                        Explore each project to see the engineering behind the
+                        implementation.
                     </p>
                 </motion.header>
 
-                {/* Project gallery */}
+                {/* ============================================================
+                    Project Gallery
+                ============================================================= */}
                 <div className="mt-16 grid gap-6 lg:grid-cols-2">
                     {projects.map((project, index) => (
                         <motion.article
@@ -151,7 +180,10 @@ function Projects() {
                             className={
                                 project.featured
                                     ? "group relative overflow-hidden rounded-[2rem] border border-cyan-400/45 bg-[#050b18]/90 shadow-[0_0_45px_rgba(34,211,238,0.08)] backdrop-blur-xl lg:col-span-2"
-                                    : "group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#050b18]/85 shadow-[0_1.5rem_4rem_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:border-cyan-400/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.08)]"
+                                    : `group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#050b18]/85 shadow-[0_1.5rem_4rem_rgba(0,0,0,0.22)] backdrop-blur-xl transition duration-300 hover:border-cyan-400/30 hover:shadow-[0_0_40px_rgba(34,211,238,0.08)] ${project.wide
+                                        ? "lg:col-span-2"
+                                        : ""
+                                    }`
                             }
                         >
                             <Link
@@ -159,16 +191,22 @@ function Projects() {
                                 className={
                                     project.featured
                                         ? "grid min-h-[34rem] lg:grid-cols-[1.15fr_0.85fr]"
-                                        : "flex min-h-[30rem] flex-col"
+                                        : project.wide
+                                            ? "flex min-h-[30rem] flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr]"
+                                            : "flex min-h-[30rem] flex-col"
                                 }
                                 aria-label={`View ${project.title} case study`}
                             >
-                                {/* Project visual */}
+                                {/* ====================================================
+                                    Project Visual
+                                ===================================================== */}
                                 <div
                                     className={
                                         project.featured
                                             ? "relative min-h-[22rem] overflow-hidden border-b border-white/10 lg:min-h-full lg:border-b-0 lg:border-r"
-                                            : "relative min-h-[18rem] overflow-hidden border-b border-white/10"
+                                            : project.wide
+                                                ? "relative min-h-[18rem] overflow-hidden border-b border-white/10 lg:min-h-full lg:border-b-0 lg:border-r"
+                                                : "relative min-h-[18rem] overflow-hidden border-b border-white/10"
                                     }
                                 >
                                     {project.image ? (
@@ -191,6 +229,7 @@ function Projects() {
                                                 className="absolute inset-0 opacity-40"
                                             >
                                                 <div className="absolute left-1/4 top-1/4 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl" />
+
                                                 <div className="absolute bottom-1/4 right-1/4 h-40 w-40 rounded-full bg-blue-600/10 blur-3xl" />
                                             </div>
 
@@ -204,8 +243,16 @@ function Projects() {
                                         </div>
                                     )}
 
-                                    {/* Hover description overlay */}
-                                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-[#020711]/95 via-[#020711]/75 to-transparent p-6 opacity-0 transition duration-300 group-hover:opacity-100 sm:p-8">
+                                    {/*
+                                     * Desktop hover overlay.
+                                     *
+                                     * This preserves the image-first interaction:
+                                     * image -> hover -> description -> case study.
+                                     *
+                                     * Hidden below the md breakpoint because touch
+                                     * devices receive dedicated project information.
+                                     */}
+                                    <div className="absolute inset-0 hidden items-end bg-gradient-to-t from-[#020711]/95 via-[#020711]/75 to-transparent p-6 opacity-0 transition duration-300 group-hover:opacity-100 md:flex sm:p-8">
                                         <div className="translate-y-4 transition duration-300 group-hover:translate-y-0">
                                             <p className="max-w-xl text-base leading-7 text-slate-200">
                                                 {project.description}
@@ -213,6 +260,7 @@ function Projects() {
 
                                             <span className="mt-5 inline-flex items-center gap-2 font-semibold text-cyan-300">
                                                 View Case Study
+
                                                 <span
                                                     aria-hidden="true"
                                                     className="transition-transform duration-200 group-hover:translate-x-1"
@@ -224,7 +272,9 @@ function Projects() {
                                     </div>
                                 </div>
 
-                                {/* Project information */}
+                                {/* ====================================================
+                                    Project Information
+                                ===================================================== */}
                                 <div className="relative flex flex-1 flex-col p-6 sm:p-8">
                                     <div
                                         aria-hidden="true"
@@ -243,6 +293,7 @@ function Projects() {
                                                         aria-hidden="true"
                                                         className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,1)]"
                                                     />
+
                                                     Live
                                                 </span>
                                             )}
@@ -267,9 +318,41 @@ function Projects() {
                                                 {project.description}
                                             </p>
                                         )}
+
+                                        {/*
+                                         * Mobile / touch-friendly description.
+                                         *
+                                         * Visitors should never need hover in order
+                                         * to understand or open a project.
+                                         */}
+                                        {!project.featured && (
+                                            <div className="md:hidden">
+                                                <p className="mt-5 text-sm leading-7 text-slate-400">
+                                                    {project.description}
+                                                </p>
+
+                                                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300">
+                                                    View Case Study
+                                                    <span aria-hidden="true">
+                                                        →
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {project.featured && (
+                                            <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 md:hidden">
+                                                View Case Study
+                                                <span aria-hidden="true">
+                                                    →
+                                                </span>
+                                            </span>
+                                        )}
                                     </div>
 
-                                    {/* Technology stack */}
+                                    {/* ====================================================
+                                        Technology Stack
+                                    ===================================================== */}
                                     <ul className="relative z-10 mt-auto flex flex-wrap gap-2 pt-8">
                                         {project.technologies.map(
                                             (technology) => (

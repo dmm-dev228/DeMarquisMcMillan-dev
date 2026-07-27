@@ -1959,17 +1959,20 @@ function CogniHavenProject() {
             </motion.article>
         </div>
 
-        {/* Engineering takeaway */}
-        <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{
-                duration: 0.65,
-                ease: [0.22, 1, 0.36, 1],
-            }}
-            className="mt-8 rounded-[2rem] border border-emerald-400/15 bg-gradient-to-r from-emerald-400/[0.05] via-cyan-400/[0.03] to-transparent p-7 sm:p-8"
-        >
+       {/* Engineering takeaway */}
+<motion.div
+    initial={{ opacity: 0, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.25 }}
+    transition={{
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
+    }}
+    className="mt-8 rounded-[2rem] border border-emerald-400/15 bg-gradient-to-r from-emerald-400/[0.05] via-cyan-400/[0.03] to-transparent p-7 sm:p-8"
+>
+    <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        {/* Engineering takeaway content */}
+        <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-400">
                 Engineering Takeaway
             </p>
@@ -1979,7 +1982,21 @@ function CogniHavenProject() {
                 designing behavior that remained secure, understandable, and
                 maintainable as those features began interacting with one another.
             </p>
-        </motion.div>
+        </div>
+
+        {/* Return to the full projects gallery */}
+        <div className="flex lg:justify-end">
+            <Link
+                to="/projects"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl border border-white/10 px-6 py-3.5 font-semibold text-slate-300 transition duration-200 hover:border-cyan-300/30 hover:text-white"
+            >
+                <span aria-hidden="true">←</span>
+                All Projects
+            </Link>
+        </div>
+    </div>
+</motion.div>
+        
     </div>
 </section>
         </main>
