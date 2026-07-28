@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 
 import cogniHavenScreenshot from "../assets/projects/cognihaven-dashboard.png";
 import connectMScreenshot from "../assets/projects/ConnectM.png";
+import stockHousingVisual from "../assets/projects/stockhousing.png";
 
 /*
  * ============================================================================
@@ -79,19 +80,20 @@ const projects = [
     },
     {
         id: "stock-housing",
-        title: "Stock & Housing Predictor",
+        title: "Stock & Housing Regression Engine",
         eyebrow: "Data & Algorithms",
-        category: "Regression-Based Prediction System",
+        category: "C++ Regression & Data Pipeline",
         description:
-            "A C++ prediction application using linear regression, external market data, API integration, and numerical processing to analyze stock and housing price trends.",
+            "An end-to-end C++ data pipeline that retrieves real-world housing and stock-market data, preprocesses CSV datasets, and applies manually implemented ordinary least-squares linear regression.",
         technologies: [
-            "C++",
+            "C++17",
             "Linear Regression",
-            "REST API",
-            "cURL",
-            "Data Processing",
+            "libcurl",
+            "CSV Processing",
+            "Alpha Vantage",
         ],
-        route: "/projects/stock-housing-predictor",
+        image: stockHousingVisual,
+        route: "/projects/stock-housing-regression",
         featured: false,
         wide: false,
     },
