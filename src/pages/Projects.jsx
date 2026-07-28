@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import cogniHavenScreenshot from "../assets/projects/cognihaven-dashboard.png";
 import connectMScreenshot from "../assets/projects/ConnectM.png";
 import stockHousingVisual from "../assets/projects/stockhousing.png";
+import weatherSubPlatformVisual from "../assets/projects/WeatherSubPlatform.png";
 
 /*
  * ============================================================================
@@ -60,24 +61,26 @@ const projects = [
         featured: false,
         wide: false,
     },
-    {
-        id: "weather-subscription",
-        title: "Weather Subscription",
-        eyebrow: "Systems Engineering",
-        category: "Multithreaded TCP Application",
-        description:
-            "A C++ client-server weather subscription system using TCP networking, Linux sockets, concurrent clients, and multithreaded server communication.",
-        technologies: [
-            "C++",
-            "TCP/IP",
-            "Linux",
-            "Sockets",
-            "Multithreading",
-        ],
-        route: "/projects/weather-subscription",
-        featured: false,
-        wide: false,
-    },
+{
+    id: "weather-subscription",
+    title: "Weather Subscription Platform",
+    eyebrow: "Systems Programming",
+    category: "Distributed Client-Server Architecture",
+    description:
+        "A multithreaded C++ client-server platform that uses a custom TCP protocol to provide authenticated user sessions, persistent account management, concurrent client handling, and location-based weather subscriptions.",
+    technologies: [
+        "C++17",
+        "TCP/IP",
+        "POSIX Sockets",
+        "Multithreading",
+        "Client-Server",
+        "Make",
+    ],
+    image: weatherSubPlatformVisual,
+    route: "/projects/weather-subscription-platform",
+    featured: false,
+    wide: false,
+},
     {
         id: "stock-housing",
         title: "Stock & Housing Regression Engine",

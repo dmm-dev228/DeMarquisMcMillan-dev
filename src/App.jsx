@@ -6,6 +6,7 @@ import Projects from "./pages/Projects";
 import CogniHavenProject from "./pages/projects/CogniHavenProject";
 import ConnectMProject from "./pages/projects/ConnectMProject";
 import StockHousingProject from "./pages/projects/StockHousingProject";
+import WeatherSubscriptionProject from "./pages/projects/WeatherSubscriptionProject";
 
 function App() {
     return (
@@ -24,6 +25,10 @@ function App() {
                 <Route
                     path="/projects/stock-housing-regression"
                     element={<StockHousingProject />}
+                />
+                <Route
+                    path="/projects/weather-subscription-platform"
+                    element={<WeatherSubscriptionProject />}
                 />
             </Routes>
         </MainLayout>
