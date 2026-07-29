@@ -1703,7 +1703,7 @@ function WeatherSubscriptionProject() {
                                     icon: LockKeyhole,
                                     title: "Mutex Coordination",
                                     description:
-                                        "Shared state is protected during critical operations to reduce race-condition risk.",
+                                        "Shared state is protected during critical operations to reduce race condition risk.",
                                 },
                                 {
                                     icon: Network,
@@ -2425,7 +2425,7 @@ function WeatherSubscriptionProject() {
     id="persistent-storage-heading"
     eyebrow="Persistent Storage"
     title="Preserving Accounts and Subscriptions Across Sessions"
-    description="The platform stores user account and subscription data in text files so server state can survive process restarts. The server loads persisted records during startup, maintains the active in-memory representation while requests are processed, and writes updated state back to storage when account or subscription information changes."
+    description="The platform stores user account and subscription data in text files so server state can survive process restarts. The server loads persisted records during startup, maintains the active in memory representation while requests are processed, and writes updated state back to storage when account or subscription information changes."
 />
 
                         {/* Persistence lifecycle */}
@@ -2552,12 +2552,12 @@ function WeatherSubscriptionProject() {
                                         </p>
 
                                         <h3 className="mt-3 text-xl font-bold text-white">
-                                            Build In-Memory State
+                                            Build In Memory State
                                         </h3>
 
                                         <p className="mt-3 text-sm leading-7 text-slate-400">
                                             Parsed records are converted into runtime user
-                                            objects and server-managed collections for fast
+                                            objects and server managed collections for fast
                                             access during active sessions.
                                         </p>
 
@@ -2840,7 +2840,7 @@ function WeatherSubscriptionProject() {
 
                                             <p className="mt-4 text-sm leading-7 text-slate-400">
                                                 A user action first changes the server’s
-                                                in-memory representation. The server then saves
+                                                in memory representation. The server then saves
                                                 the updated collection so runtime state and disk
                                                 state remain aligned.
                                             </p>
@@ -2903,7 +2903,7 @@ function WeatherSubscriptionProject() {
                             {[
                                 {
                                     icon: FileText,
-                                    title: "Human-Readable Records",
+                                    title: "Human Readable Records",
                                     description:
                                         "Plain text storage makes saved accounts and subscriptions easy to inspect during development.",
                                 },
@@ -2917,7 +2917,7 @@ function WeatherSubscriptionProject() {
                                     icon: Save,
                                     title: "Explicit Save Operations",
                                     description:
-                                        "State-changing commands trigger persistence updates instead of relying only on memory.",
+                                        "State changing commands trigger persistence updates instead of relying only on memory.",
                                 },
                                 {
                                     icon: Database,
@@ -2990,7 +2990,7 @@ function WeatherSubscriptionProject() {
                                 </h3>
 
                                 <p className="mt-4 text-sm leading-7 text-slate-300">
-                                    File-based storage keeps the application self-contained and
+                                    File based storage keeps the application self contained and
                                     demonstrates serialization, deserialization, startup loading,
                                     and state recovery without requiring an external database
                                     server.
@@ -3311,9 +3311,206 @@ function WeatherSubscriptionProject() {
         description="Building the platform required more than opening a network connection. The system had to maintain authenticated session state, coordinate shared application data across concurrent clients, persist changes between server restarts, and keep a custom communication protocol consistent between two independent executables."
     />
 
-    <div className="mt-16 grid gap-6 lg:grid-cols-2">
-        {/* Challenge cards will go here */}
-    </div>
+  <div className="mt-16 grid gap-6 lg:grid-cols-2">
+    {/* Challenge 01 */}
+    <motion.article
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{
+            duration: 0.55,
+            delay: 0.05,
+            ease: [0.22, 1, 0.36, 1],
+        }}
+        className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+    >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        <div className="flex items-start justify-between gap-6">
+            <div>
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Challenge 01
+                </p>
+
+                <h3 className="mt-4 text-2xl font-black tracking-[-0.025em] text-white">
+                    Maintaining Authenticated Sessions
+                </h3>
+            </div>
+
+            <span className="shrink-0 rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                Session State
+            </span>
+        </div>
+
+        <p className="mt-6 leading-7 text-slate-300">
+            The server needed to associate each connected socket with the
+            correct user after login. Protected actions such as subscription
+            changes and messaging could not rely only on values supplied by
+            the client.
+        </p>
+
+        <div className="mt-7 rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                Engineering Response
+            </p>
+
+            <p className="mt-3 leading-7 text-slate-300">
+                Authentication is processed centrally by the server, which
+                maintains the relationship between active connections and
+                authenticated users throughout each session.
+            </p>
+        </div>
+    </motion.article>
+
+    {/* Challenge 02 */}
+    <motion.article
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{
+            duration: 0.55,
+            delay: 0.1,
+            ease: [0.22, 1, 0.36, 1],
+        }}
+        className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+    >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        <div className="flex items-start justify-between gap-6">
+            <div>
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Challenge 02
+                </p>
+
+                <h3 className="mt-4 text-2xl font-black tracking-[-0.025em] text-white">
+                    Coordinating Concurrent Clients
+                </h3>
+            </div>
+
+            <span className="shrink-0 rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                Concurrency
+            </span>
+        </div>
+
+        <p className="mt-6 leading-7 text-slate-300">
+            Multiple clients can remain connected at the same time while
+            accessing shared user, subscription, and messaging data. Operations
+            performed for one connection must not incorrectly affect another
+            active session.
+        </p>
+
+        <div className="mt-7 rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                Engineering Response
+            </p>
+
+            <p className="mt-3 leading-7 text-slate-300">
+                The server assigns accepted client connections to independent
+                worker threads while keeping shared application state under
+                centralized server ownership.
+            </p>
+        </div>
+    </motion.article>
+
+    {/* Challenge 03 */}
+    <motion.article
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{
+            duration: 0.55,
+            delay: 0.15,
+            ease: [0.22, 1, 0.36, 1],
+        }}
+        className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+    >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        <div className="flex items-start justify-between gap-6">
+            <div>
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Challenge 03
+                </p>
+
+                <h3 className="mt-4 text-2xl font-black tracking-[-0.025em] text-white">
+                    Preserving State Across Restarts
+                </h3>
+            </div>
+
+            <span className="shrink-0 rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                Persistence
+            </span>
+        </div>
+
+        <p className="mt-6 leading-7 text-slate-300">
+            Account and subscription changes needed to survive beyond the
+            lifetime of the running server process. Runtime state also had to
+            remain consistent with the text files used for persistence.
+        </p>
+
+        <div className="mt-7 rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                Engineering Response
+            </p>
+
+            <p className="mt-3 leading-7 text-slate-300">
+                The server loads persisted records into memory during startup
+                and saves updated account and subscription information when
+                supported state-changing operations occur.
+            </p>
+        </div>
+    </motion.article>
+
+    {/* Challenge 04 */}
+    <motion.article
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{
+            duration: 0.55,
+            delay: 0.2,
+            ease: [0.22, 1, 0.36, 1],
+        }}
+        className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+    >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        <div className="flex items-start justify-between gap-6">
+            <div>
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Challenge 04
+                </p>
+
+                <h3 className="mt-4 text-2xl font-black tracking-[-0.025em] text-white">
+                    Keeping the Protocol Consistent
+                </h3>
+            </div>
+
+            <span className="shrink-0 rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                Protocol Design
+            </span>
+        </div>
+
+        <p className="mt-6 leading-7 text-slate-300">
+            The client and server are separate executables, so both sides must
+            agree on command names, argument order, delimiters, and expected
+            response formats. A mismatch can cause valid requests to be parsed
+            incorrectly.
+        </p>
+
+        <div className="mt-7 rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                Engineering Response
+            </p>
+
+            <p className="mt-3 leading-7 text-slate-300">
+                Requests use predictable text-based command structures, giving
+                the client a consistent way to encode operations and the server
+                a repeatable process for parsing and dispatching them.
+            </p>
+        </div>
+    </motion.article>
+</div>
 </ProjectSection>
             </div>
         </main>
