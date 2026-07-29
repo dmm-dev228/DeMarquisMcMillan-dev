@@ -164,7 +164,7 @@ function WeatherSubscriptionProject() {
             icon: CloudSun,
             title: "Subscriptions",
             subtitle:
-                "Adds, removes, and retrieves user-specific weather-location subscriptions.",
+                "Adds, removes, and retrieves user-specific weather location subscriptions.",
         },
         {
             icon: MessageSquare,
@@ -563,7 +563,7 @@ function WeatherSubscriptionProject() {
                                     <ArchitectureCard
                                         icon={Database}
                                         title="subscriptions.txt"
-                                        subtitle="Stores each user's saved weather-location subscriptions for persistent retrieval and management."
+                                        subtitle="Stores each user's saved weather location subscriptions for persistent retrieval and management."
                                         delay={0.23}
                                         className="border-emerald-400/15"
                                     />
@@ -1032,7 +1032,7 @@ function WeatherSubscriptionProject() {
                                 {
                                     title: "State Synchronization",
                                     description:
-                                        "In-memory user data and persistent text files are updated together when account or subscription information changes.",
+                                        "In memory user data and persistent text files are updated together when account or subscription information changes.",
                                 },
                                 {
                                     title: "Explicit Responses",
@@ -1112,7 +1112,7 @@ function WeatherSubscriptionProject() {
                                 id="authentication-heading"
                                 className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
                             >
-                                Server-Controlled Account Access
+                                Server Controlled Account Access
                             </h2>
 
                             <p className="mt-7 text-lg leading-8 text-slate-300">
@@ -1140,7 +1140,7 @@ function WeatherSubscriptionProject() {
                                             number: "01",
                                             title: "Register",
                                             description:
-                                                "A new username and password are submitted to the server, validated, added to the in-memory user collection, and written to persistent storage.",
+                                                "A new username and password are submitted to the server, validated, added to the in memory user collection, and written to persistent storage.",
                                             detail: "Creates a persistent account",
                                         },
                                         {
@@ -1771,7 +1771,7 @@ function WeatherSubscriptionProject() {
                                             </div>
 
                                             <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
-                                                Shared-State Coordination
+                                                Shared State Coordination
                                             </p>
 
                                             <h3 className="mt-3 text-2xl font-black text-white">
@@ -2645,7 +2645,7 @@ function WeatherSubscriptionProject() {
                             </h2>
 
                             <p className="mt-7 text-lg leading-8 text-slate-300">
-                                The platform separates active in-memory application state from
+                                The platform separates active in memory application state from
                                 durable file-based storage. When the server starts, saved user
                                 accounts and location subscriptions are loaded into runtime
                                 objects. When account or subscription data changes, the server
@@ -3131,7 +3131,7 @@ function WeatherSubscriptionProject() {
                                     icon: FileText,
                                     title: "Human-Readable Records",
                                     description:
-                                        "Plain-text storage makes saved accounts and subscriptions easy to inspect during development.",
+                                        "Plain text storage makes saved accounts and subscriptions easy to inspect during development.",
                                 },
                                 {
                                     icon: HardDrive,
@@ -3233,7 +3233,7 @@ function WeatherSubscriptionProject() {
                                 </h3>
 
                                 <p className="mt-4 text-sm leading-7 text-slate-300">
-                                    Plain-text files do not provide transactions, indexed
+                                    Plain text files do not provide transactions, indexed
                                     queries, schema enforcement, automatic concurrency control,
                                     or reliable crash recovery. Simultaneous writes and partial
                                     failures can also create inconsistent or corrupted records.
@@ -3304,6 +3304,252 @@ function WeatherSubscriptionProject() {
                         </motion.div>
                     </div>
                 </section>
+                {/* ============================================================
+    Object-Oriented Design
+============================================================= */}
+<section
+    aria-labelledby="object-oriented-heading"
+    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
+>
+    <div className="mx-auto max-w-7xl">
+        {/* Heading */}
+        <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mx-auto max-w-4xl text-center"
+        >
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                Object-Oriented Design
+            </p>
+
+            <h2
+                id="object-oriented-heading"
+                className="mt-4 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl"
+            >
+                Clear Separation of Responsibilities
+            </h2>
+
+            <p className="mt-7 text-lg leading-8 text-slate-300">
+                The application is organized around three primary classes that
+                each own a specific responsibility. Rather than placing all
+                networking, account management, and data handling inside one
+                large file, responsibilities are divided between independent
+                components that communicate through well defined interfaces.
+            </p>
+        </motion.div>
+
+        {/* Main diagram */}
+        <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto_1fr_auto_1fr] items-center">
+
+            {/* Client */}
+            <motion.article
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="rounded-3xl border border-white/10 bg-[#07101f] p-8"
+            >
+                <div className="flex justify-between items-center">
+                    <Terminal className="text-cyan-300" size={28}/>
+                    <span className="font-mono text-cyan-400">CLIENT</span>
+                </div>
+
+                <h3 className="mt-6 text-2xl font-bold text-white">
+                    Client
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-slate-400">
+                    Handles terminal interaction, gathers user input,
+                    communicates with the server through TCP sockets,
+                    displays responses, and maintains the active connection.
+                </p>
+
+                <div className="mt-6 space-y-2">
+                    {[
+                        "Menu system",
+                        "Socket communication",
+                        "Command creation",
+                        "Response display"
+                    ].map(item=>(
+                        <div
+                            key={item}
+                            className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-300"
+                        >
+                            {item}
+                        </div>
+                    ))}
+                </div>
+            </motion.article>
+
+            <Network
+                className="hidden lg:block text-cyan-300"
+                size={36}
+            />
+
+            {/* Server */}
+            <motion.article
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: .1 }}
+                className="rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/[0.08] via-[#07101f] to-blue-500/[0.04] p-8"
+            >
+                <div className="flex justify-between items-center">
+                    <Server className="text-cyan-300" size={28}/>
+                    <span className="font-mono text-cyan-400">SERVER</span>
+                </div>
+
+                <h3 className="mt-6 text-2xl font-bold text-white">
+                    Server
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-slate-400">
+                    Acts as the application's control center. It accepts client
+                    connections, validates requests, manages users,
+                    coordinates messaging, processes subscriptions,
+                    and saves persistent data.
+                </p>
+
+                <div className="mt-6 space-y-2">
+                    {[
+                        "Authentication",
+                        "Subscriptions",
+                        "Messaging",
+                        "Persistence",
+                        "Concurrency"
+                    ].map(item=>(
+                        <div
+                            key={item}
+                            className="rounded-lg border border-cyan-400/15 bg-cyan-400/[0.04] px-4 py-3 text-sm text-slate-300"
+                        >
+                            {item}
+                        </div>
+                    ))}
+                </div>
+            </motion.article>
+
+            <Network
+                className="hidden lg:block text-cyan-300"
+                size={36}
+            />
+
+            {/* User */}
+            <motion.article
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: .2 }}
+                className="rounded-3xl border border-white/10 bg-[#07101f] p-8"
+            >
+                <div className="flex justify-between items-center">
+                    <Users
+                        className="text-cyan-300"
+                        size={28}
+                    />
+
+                    <span className="font-mono text-cyan-400">
+                        USER
+                    </span>
+                </div>
+
+                <h3 className="mt-6 text-2xl font-bold text-white">
+                    User
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-slate-400">
+                    Represents an authenticated account. The object stores the
+                    information associated with one user including credentials,
+                    active socket information, subscriptions, and saved
+                    messages.
+                </p>
+
+                <div className="mt-6 space-y-2">
+                    {[
+                        "Username",
+                        "Password",
+                        "Socket",
+                        "Subscriptions",
+                        "Messages"
+                    ].map(item=>(
+                        <div
+                            key={item}
+                            className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-300"
+                        >
+                            {item}
+                        </div>
+                    ))}
+                </div>
+            </motion.article>
+
+        </div>
+
+        {/* Design Principles */}
+        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+            {[
+                {
+                    title:"Single Responsibility",
+                    desc:"Each class focuses on one major responsibility instead of combining networking, persistence, and user management together."
+                },
+                {
+                    title:"Encapsulation",
+                    desc:"Internal data is managed by the owning class through member functions rather than being modified directly throughout the application."
+                },
+                {
+                    title:"Maintainability",
+                    desc:"Adding new functionality becomes easier because changes are usually isolated to one class instead of affecting the entire project."
+                },
+                {
+                    title:"Reusability",
+                    desc:"Individual components can be reused or extended without redesigning the complete networking system."
+                }
+            ].map(card=>(
+                <motion.article
+                    key={card.title}
+                    initial={{opacity:0,y:20}}
+                    whileInView={{opacity:1,y:0}}
+                    viewport={{once:true}}
+                    className="rounded-2xl border border-white/10 bg-[#050b18] p-6"
+                >
+                    <h3 className="text-xl font-bold text-white">
+                        {card.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-7 text-slate-400">
+                        {card.desc}
+                    </p>
+                </motion.article>
+            ))}
+
+        </div>
+
+        {/* Bottom explanation */}
+        <motion.div
+            initial={{opacity:0,y:20}}
+            whileInView={{opacity:1,y:0}}
+            viewport={{once:true}}
+            className="mt-16 rounded-3xl border border-cyan-400/15 bg-cyan-400/[0.03] p-8"
+        >
+            <h3 className="text-2xl font-black text-white">
+                Why This Design Matters
+            </h3>
+
+            <p className="mt-6 max-w-5xl text-sm leading-8 text-slate-300">
+                Although this project was built for a systems programming
+                course, the architecture follows many of the same principles
+                used in larger software systems. Separating networking,
+                business logic, persistence, and user state into dedicated
+                classes makes the code easier to understand, easier to test,
+                and easier to extend. Future improvements such as replacing
+                text files with a database or introducing encrypted network
+                communication could be added with minimal changes to the
+                surrounding components because responsibilities are already
+                well organized.
+            </p>
+        </motion.div>
+    </div>
+</section>
             </div>
         </main>
     );
