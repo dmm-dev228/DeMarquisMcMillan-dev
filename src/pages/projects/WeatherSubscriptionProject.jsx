@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import {
+    AlertTriangle,
     ArrowDown,
+    Braces,
     CloudSun,
     Cpu,
     Database,
@@ -13,6 +15,7 @@ import {
     MessageSquare,
     Network,
     RefreshCw,
+    Send,
     Server,
     Terminal,
     UserPlus,
@@ -228,7 +231,7 @@ function WeatherSubscriptionProject() {
                                 protocol. The platform supports authenticated
                                 user sessions, persistent account storage,
                                 concurrent client handling, password management,
-                                and personalized weather-location subscriptions.
+                                and personalized weather location subscriptions.
                             </p>
 
                             <div className="mt-10 flex flex-wrap gap-3">
@@ -306,7 +309,7 @@ function WeatherSubscriptionProject() {
 
                                     <p className="mt-2 text-sm leading-6 text-slate-400">
                                         An artistic representation of the
-                                        distributed client-server architecture,
+                                        distributed client server architecture,
                                         concurrent networking model, and
                                         centralized subscription management
                                         implemented by the platform.
@@ -1363,7 +1366,7 @@ function WeatherSubscriptionProject() {
                                         </h3>
 
                                         <p className="mt-3 text-sm leading-7 text-slate-400">
-                                            Account-specific features become available after
+                                            Account specific features become available after
                                             login. These operations rely on the authenticated
                                             username to determine which subscriptions, messages,
                                             and account data should be accessed.
@@ -1479,7 +1482,7 @@ function WeatherSubscriptionProject() {
                                         credential validation, authenticated feature access, and
                                         persistent account management. It is not presented as a
                                         production security system: credentials are stored in a
-                                        text-based persistence format, and communication does not
+                                        text based persistence format, and communication does not
                                         use transport encryption. A production version would add
                                         salted password hashing, TLS, stronger session controls,
                                         secure database storage, and request rate limiting.
@@ -1492,9 +1495,468 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
     Concurrent Client Handling
 ============================================================= */}
+                <section
+                    aria-labelledby="concurrency-heading"
+                    className="px-6 py-24 sm:px-8 lg:px-12"
+                >
+                    <div className="mx-auto w-full max-w-7xl">
+                        {/* Section heading */}
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 24,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.4,
+                            }}
+                            transition={{
+                                duration: 0.6,
+                                ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="mx-auto max-w-4xl text-center"
+                        >
+                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                                Concurrent Client Handling
+                            </p>
+
+                            <h2
+                                id="concurrency-heading"
+                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
+                            >
+                                One Server, Multiple Active Sessions
+                            </h2>
+
+                            <p className="mt-7 text-lg leading-8 text-slate-300">
+                                The server uses a thread per client model so multiple terminal
+                                clients can remain connected and submit requests independently.
+                                Each accepted socket is assigned to a dedicated worker thread,
+                                allowing one user’s authentication, subscription, or messaging
+                                operation to be processed without blocking every other client.
+                            </p>
+                        </motion.div>
+
+                        {/* Main concurrency visualization */}
+                        <div className="relative mx-auto mt-16 max-w-6xl">
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 rounded-[3rem] bg-cyan-500/[0.035] blur-3xl"
+                            />
+
+                            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
+                                {/* Listening server */}
+                                <motion.div
+                                    initial={{
+                                        opacity: 0,
+                                        scale: 0.97,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        scale: 1,
+                                    }}
+                                    viewport={{
+                                        once: true,
+                                        amount: 0.35,
+                                    }}
+                                    transition={{
+                                        duration: 0.55,
+                                        ease: [0.22, 1, 0.36, 1],
+                                    }}
+                                    className="mx-auto max-w-3xl rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-cyan-400/[0.09] via-[#07101f] to-blue-500/[0.07] p-6 shadow-[0_0_45px_rgba(34,211,238,0.08)] sm:p-8"
+                                >
+                                    <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                                        <div className="flex items-start gap-4">
+                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/[0.09] text-cyan-200">
+                                                <Server size={27} aria-hidden="true" />
+                                            </div>
+
+                                            <div>
+                                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+                                                    Connection Entry Point
+                                                </p>
+
+                                                <h3 className="mt-2 text-2xl font-black text-white">
+                                                    Listening Server Socket
+                                                </h3>
+
+                                                <p className="mt-3 max-w-xl text-sm leading-7 text-slate-300">
+                                                    The server binds to port 8080, listens for
+                                                    incoming TCP connections, and accepts each
+                                                    client socket as a separate communication
+                                                    channel.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex flex-wrap gap-2">
+                                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                                bind()
+                                            </span>
+
+                                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                                listen()
+                                            </span>
+
+                                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                                accept()
+                                            </span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Animated branching */}
+                                <div
+                                    aria-hidden="true"
+                                    className="relative mx-auto mt-8 hidden h-24 max-w-4xl lg:block"
+                                >
+                                    <div className="absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300/80 to-cyan-400/20" />
+
+                                    <div className="absolute left-[16.66%] right-[16.66%] top-10 h-px bg-gradient-to-r from-cyan-400/20 via-cyan-300/80 to-cyan-400/20" />
+
+                                    {[16.66, 50, 83.33].map((position, index) => (
+                                        <div
+                                            key={position}
+                                            className="absolute top-10 h-14 w-px bg-gradient-to-b from-cyan-300/80 to-cyan-400/20"
+                                            style={{
+                                                left: `${position}%`,
+                                            }}
+                                        >
+                                            <motion.span
+                                                animate={{
+                                                    y: [0, 42, 0],
+                                                    opacity: [0, 1, 0],
+                                                }}
+                                                transition={{
+                                                    duration: 1.8,
+                                                    repeat: Infinity,
+                                                    delay: index * 0.25,
+                                                    ease: "easeInOut",
+                                                }}
+                                                className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_15px_rgba(103,232,249,0.9)]"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Worker threads */}
+                                <div className="mt-8 grid gap-6 lg:mt-0 lg:grid-cols-3">
+                                    {[
+                                        {
+                                            number: "01",
+                                            title: "Worker Thread 01",
+                                            user: "Authenticated Client A",
+                                            operation: "Subscription request",
+                                        },
+                                        {
+                                            number: "02",
+                                            title: "Worker Thread 02",
+                                            user: "Authenticated Client B",
+                                            operation: "Direct message request",
+                                        },
+                                        {
+                                            number: "N",
+                                            title: "Worker Thread N",
+                                            user: "Additional Client",
+                                            operation: "Independent request flow",
+                                        },
+                                    ].map((thread, index) => (
+                                        <motion.article
+                                            key={thread.title}
+                                            initial={{
+                                                opacity: 0,
+                                                y: 24,
+                                            }}
+                                            whileInView={{
+                                                opacity: 1,
+                                                y: 0,
+                                            }}
+                                            viewport={{
+                                                once: true,
+                                                amount: 0.35,
+                                            }}
+                                            transition={{
+                                                duration: 0.5,
+                                                delay: index * 0.1,
+                                                ease: [0.22, 1, 0.36, 1],
+                                            }}
+                                            whileHover={{
+                                                y: -6,
+                                            }}
+                                            className="group relative overflow-hidden rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-6 transition-colors duration-300 hover:border-cyan-400/30"
+                                        >
+                                            <div
+                                                aria-hidden="true"
+                                                className="absolute inset-0 bg-gradient-to-br from-cyan-400/[0.06] via-transparent to-blue-500/[0.04] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                            />
+
+                                            <div className="relative z-10">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                                        <Cpu size={23} aria-hidden="true" />
+                                                    </div>
+
+                                                    <span className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/60">
+                                                        THREAD {thread.number}
+                                                    </span>
+                                                </div>
+
+                                                <h3 className="mt-5 text-xl font-bold text-white">
+                                                    {thread.title}
+                                                </h3>
+
+                                                <div className="mt-5 space-y-3">
+                                                    <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
+                                                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                                                            Connected Session
+                                                        </p>
+
+                                                        <p className="mt-2 text-sm font-semibold text-slate-300">
+                                                            {thread.user}
+                                                        </p>
+                                                    </div>
+
+                                                    <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
+                                                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                                                            Example Workload
+                                                        </p>
+
+                                                        <p className="mt-2 text-sm font-semibold text-cyan-300">
+                                                            {thread.operation}
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <p className="mt-5 text-sm leading-7 text-slate-400">
+                                                    This thread reads requests from its assigned
+                                                    socket, invokes server operations, sends
+                                                    responses, and continues until the client
+                                                    disconnects.
+                                                </p>
+                                            </div>
+                                        </motion.article>
+                                    ))}
+                                </div>
+
+                                {/* Shared state */}
+                                <motion.div
+                                    initial={{
+                                        opacity: 0,
+                                        y: 20,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    viewport={{
+                                        once: true,
+                                        amount: 0.35,
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: 0.2,
+                                    }}
+                                    className="mt-10 rounded-3xl border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8"
+                                >
+                                    <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                                        <div>
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber-300/20 bg-amber-300/[0.07] text-amber-300">
+                                                <LockKeyhole size={23} aria-hidden="true" />
+                                            </div>
+
+                                            <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                                                Shared-State Coordination
+                                            </p>
+
+                                            <h3 className="mt-3 text-2xl font-black text-white">
+                                                Protecting Shared Server Data
+                                            </h3>
+
+                                            <p className="mt-4 text-sm leading-7 text-slate-300">
+                                                Worker threads may access shared user records,
+                                                subscription data, online user state, and
+                                                persistence files. A mutex provides a
+                                                synchronization boundary so critical operations
+                                                do not modify shared data at the same time.
+                                            </p>
+                                        </div>
+
+                                        <div className="rounded-2xl border border-white/[0.08] bg-[#050b18]/80 p-5 sm:p-6">
+                                            <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                                                <div className="rounded-xl border border-cyan-400/15 bg-cyan-400/[0.04] p-4 text-center">
+                                                    <p className="font-mono text-xs font-bold text-cyan-300">
+                                                        THREAD A
+                                                    </p>
+
+                                                    <p className="mt-2 text-sm text-slate-400">
+                                                        Update subscription
+                                                    </p>
+                                                </div>
+
+                                                <div className="flex justify-center">
+                                                    <LockKeyhole
+                                                        size={22}
+                                                        className="text-amber-300"
+                                                        aria-hidden="true"
+                                                    />
+                                                </div>
+
+                                                <div className="rounded-xl border border-blue-400/15 bg-blue-400/[0.04] p-4 text-center">
+                                                    <p className="font-mono text-xs font-bold text-blue-300">
+                                                        THREAD B
+                                                    </p>
+
+                                                    <p className="mt-2 text-sm text-slate-400">
+                                                        Read shared user state
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div className="mt-5 rounded-xl border border-amber-400/15 bg-amber-400/[0.03] p-4 text-center">
+                                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-300">
+                                                    Mutual Exclusion Boundary
+                                                </p>
+
+                                                <p className="mt-2 text-sm leading-6 text-slate-400">
+                                                    Only one protected critical section executes
+                                                    at a time while other threads wait.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
+
+                        {/* Engineering explanation cards */}
+                        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                            {[
+                                {
+                                    icon: Workflow,
+                                    title: "Thread Per Client",
+                                    description:
+                                        "Each accepted socket is handled by a separate execution path, keeping client sessions independent.",
+                                },
+                                {
+                                    icon: Layers3,
+                                    title: "Concurrent Workloads",
+                                    description:
+                                        "Authentication, subscription, and messaging requests can be processed across multiple active sessions.",
+                                },
+                                {
+                                    icon: LockKeyhole,
+                                    title: "Mutex Coordination",
+                                    description:
+                                        "Shared state is protected during critical operations to reduce race-condition risk.",
+                                },
+                                {
+                                    icon: Network,
+                                    title: "Persistent Connections",
+                                    description:
+                                        "The client and server continue exchanging commands through the same socket until logout or disconnection.",
+                                },
+                            ].map((item, index) => (
+                                <motion.article
+                                    key={item.title}
+                                    initial={{
+                                        opacity: 0,
+                                        y: 20,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    viewport={{
+                                        once: true,
+                                        amount: 0.35,
+                                    }}
+                                    transition={{
+                                        duration: 0.45,
+                                        delay: index * 0.07,
+                                    }}
+                                    className="rounded-2xl border border-white/[0.08] bg-[#050b18]/75 p-6"
+                                >
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.06] text-cyan-300">
+                                        <item.icon size={20} aria-hidden="true" />
+                                    </div>
+
+                                    <h3 className="mt-4 text-xl font-bold text-white">
+                                        {item.title}
+                                    </h3>
+
+                                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                                        {item.description}
+                                    </p>
+                                </motion.article>
+                            ))}
+                        </div>
+
+                        {/* Tradeoff explanation */}
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 20,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.35,
+                            }}
+                            transition={{
+                                duration: 0.5,
+                            }}
+                            className="mt-14 grid gap-6 lg:grid-cols-2"
+                        >
+                            <article className="rounded-[1.75rem] border border-emerald-400/20 bg-emerald-400/[0.035] p-6 sm:p-8">
+                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+                                    Why This Model Works
+                                </p>
+
+                                <h3 className="mt-3 text-2xl font-black text-white">
+                                    Straightforward Session Isolation
+                                </h3>
+
+                                <p className="mt-4 text-sm leading-7 text-slate-300">
+                                    A thread per client design is easy to understand and maps
+                                    naturally to the application’s long lived terminal
+                                    sessions. Each thread owns one client socket and can process
+                                    that user’s requests sequentially without blocking unrelated
+                                    connections.
+                                </p>
+                            </article>
+
+                            <article className="rounded-[1.75rem] border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8">
+                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                                    Scalability Tradeoff
+                                </p>
+
+                                <h3 className="mt-3 text-2xl font-black text-white">
+                                    Simple, but Not Unlimited
+                                </h3>
+
+                                <p className="mt-4 text-sm leading-7 text-slate-300">
+                                    Creating one operating-system thread for every connection is
+                                    appropriate for a learning scale system but consumes more
+                                    memory and scheduling overhead as client counts grow. A
+                                    larger production system could use a fixed thread pool,
+                                    non blocking sockets, or an event driven I/O model.
+                                </p>
+                            </article>
+                        </motion.div>
+                    </div>
+                </section>
+                {/* ============================================================
+    Custom TCP Protocol
+============================================================= */}
 <section
-    aria-labelledby="concurrency-heading"
-    className="px-6 py-24 sm:px-8 lg:px-12"
+    aria-labelledby="tcp-protocol-heading"
+    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
 >
     <div className="mx-auto w-full max-w-7xl">
         {/* Section heading */}
@@ -1518,26 +1980,27 @@ function WeatherSubscriptionProject() {
             className="mx-auto max-w-4xl text-center"
         >
             <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                Concurrent Client Handling
+                Custom TCP Protocol
             </p>
 
             <h2
-                id="concurrency-heading"
+                id="tcp-protocol-heading"
                 className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
             >
-                One Server, Multiple Active Sessions
+                Structured Commands Over Raw Sockets
             </h2>
 
             <p className="mt-7 text-lg leading-8 text-slate-300">
-                The server uses a thread-per-client model so multiple terminal
-                clients can remain connected and submit requests independently.
-                Each accepted socket is assigned to a dedicated worker thread,
-                allowing one user’s authentication, subscription, or messaging
-                operation to be processed without blocking every other client.
+                The client and server communicate through a custom
+                application-layer protocol built on top of TCP. Instead of
+                exchanging objects directly, the client converts user actions
+                into structured text messages. The server parses each message,
+                identifies the requested operation, executes the matching
+                handler, and sends a text response through the same socket.
             </p>
         </motion.div>
 
-        {/* Main concurrency visualization */}
+        {/* Protocol overview */}
         <div className="relative mx-auto mt-16 max-w-6xl">
             <div
                 aria-hidden="true"
@@ -1545,200 +2008,143 @@ function WeatherSubscriptionProject() {
             />
 
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
-                {/* Listening server */}
-                <motion.div
-                    initial={{
-                        opacity: 0,
-                        scale: 0.97,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        scale: 1,
-                    }}
-                    viewport={{
-                        once: true,
-                        amount: 0.35,
-                    }}
-                    transition={{
-                        duration: 0.55,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="mx-auto max-w-3xl rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-cyan-400/[0.09] via-[#07101f] to-blue-500/[0.07] p-6 shadow-[0_0_45px_rgba(34,211,238,0.08)] sm:p-8"
-                >
-                    <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                        <div className="flex items-start gap-4">
-                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/[0.09] text-cyan-200">
-                                <Server size={27} aria-hidden="true" />
-                            </div>
-
-                            <div>
-                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
-                                    Connection Entry Point
-                                </p>
-
-                                <h3 className="mt-2 text-2xl font-black text-white">
-                                    Listening Server Socket
-                                </h3>
-
-                                <p className="mt-3 max-w-xl text-sm leading-7 text-slate-300">
-                                    The server binds to port 8080, listens for
-                                    incoming TCP connections, and accepts each
-                                    client socket as a separate communication
-                                    channel.
-                                </p>
-                            </div>
+                <div className="grid gap-6 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">
+                    {/* Client encoder */}
+                    <motion.article
+                        initial={{
+                            opacity: 0,
+                            x: -24,
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        viewport={{
+                            once: true,
+                            amount: 0.35,
+                        }}
+                        transition={{
+                            duration: 0.55,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="rounded-3xl border border-white/[0.09] bg-[#07101f]/90 p-6 sm:p-8"
+                    >
+                        <div className="flex h-13 w-13 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                            <Terminal size={25} aria-hidden="true" />
                         </div>
 
-                        <div className="flex flex-wrap gap-2">
-                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
-                                bind()
-                            </span>
+                        <p className="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                            Client Responsibility
+                        </p>
 
-                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
-                                listen()
-                            </span>
+                        <h3 className="mt-3 text-2xl font-black text-white">
+                            Encode the User Request
+                        </h3>
 
-                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
-                                accept()
-                            </span>
+                        <p className="mt-4 text-sm leading-7 text-slate-400">
+                            The client gathers values from the terminal menu and
+                            packages them into a command string that contains the
+                            operation name and required arguments.
+                        </p>
+
+                        <div className="mt-6 rounded-2xl border border-white/[0.08] bg-[#030816] p-5">
+                            <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-500">
+                                Conceptual Command Shape
+                            </p>
+
+                            <code className="mt-4 block overflow-x-auto font-mono text-sm leading-7 text-cyan-200">
+                                OPERATION username argument
+                            </code>
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.article>
 
-                {/* Animated branching */}
-                <div
-                    aria-hidden="true"
-                    className="relative mx-auto mt-8 hidden h-24 max-w-4xl lg:block"
-                >
-                    <div className="absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300/80 to-cyan-400/20" />
-
-                    <div className="absolute left-[16.66%] right-[16.66%] top-10 h-px bg-gradient-to-r from-cyan-400/20 via-cyan-300/80 to-cyan-400/20" />
-
-                    {[16.66, 50, 83.33].map((position, index) => (
-                        <div
-                            key={position}
-                            className="absolute top-10 h-14 w-px bg-gradient-to-b from-cyan-300/80 to-cyan-400/20"
-                            style={{
-                                left: `${position}%`,
-                            }}
-                        >
+                    {/* Connection flow */}
+                    <div
+                        aria-hidden="true"
+                        className="flex items-center justify-center py-2 lg:w-28"
+                    >
+                        <div className="relative flex h-20 w-px items-center justify-center bg-gradient-to-b from-cyan-400/20 via-cyan-300/80 to-cyan-400/20 lg:h-px lg:w-full lg:bg-gradient-to-r">
                             <motion.span
                                 animate={{
-                                    y: [0, 42, 0],
+                                    y: [-24, 24, -24],
                                     opacity: [0, 1, 0],
                                 }}
                                 transition={{
-                                    duration: 1.8,
+                                    duration: 2,
                                     repeat: Infinity,
-                                    delay: index * 0.25,
                                     ease: "easeInOut",
                                 }}
-                                className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_15px_rgba(103,232,249,0.9)]"
+                                className="absolute h-3 w-3 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)] lg:hidden"
+                            />
+
+                            <motion.span
+                                animate={{
+                                    x: [-36, 36, -36],
+                                    opacity: [0, 1, 0],
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                }}
+                                className="absolute hidden h-3 w-3 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)] lg:block"
                             />
                         </div>
-                    ))}
+                    </div>
+
+                    {/* Server decoder */}
+                    <motion.article
+                        initial={{
+                            opacity: 0,
+                            x: 24,
+                        }}
+                        whileInView={{
+                            opacity: 1,
+                            x: 0,
+                        }}
+                        viewport={{
+                            once: true,
+                            amount: 0.35,
+                        }}
+                        transition={{
+                            duration: 0.55,
+                            delay: 0.08,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/[0.07] via-[#07101f] to-blue-500/[0.04] p-6 sm:p-8"
+                    >
+                        <div className="flex h-13 w-13 items-center justify-center rounded-2xl border border-cyan-400/25 bg-cyan-400/[0.09] text-cyan-200">
+                            <Server size={25} aria-hidden="true" />
+                        </div>
+
+                        <p className="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                            Server Responsibility
+                        </p>
+
+                        <h3 className="mt-3 text-2xl font-black text-white">
+                            Parse and Route the Command
+                        </h3>
+
+                        <p className="mt-4 text-sm leading-7 text-slate-400">
+                            The server reads bytes from the socket, converts the
+                            received data into a command string, separates the
+                            operation from its arguments, and routes the request
+                            to the correct server function.
+                        </p>
+
+                        <div className="mt-6 rounded-2xl border border-white/[0.08] bg-[#030816] p-5">
+                            <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-500">
+                                Server Decision
+                            </p>
+
+                            <code className="mt-4 block overflow-x-auto font-mono text-sm leading-7 text-cyan-200">
+                                command → handler → response
+                            </code>
+                        </div>
+                    </motion.article>
                 </div>
 
-                {/* Worker threads */}
-                <div className="mt-8 grid gap-6 lg:mt-0 lg:grid-cols-3">
-                    {[
-                        {
-                            number: "01",
-                            title: "Worker Thread 01",
-                            user: "Authenticated Client A",
-                            operation: "Subscription request",
-                        },
-                        {
-                            number: "02",
-                            title: "Worker Thread 02",
-                            user: "Authenticated Client B",
-                            operation: "Direct message request",
-                        },
-                        {
-                            number: "N",
-                            title: "Worker Thread N",
-                            user: "Additional Client",
-                            operation: "Independent request flow",
-                        },
-                    ].map((thread, index) => (
-                        <motion.article
-                            key={thread.title}
-                            initial={{
-                                opacity: 0,
-                                y: 24,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                                amount: 0.35,
-                            }}
-                            transition={{
-                                duration: 0.5,
-                                delay: index * 0.1,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            whileHover={{
-                                y: -6,
-                            }}
-                            className="group relative overflow-hidden rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-6 transition-colors duration-300 hover:border-cyan-400/30"
-                        >
-                            <div
-                                aria-hidden="true"
-                                className="absolute inset-0 bg-gradient-to-br from-cyan-400/[0.06] via-transparent to-blue-500/[0.04] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            />
-
-                            <div className="relative z-10">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
-                                        <Cpu size={23} aria-hidden="true" />
-                                    </div>
-
-                                    <span className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/60">
-                                        THREAD {thread.number}
-                                    </span>
-                                </div>
-
-                                <h3 className="mt-5 text-xl font-bold text-white">
-                                    {thread.title}
-                                </h3>
-
-                                <div className="mt-5 space-y-3">
-                                    <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
-                                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
-                                            Connected Session
-                                        </p>
-
-                                        <p className="mt-2 text-sm font-semibold text-slate-300">
-                                            {thread.user}
-                                        </p>
-                                    </div>
-
-                                    <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
-                                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
-                                            Example Workload
-                                        </p>
-
-                                        <p className="mt-2 text-sm font-semibold text-cyan-300">
-                                            {thread.operation}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <p className="mt-5 text-sm leading-7 text-slate-400">
-                                    This thread reads requests from its assigned
-                                    socket, invokes server operations, sends
-                                    responses, and continues until the client
-                                    disconnects.
-                                </p>
-                            </div>
-                        </motion.article>
-                    ))}
-                </div>
-
-                {/* Shared state */}
+                {/* Request envelope */}
                 <motion.div
                     initial={{
                         opacity: 0,
@@ -1754,73 +2160,301 @@ function WeatherSubscriptionProject() {
                     }}
                     transition={{
                         duration: 0.5,
-                        delay: 0.2,
+                        delay: 0.15,
                     }}
-                    className="mt-10 rounded-3xl border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8"
+                    className="mt-10 rounded-3xl border border-white/[0.08] bg-[#050b18]/80 p-6 sm:p-8"
                 >
-                    <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                        <div>
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber-300/20 bg-amber-300/[0.07] text-amber-300">
-                                <LockKeyhole size={23} aria-hidden="true" />
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                        <div className="max-w-2xl">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                <Braces size={23} aria-hidden="true" />
                             </div>
 
-                            <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
-                                Shared-State Coordination
+                            <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                                Message Structure
                             </p>
 
                             <h3 className="mt-3 text-2xl font-black text-white">
-                                Protecting Shared Server Data
+                                A Lightweight Text-Based Request Envelope
                             </h3>
 
-                            <p className="mt-4 text-sm leading-7 text-slate-300">
-                                Worker threads may access shared user records,
-                                subscription data, online-user state, and
-                                persistence files. A mutex provides a
-                                synchronization boundary so critical operations
-                                do not modify shared data at the same time.
+                            <p className="mt-4 text-sm leading-7 text-slate-400">
+                                Each request contains enough information for the
+                                server to determine what operation should run and
+                                which user or location values are involved. This
+                                keeps communication human-readable and easy to
+                                inspect while developing and debugging.
                             </p>
                         </div>
 
-                        <div className="rounded-2xl border border-white/[0.08] bg-[#050b18]/80 p-5 sm:p-6">
-                            <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-                                <div className="rounded-xl border border-cyan-400/15 bg-cyan-400/[0.04] p-4 text-center">
-                                    <p className="font-mono text-xs font-bold text-cyan-300">
-                                        THREAD A
-                                    </p>
+                        <div className="flex flex-wrap gap-2 lg:max-w-sm lg:justify-end">
+                            {[
+                                "Operation",
+                                "Username",
+                                "Location",
+                                "Recipient",
+                                "Message",
+                                "Password",
+                            ].map((field) => (
+                                <span
+                                    key={field}
+                                    className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold text-slate-300"
+                                >
+                                    {field}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
 
-                                    <p className="mt-2 text-sm text-slate-400">
-                                        Update subscription
-                                    </p>
-                                </div>
+                    <div className="mt-8 grid gap-5 md:grid-cols-3">
+                        {[
+                            {
+                                label: "Command",
+                                value: "SUBSCRIBE",
+                                description:
+                                    "Identifies which server operation should execute.",
+                            },
+                            {
+                                label: "Identity",
+                                value: "John",
+                                description:
+                                    "Associates the request with a specific account.",
+                            },
+                            {
+                                label: "Argument",
+                                value: "Pensacola",
+                                description:
+                                    "Provides the location required by the operation.",
+                            },
+                        ].map((field, index) => (
+                            <motion.article
+                                key={field.label}
+                                initial={{
+                                    opacity: 0,
+                                    y: 18,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.35,
+                                }}
+                                transition={{
+                                    duration: 0.45,
+                                    delay: index * 0.08,
+                                }}
+                                className="rounded-2xl border border-white/[0.08] bg-[#030816] p-5"
+                            >
+                                <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-500">
+                                    {field.label}
+                                </p>
 
-                                <div className="flex justify-center">
-                                    <LockKeyhole
-                                        size={22}
-                                        className="text-amber-300"
+                                <code className="mt-3 block font-mono text-base font-bold text-cyan-200">
+                                    {field.value}
+                                </code>
+
+                                <p className="mt-3 text-sm leading-6 text-slate-400">
+                                    {field.description}
+                                </p>
+                            </motion.article>
+                        ))}
+                    </div>
+
+                    <div className="mt-5 rounded-2xl border border-cyan-400/15 bg-cyan-400/[0.035] p-5">
+                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-300">
+                            Combined Request
+                        </p>
+
+                        <code className="mt-3 block overflow-x-auto font-mono text-sm text-cyan-100 sm:text-base">
+                            SUBSCRIBE John Pensacola
+                        </code>
+                    </div>
+                </motion.div>
+
+                {/* Command routing matrix */}
+                <div className="mt-10">
+                    <div className="mx-auto max-w-3xl text-center">
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                            Command Routing
+                        </p>
+
+                        <h3 className="mt-3 text-3xl font-black text-white">
+                            One Protocol, Multiple Server Operations
+                        </h3>
+
+                        <p className="mt-4 text-sm leading-7 text-slate-400">
+                            Different command identifiers are mapped to focused
+                            server methods. The protocol acts as the boundary
+                            between the terminal interface and the server’s
+                            business logic.
+                        </p>
+                    </div>
+
+                    <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                        {[
+                            {
+                                command: "REGISTER",
+                                handler: "registerUser()",
+                                description:
+                                    "Creates and persists a new account.",
+                            },
+                            {
+                                command: "LOGIN",
+                                handler: "loginUser()",
+                                description:
+                                    "Validates submitted account credentials.",
+                            },
+                            {
+                                command: "SUBSCRIBE",
+                                handler: "subscribe()",
+                                description:
+                                    "Adds a weather location to a user account.",
+                            },
+                            {
+                                command: "UNSUBSCRIBE",
+                                handler: "unsubscribe()",
+                                description:
+                                    "Removes a saved location subscription.",
+                            },
+                            {
+                                command: "DIRECT MESSAGE",
+                                handler: "sendDirectMessage()",
+                                description:
+                                    "Routes a message to a specific user.",
+                            },
+                            {
+                                command: "GROUP MESSAGE",
+                                handler: "sendGroupMessage()",
+                                description:
+                                    "Sends a message to users associated with a location.",
+                            },
+                        ].map((route, index) => (
+                            <motion.article
+                                key={route.command}
+                                initial={{
+                                    opacity: 0,
+                                    y: 20,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.35,
+                                }}
+                                transition={{
+                                    duration: 0.45,
+                                    delay: index * 0.06,
+                                }}
+                                whileHover={{
+                                    y: -5,
+                                }}
+                                className="group rounded-2xl border border-white/[0.08] bg-[#07101f]/85 p-5 transition-colors duration-300 hover:border-cyan-400/25"
+                            >
+                                <div className="flex items-center justify-between gap-4">
+                                    <code className="font-mono text-sm font-black text-cyan-300">
+                                        {route.command}
+                                    </code>
+
+                                    <Send
+                                        size={17}
+                                        className="shrink-0 text-cyan-400/60"
                                         aria-hidden="true"
                                     />
                                 </div>
 
-                                <div className="rounded-xl border border-blue-400/15 bg-blue-400/[0.04] p-4 text-center">
-                                    <p className="font-mono text-xs font-bold text-blue-300">
-                                        THREAD B
+                                <div className="mt-4 border-t border-white/[0.07] pt-4">
+                                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                                        Server Handler
                                     </p>
 
-                                    <p className="mt-2 text-sm text-slate-400">
-                                        Read shared user state
-                                    </p>
+                                    <code className="mt-2 block font-mono text-sm text-slate-300">
+                                        {route.handler}
+                                    </code>
                                 </div>
+
+                                <p className="mt-4 text-sm leading-6 text-slate-400">
+                                    {route.description}
+                                </p>
+                            </motion.article>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Response handling */}
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 20,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                        amount: 0.35,
+                    }}
+                    transition={{
+                        duration: 0.5,
+                    }}
+                    className="mt-10 rounded-3xl border border-white/[0.08] bg-[#050b18]/80 p-6 sm:p-8"
+                >
+                    <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                        <div>
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                <MessageSquare size={23} aria-hidden="true" />
                             </div>
 
-                            <div className="mt-5 rounded-xl border border-amber-400/15 bg-amber-400/[0.03] p-4 text-center">
-                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-300">
-                                    Mutual Exclusion Boundary
+                            <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                                Response Handling
+                            </p>
+
+                            <h3 className="mt-3 text-2xl font-black text-white">
+                                Every Request Returns an Outcome
+                            </h3>
+
+                            <p className="mt-4 text-sm leading-7 text-slate-400">
+                                After processing a command, the server sends a
+                                response back through the client’s socket. The
+                                terminal client reads that response and displays
+                                it to the user as confirmation, application
+                                data, or an error message.
+                            </p>
+                        </div>
+
+                        <div className="grid gap-4">
+                            <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.04] p-5">
+                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-300">
+                                    Success
                                 </p>
 
-                                <p className="mt-2 text-sm leading-6 text-slate-400">
-                                    Only one protected critical section executes
-                                    at a time while other threads wait.
+                                <code className="mt-3 block font-mono text-sm text-emerald-200">
+                                    Subscription added successfully
+                                </code>
+                            </div>
+
+                            <div className="rounded-2xl border border-rose-400/20 bg-rose-400/[0.04] p-5">
+                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose-300">
+                                    Failure
                                 </p>
+
+                                <code className="mt-3 block font-mono text-sm text-rose-200">
+                                    User or location could not be found
+                                </code>
+                            </div>
+
+                            <div className="rounded-2xl border border-blue-400/20 bg-blue-400/[0.04] p-5">
+                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-300">
+                                    Data Response
+                                </p>
+
+                                <code className="mt-3 block font-mono text-sm text-blue-200">
+                                    Pensacola, New York, Brewton
+                                </code>
                             </div>
                         </div>
                     </div>
@@ -1828,32 +2462,32 @@ function WeatherSubscriptionProject() {
             </div>
         </div>
 
-        {/* Engineering explanation cards */}
+        {/* Protocol strengths */}
         <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {[
                 {
+                    icon: Braces,
+                    title: "Human Readable",
+                    description:
+                        "Text commands are easy to inspect in logs and reason about while debugging client-server behavior.",
+                },
+                {
                     icon: Workflow,
-                    title: "Thread Per Client",
+                    title: "Central Routing",
                     description:
-                        "Each accepted socket is handled by a separate execution path, keeping client sessions independent.",
-                },
-                {
-                    icon: Layers3,
-                    title: "Concurrent Workloads",
-                    description:
-                        "Authentication, subscription, and messaging requests can be processed across multiple active sessions.",
-                },
-                {
-                    icon: LockKeyhole,
-                    title: "Mutex Coordination",
-                    description:
-                        "Shared state is protected during critical operations to reduce race-condition risk.",
+                        "A command identifier allows the server to dispatch each request to a focused operation handler.",
                 },
                 {
                     icon: Network,
-                    title: "Persistent Connections",
+                    title: "Transport Independent Logic",
                     description:
-                        "The client and server continue exchanging commands through the same socket until logout or disconnection.",
+                        "Application operations remain separate from the terminal interface that originally created the request.",
+                },
+                {
+                    icon: MessageSquare,
+                    title: "Explicit Outcomes",
+                    description:
+                        "The server returns clear responses so the client can communicate success, data, or failure.",
                 },
             ].map((item, index) => (
                 <motion.article
@@ -1891,7 +2525,7 @@ function WeatherSubscriptionProject() {
             ))}
         </div>
 
-        {/* Tradeoff explanation */}
+        {/* TCP limitations */}
         <motion.div
             initial={{
                 opacity: 0,
@@ -1908,43 +2542,63 @@ function WeatherSubscriptionProject() {
             transition={{
                 duration: 0.5,
             }}
-            className="mt-14 grid gap-6 lg:grid-cols-2"
+            className="mt-14 rounded-[1.75rem] border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8"
         >
-            <article className="rounded-[1.75rem] border border-emerald-400/20 bg-emerald-400/[0.035] p-6 sm:p-8">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
-                    Why This Model Works
-                </p>
+            <div className="flex flex-col gap-5 md:flex-row md:items-start">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-amber-300/20 bg-amber-300/[0.07] text-amber-300">
+                    <AlertTriangle size={23} aria-hidden="true" />
+                </div>
 
-                <h3 className="mt-3 text-2xl font-black text-white">
-                    Straightforward Session Isolation
-                </h3>
+                <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                        Protocol Design Consideration
+                    </p>
 
-                <p className="mt-4 text-sm leading-7 text-slate-300">
-                    A thread-per-client design is easy to understand and maps
-                    naturally to the application’s long-lived terminal
-                    sessions. Each thread owns one client socket and can process
-                    that user’s requests sequentially without blocking unrelated
-                    connections.
-                </p>
-            </article>
+                    <h3 className="mt-2 text-2xl font-black text-white">
+                        TCP Delivers Bytes, Not Complete Messages
+                    </h3>
 
-            <article className="rounded-[1.75rem] border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
-                    Scalability Tradeoff
-                </p>
+                    <p className="mt-4 max-w-5xl text-sm leading-7 text-slate-300">
+                        TCP preserves byte order and reliable delivery, but it
+                        does not preserve application message boundaries. A
+                        single call to send does not guarantee that the receiver
+                        obtains the entire command in one read. A production
+                        protocol should define explicit framing through message
+                        lengths, delimiters, or a serialization format so the
+                        receiver can reliably reconstruct complete requests.
+                    </p>
 
-                <h3 className="mt-3 text-2xl font-black text-white">
-                    Simple, but Not Unlimited
-                </h3>
+                    <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                        {[
+                            {
+                                title: "Current Approach",
+                                value: "Text commands",
+                            },
+                            {
+                                title: "Improved Framing",
+                                value: "Length prefix",
+                            },
+                            {
+                                title: "Structured Format",
+                                value: "JSON or binary",
+                            },
+                        ].map((item) => (
+                            <div
+                                key={item.title}
+                                className="rounded-xl border border-white/[0.08] bg-[#050b18]/65 p-4"
+                            >
+                                <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                                    {item.title}
+                                </p>
 
-                <p className="mt-4 text-sm leading-7 text-slate-300">
-                    Creating one operating-system thread for every connection is
-                    appropriate for a learning-scale system but consumes more
-                    memory and scheduling overhead as client counts grow. A
-                    larger production system could use a fixed thread pool,
-                    non-blocking sockets, or an event-driven I/O model.
-                </p>
-            </article>
+                                <p className="mt-2 text-sm font-semibold text-slate-300">
+                                    {item.value}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </motion.div>
     </div>
 </section>
