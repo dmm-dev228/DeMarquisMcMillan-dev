@@ -3512,6 +3512,279 @@ function WeatherSubscriptionProject() {
     </motion.article>
 </div>
 </ProjectSection>
+{/* ============================================================
+    Engineering Decisions & Tradeoffs
+============================================================= */}
+<ProjectSection
+    labelledBy="engineering-decisions-heading"
+    background="border-y border-white/[0.06] bg-[#030816]/70"
+>
+    <SectionHeading
+        id="engineering-decisions-heading"
+        eyebrow="Engineering Decisions & Tradeoffs"
+        title="Choosing Simplicity Without Ignoring Scalability"
+        description="The platform was designed as a focused systems programming project rather than a production-scale distributed service. Each major decision prioritized clarity, direct control over networking behavior, and hands-on experience with concurrency, persistence, and protocol design while introducing tradeoffs that would need to be revisited at greater scale."
+    />
+
+    <div className="mt-16 grid gap-6 lg:grid-cols-2">
+        {/* Decision 01 */}
+        <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+                duration: 0.55,
+                delay: 0.05,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+        >
+            <div className="flex flex-wrap items-center justify-between gap-4">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Decision 01
+                </p>
+
+                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                    Concurrency Model
+                </span>
+            </div>
+
+            <h3 className="mt-5 text-2xl font-black tracking-[-0.025em] text-white">
+                Thread Per Connected Client
+            </h3>
+
+            <p className="mt-5 leading-7 text-slate-300">
+                Each accepted client connection is handled independently so one
+                user can wait for input or process a request without preventing
+                every other connected user from interacting with the server.
+            </p>
+
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+                        Benefit
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        Straightforward connection ownership and easier
+                        reasoning about each client session.
+                    </p>
+                </div>
+
+                <div className="rounded-2xl border border-amber-400/15 bg-amber-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">
+                        Tradeoff
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        Creating one operating system thread per connection
+                        becomes increasingly expensive as the client count
+                        grows.
+                    </p>
+                </div>
+            </div>
+        </motion.article>
+
+        {/* Decision 02 */}
+        <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+                duration: 0.55,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+        >
+            <div className="flex flex-wrap items-center justify-between gap-4">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Decision 02
+                </p>
+
+                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                    Communication
+                </span>
+            </div>
+
+            <h3 className="mt-5 text-2xl font-black tracking-[-0.025em] text-white">
+                Text Based Application Protocol
+            </h3>
+
+            <p className="mt-5 leading-7 text-slate-300">
+                Client actions are represented as readable text commands sent
+                through the TCP connection instead of using a binary message
+                format or an external serialization framework.
+            </p>
+
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+                        Benefit
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        Commands are readable, easy to inspect during
+                        development, and simple to construct from a terminal
+                        client.
+                    </p>
+                </div>
+
+                <div className="rounded-2xl border border-amber-400/15 bg-amber-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">
+                        Tradeoff
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        Manual parsing requires strict agreement on delimiters,
+                        argument order, validation, and message boundaries.
+                    </p>
+                </div>
+            </div>
+        </motion.article>
+
+        {/* Decision 03 */}
+        <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+                duration: 0.55,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+        >
+            <div className="flex flex-wrap items-center justify-between gap-4">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Decision 03
+                </p>
+
+                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                    Persistence
+                </span>
+            </div>
+
+            <h3 className="mt-5 text-2xl font-black tracking-[-0.025em] text-white">
+                File Based Storage
+            </h3>
+
+            <p className="mt-5 leading-7 text-slate-300">
+                Account and subscription records are stored in text files,
+                allowing the project to preserve state without introducing a
+                separate database server or additional persistence framework.
+            </p>
+
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+                        Benefit
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        Minimal setup, transparent stored data, and direct
+                        practice implementing load and save behavior.
+                    </p>
+                </div>
+
+                <div className="rounded-2xl border border-amber-400/15 bg-amber-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">
+                        Tradeoff
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        Text files provide limited querying, validation,
+                        transaction support, and protection against partial
+                        writes.
+                    </p>
+                </div>
+            </div>
+        </motion.article>
+
+        {/* Decision 04 */}
+        <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+                duration: 0.55,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-7 sm:p-8"
+        >
+            <div className="flex flex-wrap items-center justify-between gap-4">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    Decision 04
+                </p>
+
+                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.08] px-3 py-1 text-xs font-bold text-cyan-300">
+                    Responsibility
+                </span>
+            </div>
+
+            <h3 className="mt-5 text-2xl font-black tracking-[-0.025em] text-white">
+                Server Owned Application State
+            </h3>
+
+            <p className="mt-5 leading-7 text-slate-300">
+                Authentication, account records, subscriptions, active users,
+                and message routing are controlled by the server. The client
+                acts primarily as an interface for collecting input and
+                displaying responses.
+            </p>
+
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
+                        Benefit
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        Centralized validation reduces the amount of application
+                        behavior that must be trusted to each connected client.
+                    </p>
+                </div>
+
+                <div className="rounded-2xl border border-amber-400/15 bg-amber-400/[0.05] p-5">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300">
+                        Tradeoff
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                        The single server process becomes the central dependency
+                        and a failure point for all connected sessions.
+                    </p>
+                </div>
+            </div>
+        </motion.article>
+    </div>
+
+    {/* Decision summary */}
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{
+            duration: 0.6,
+            delay: 0.15,
+            ease: [0.22, 1, 0.36, 1],
+        }}
+        className="mt-10 rounded-3xl border border-cyan-400/15 bg-cyan-400/[0.04] p-7 sm:p-8"
+    >
+        <p className="text-xs font-bold uppercase tracking-[0.22em] text-cyan-400">
+            Engineering Perspective
+        </p>
+
+        <p className="mt-4 max-w-5xl text-lg leading-8 text-slate-300">
+            These choices were appropriate for learning core systems concepts
+            and producing a complete working platform. They also make the next
+            architectural improvements clear: bounded concurrency, stronger
+            message framing, structured persistence, and more resilient server
+            deployment.
+        </p>
+    </motion.div>
+</ProjectSection>
             </div>
         </main>
     );
