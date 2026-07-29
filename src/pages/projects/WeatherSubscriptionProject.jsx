@@ -2420,51 +2420,13 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
                     Persistent Storage
                     ============================================================= */}
-                <section
-                    aria-labelledby="persistent-storage-heading"
-                    className="px-6 py-24 sm:px-8 lg:px-12"
-                >
-                    <div className="mx-auto w-full max-w-7xl">
-                        {/* Section heading */}
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 24,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                                amount: 0.4,
-                            }}
-                            transition={{
-                                duration: 0.6,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="mx-auto max-w-4xl text-center"
-                        >
-                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                                Persistent Storage
-                            </p>
-
-                            <h2
-                                id="persistent-storage-heading"
-                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
-                            >
-                                Preserving State Across Server Restarts
-                            </h2>
-
-                            <p className="mt-7 text-lg leading-8 text-slate-300">
-                                The platform separates active in memory application state from
-                                durable file-based storage. When the server starts, saved user
-                                accounts and location subscriptions are loaded into runtime
-                                objects. When account or subscription data changes, the server
-                                rewrites the corresponding persistence file so the updated state
-                                remains available after shutdown.
-                            </p>
-                        </motion.div>
+                <ProjectSection labelledBy="persistent-storage-heading">
+                       <SectionHeading
+    id="persistent-storage-heading"
+    eyebrow="Persistent Storage"
+    title="Preserving Accounts and Subscriptions Across Sessions"
+    description="The platform stores user account and subscription data in text files so server state can survive process restarts. The server loads persisted records during startup, maintains the active in-memory representation while requests are processed, and writes updated state back to storage when account or subscription information changes."
+/>
 
                         {/* Persistence lifecycle */}
                         <div className="relative mx-auto mt-16 max-w-6xl">
@@ -3114,8 +3076,7 @@ function WeatherSubscriptionProject() {
                                 </div>
                             </div>
                         </motion.div>
-                    </div>
-                </section>
+                   </ProjectSection>
                 {/* ============================================================
                     Object-Oriented Design
                     ============================================================= */}
