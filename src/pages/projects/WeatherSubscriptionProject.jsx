@@ -1385,51 +1385,14 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
     Concurrent Client Handling
 ============================================================= */}
-                <section
-                    aria-labelledby="concurrency-heading"
-                    className="px-6 py-24 sm:px-8 lg:px-12"
-                >
-                    <div className="mx-auto w-full max-w-7xl">
+                <ProjectSection labelledBy="concurrency-heading">
                         {/* Section heading */}
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 24,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                                amount: 0.4,
-                            }}
-                            transition={{
-                                duration: 0.6,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="mx-auto max-w-4xl text-center"
-                        >
-                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                                Concurrent Client Handling
-                            </p>
-
-                            <h2
-                                id="concurrency-heading"
-                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
-                            >
-                                One Server, Multiple Active Sessions
-                            </h2>
-
-                            <p className="mt-7 text-lg leading-8 text-slate-300">
-                                The server uses a thread per client model so multiple terminal
-                                clients can remain connected and submit requests independently.
-                                Each accepted socket is assigned to a dedicated worker thread,
-                                allowing one user’s authentication, subscription, or messaging
-                                operation to be processed without blocking every other client.
-                            </p>
-                        </motion.div>
-
+<SectionHeading
+    id="concurrency-heading"
+    eyebrow="Concurrent Client Handling"
+    title="One Server, Multiple Active Sessions"
+    description="The server uses a thread per client model so multiple terminal clients can remain connected and submit requests independently. Each accepted socket is assigned to a dedicated worker thread, allowing one user’s authentication, subscription, or messaging operation to be processed without blocking every other client."
+/>
                         {/* Main concurrency visualization */}
                         <div className="relative mx-auto mt-16 max-w-6xl">
                             <div
@@ -1839,8 +1802,7 @@ function WeatherSubscriptionProject() {
                                 </p>
                             </article>
                         </motion.div>
-                    </div>
-                </section>
+                   </ProjectSection>
                 {/* ============================================================
     Custom TCP Protocol
 ============================================================= */}
