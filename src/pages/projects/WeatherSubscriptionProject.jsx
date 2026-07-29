@@ -3300,6 +3300,21 @@ function WeatherSubscriptionProject() {
                             </p>
                         </motion.div>
                     </ProjectSection>
+                    {/* ============================================================
+    Engineering Challenges
+============================================================= */}
+<ProjectSection labelledBy="engineering-challenges-heading">
+    <SectionHeading
+        id="engineering-challenges-heading"
+        eyebrow="Engineering Challenges"
+        title="Solving Problems Beyond Basic Socket Communication"
+        description="Building the platform required more than opening a network connection. The system had to maintain authenticated session state, coordinate shared application data across concurrent clients, persist changes between server restarts, and keep a custom communication protocol consistent between two independent executables."
+    />
+
+    <div className="mt-16 grid gap-6 lg:grid-cols-2">
+        {/* Challenge cards will go here */}
+    </div>
+</ProjectSection>
             </div>
         </main>
     );
