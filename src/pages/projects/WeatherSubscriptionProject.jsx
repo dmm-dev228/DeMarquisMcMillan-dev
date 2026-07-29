@@ -646,6 +646,422 @@ function WeatherSubscriptionProject() {
                         </div>
                     </div>
                 </section>
+                {/* ============================================================
+    Distributed Request Lifecycle
+============================================================= */}
+<section
+    aria-labelledby="request-lifecycle-heading"
+    className="px-6 py-24 sm:px-8 lg:px-12"
+>
+    <div className="mx-auto w-full max-w-7xl">
+        {/* Section heading */}
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: 24,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+            }}
+            viewport={{
+                once: true,
+                amount: 0.4,
+            }}
+            transition={{
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className="mx-auto max-w-4xl text-center"
+        >
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                Request Lifecycle
+            </p>
+
+            <h2
+                id="request-lifecycle-heading"
+                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
+            >
+                From Terminal Input to Server Response
+            </h2>
+
+            <p className="mt-7 text-lg leading-8 text-slate-300">
+                Every action follows a structured network lifecycle. The client
+                translates a menu selection into a protocol command, sends it
+                through the TCP connection, and waits for the server to process
+                the request. The server validates the command, executes the
+                corresponding operation, updates persistent state when needed,
+                and returns a formatted response.
+            </p>
+        </motion.div>
+
+        {/* Lifecycle diagram */}
+        <div className="relative mx-auto mt-16 max-w-6xl">
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-[3rem] bg-blue-500/[0.035] blur-3xl"
+            />
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
+                {/* Example request label */}
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        scale: 0.96,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        scale: 1,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    transition={{
+                        duration: 0.5,
+                    }}
+                    className="mx-auto mb-10 flex max-w-xl flex-col items-center rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.05] px-6 py-5 text-center"
+                >
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                        Example Operation
+                    </p>
+
+                    <p className="mt-2 font-mono text-sm text-cyan-200 sm:text-base">
+                        SUBSCRIBE username Pensacola
+                    </p>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                        A user requests that a new weather location be attached
+                        to their authenticated account.
+                    </p>
+                </motion.div>
+
+                {/* Desktop horizontal lifecycle */}
+                <div className="hidden lg:block">
+                    <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-3">
+                        {[
+                            {
+                                number: "01",
+                                icon: Terminal,
+                                title: "User Action",
+                                description:
+                                    "The user selects Subscribe and enters a location through the terminal menu.",
+                            },
+                            {
+                                number: "02",
+                                icon: Network,
+                                title: "Protocol Message",
+                                description:
+                                    "The client serializes the operation into a structured text command.",
+                            },
+                            {
+                                number: "03",
+                                icon: Server,
+                                title: "Server Routing",
+                                description:
+                                    "The assigned worker thread receives and identifies the requested command.",
+                            },
+                            {
+                                number: "04",
+                                icon: Database,
+                                title: "State Update",
+                                description:
+                                    "The server updates the user object and saves the subscription to storage.",
+                            },
+                            {
+                                number: "05",
+                                icon: MessageSquare,
+                                title: "Client Response",
+                                description:
+                                    "A success or error message is returned through the active TCP socket.",
+                            },
+                        ].map((step, index, steps) => (
+                            <div
+                                key={step.number}
+                                className="contents"
+                            >
+                                <motion.article
+                                    initial={{
+                                        opacity: 0,
+                                        y: 22,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    viewport={{
+                                        once: true,
+                                        amount: 0.35,
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: index * 0.1,
+                                        ease: [0.22, 1, 0.36, 1],
+                                    }}
+                                    whileHover={{
+                                        y: -6,
+                                    }}
+                                    className="group h-full min-h-64 rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-5 transition-colors duration-300 hover:border-cyan-400/30"
+                                >
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                            <step.icon
+                                                size={21}
+                                                aria-hidden="true"
+                                            />
+                                        </div>
+
+                                        <span className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/70">
+                                            {step.number}
+                                        </span>
+                                    </div>
+
+                                    <h3 className="mt-5 text-lg font-bold text-white">
+                                        {step.title}
+                                    </h3>
+
+                                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                                        {step.description}
+                                    </p>
+                                </motion.article>
+
+                                {index < steps.length - 1 && (
+                                    <div
+                                        aria-hidden="true"
+                                        className="relative flex w-10 items-center justify-center"
+                                    >
+                                        <div className="h-px w-full bg-gradient-to-r from-cyan-400/20 via-cyan-300/80 to-cyan-400/20" />
+
+                                        <motion.span
+                                            animate={{
+                                                x: [-12, 12, -12],
+                                                opacity: [0, 1, 0],
+                                            }}
+                                            transition={{
+                                                duration: 2,
+                                                repeat: Infinity,
+                                                delay: index * 0.2,
+                                                ease: "easeInOut",
+                                            }}
+                                            className="absolute h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_16px_rgba(103,232,249,0.9)]"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Mobile and tablet vertical lifecycle */}
+                <div className="lg:hidden">
+                    {[
+                        {
+                            number: "01",
+                            icon: Terminal,
+                            title: "User Action",
+                            description:
+                                "The user selects Subscribe and enters a location through the terminal menu.",
+                        },
+                        {
+                            number: "02",
+                            icon: Network,
+                            title: "Protocol Message",
+                            description:
+                                "The client serializes the operation into a structured text command.",
+                        },
+                        {
+                            number: "03",
+                            icon: Server,
+                            title: "Server Routing",
+                            description:
+                                "The assigned worker thread receives and identifies the requested command.",
+                        },
+                        {
+                            number: "04",
+                            icon: Database,
+                            title: "State Update",
+                            description:
+                                "The server updates the user object and saves the subscription to storage.",
+                        },
+                        {
+                            number: "05",
+                            icon: MessageSquare,
+                            title: "Client Response",
+                            description:
+                                "A success or error message is returned through the active TCP socket.",
+                        },
+                    ].map((step, index, steps) => (
+                        <div key={step.number}>
+                            <motion.article
+                                initial={{
+                                    opacity: 0,
+                                    x: index % 2 === 0 ? -20 : 20,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    x: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.35,
+                                }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: index * 0.06,
+                                    ease: [0.22, 1, 0.36, 1],
+                                }}
+                                className="rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-5"
+                            >
+                                <div className="flex items-start gap-4">
+                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                        <step.icon
+                                            size={21}
+                                            aria-hidden="true"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <p className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/70">
+                                            STEP {step.number}
+                                        </p>
+
+                                        <h3 className="mt-2 text-lg font-bold text-white">
+                                            {step.title}
+                                        </h3>
+
+                                        <p className="mt-2 text-sm leading-6 text-slate-400">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.article>
+
+                            {index < steps.length - 1 && (
+                                <div
+                                    aria-hidden="true"
+                                    className="flex h-12 justify-center"
+                                >
+                                    <div className="relative w-px bg-gradient-to-b from-cyan-400/20 via-cyan-300/70 to-cyan-400/20">
+                                        <motion.span
+                                            animate={{
+                                                y: [0, 35, 0],
+                                                opacity: [0, 1, 0],
+                                            }}
+                                            transition={{
+                                                duration: 1.8,
+                                                repeat: Infinity,
+                                                delay: index * 0.15,
+                                            }}
+                                            className="absolute h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]"
+                                        />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                {/* Response example */}
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 18,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        delay: 0.25,
+                    }}
+                    className="mt-10 grid gap-4 md:grid-cols-2"
+                >
+                    <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.045] p-5">
+                        <p className="text-xs font-bold uppercase tracking-[0.17em] text-emerald-300">
+                            Success Response
+                        </p>
+
+                        <code className="mt-3 block font-mono text-sm text-emerald-200">
+                            SUCCESS Subscribed to Pensacola
+                        </code>
+                    </div>
+
+                    <div className="rounded-2xl border border-rose-400/20 bg-rose-400/[0.04] p-5">
+                        <p className="text-xs font-bold uppercase tracking-[0.17em] text-rose-300">
+                            Error Response
+                        </p>
+
+                        <code className="mt-3 block font-mono text-sm text-rose-200">
+                            ERROR Location already subscribed
+                        </code>
+                    </div>
+                </motion.div>
+            </div>
+        </div>
+
+        {/* Lifecycle details */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {[
+                {
+                    title: "Structured Commands",
+                    description:
+                        "Client operations are translated into recognizable command strings that the server can route to the appropriate handler.",
+                },
+                {
+                    title: "Central Validation",
+                    description:
+                        "The server validates user identity, request arguments, and application state before performing protected operations.",
+                },
+                {
+                    title: "State Synchronization",
+                    description:
+                        "In-memory user data and persistent text files are updated together when account or subscription information changes.",
+                },
+                {
+                    title: "Explicit Responses",
+                    description:
+                        "Every request produces a server response that communicates whether the operation succeeded or why it failed.",
+                },
+            ].map((item, index) => (
+                <motion.article
+                    key={item.title}
+                    initial={{
+                        opacity: 0,
+                        y: 20,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                        amount: 0.35,
+                    }}
+                    transition={{
+                        duration: 0.45,
+                        delay: index * 0.07,
+                    }}
+                    className="rounded-2xl border border-white/[0.08] bg-[#050b18]/75 p-6"
+                >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-400/[0.06] font-mono text-xs font-black text-cyan-300">
+                        {String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <h3 className="mt-4 text-xl font-bold text-white">
+                        {item.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                        {item.description}
+                    </p>
+                </motion.article>
+            ))}
+        </div>
+    </div>
+</section>
             </div>
         </main>
     );
