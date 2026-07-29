@@ -3080,39 +3080,17 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
                     Object-Oriented Design
                     ============================================================= */}
-                <section
-                    aria-labelledby="object-oriented-heading"
-                    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
-                >
-                    <div className="mx-auto max-w-7xl">
-                        {/* Heading */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="mx-auto max-w-4xl text-center"
-                        >
-                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                                Object-Oriented Design
-                            </p>
-
-                            <h2
-                                id="object-oriented-heading"
-                                className="mt-4 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl"
-                            >
-                                Clear Separation of Responsibilities
-                            </h2>
-
-                            <p className="mt-7 text-lg leading-8 text-slate-300">
-                                The application is organized around three primary classes that
-                                each own a specific responsibility. Rather than placing all
-                                networking, account management, and data handling inside one
-                                large file, responsibilities are divided between independent
-                                components that communicate through well defined interfaces.
-                            </p>
-                        </motion.div>
-
+               <ProjectSection
+    labelledBy="object-oriented-heading"
+    background="border-y border-white/[0.06] bg-[#030816]/70"
+>
+                       {/* Heading */}
+<SectionHeading
+    id="object-oriented-heading"
+    eyebrow="Object-Oriented Design"
+    title="Clear Separation of Responsibilities"
+    description="The application is organized around three primary classes that each own a specific responsibility. Rather than placing all networking, account management, and data handling inside one large file, responsibilities are divided between independent components that communicate through well defined interfaces."
+/>
                         {/* Main diagram */}
                         <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto_1fr_auto_1fr] items-center">
 
@@ -3321,8 +3299,7 @@ function WeatherSubscriptionProject() {
                                 well organized.
                             </p>
                         </motion.div>
-                    </div>
-                </section>
+                    </ProjectSection>
             </div>
         </main>
     );
