@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import ProjectSection from "../../components/projects/shared/ProjectSection";
+import SectionHeading from "../../components/projects/shared/SectionHeading";
 import {
     AlertTriangle,
     ArrowDown,
@@ -377,289 +379,251 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
                     Distributed System Architecture
                 ============================================================= */}
-                <section
-                    aria-labelledby="distributed-architecture-heading"
-                    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
+                <ProjectSection
+                    labelledBy="distributed-architecture-heading"
+                    background="border-y border-white/[0.06] bg-[#030816]/70"
                 >
-                    <div className="mx-auto w-full max-w-7xl">
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 24,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                                amount: 0.4,
-                            }}
-                            transition={{
-                                duration: 0.6,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="mx-auto max-w-4xl text-center"
-                        >
-                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                                Distributed Architecture
-                            </p>
+                    <SectionHeading
+                        id="distributed-architecture-heading"
+                        eyebrow="Distributed Architecture"
+                        title="Designed Around a True Client-Server Model"
+                        description="Unlike a traditional standalone console program, this project separates responsibilities into independent client and server executables. They communicate through TCP sockets using a custom text based application protocol. The server owns authentication, subscriptions, persistence, and concurrent session processing while terminal clients submit structured requests and display server responses."
+                    />
 
-                            <h2
-                                id="distributed-architecture-heading"
-                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
-                            >
-                                Designed Around a True Client-Server Model
-                            </h2>
+                    <div className="relative mx-auto mt-16 max-w-5xl">
+                        <div
+                            aria-hidden="true"
+                            className="absolute inset-0 rounded-[2.5rem] bg-cyan-400/[0.03] blur-3xl"
+                        />
 
-                            <p className="mt-7 text-lg leading-8 text-slate-300">
-                                Unlike a traditional standalone console program,
-                                this project separates responsibilities into
-                                independent client and server executables. They
-                                communicate through TCP sockets using a custom
-                                text based application protocol. The server owns
-                                authentication, subscriptions, persistence, and
-                                concurrent session processing while terminal
-                                clients submit structured requests and display
-                                server responses.
-                            </p>
-                        </motion.div>
-
-                        <div className="relative mx-auto mt-16 max-w-5xl">
-                            <div
-                                aria-hidden="true"
-                                className="absolute inset-0 rounded-[2.5rem] bg-cyan-400/[0.03] blur-3xl"
-                            />
-
-                            <div className="relative rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
-                                {/* Client layer */}
-                                <div className="grid gap-5 md:grid-cols-3">
-                                    {[
-                                        {
-                                            title: "Client Session 01",
-                                            subtitle:
-                                                "Terminal-based user interface",
-                                        },
-                                        {
-                                            title: "Client Session 02",
-                                            subtitle:
-                                                "Independent authenticated user",
-                                        },
-                                        {
-                                            title: "Client Session N",
-                                            subtitle:
-                                                "Additional concurrent connection",
-                                        },
-                                    ].map((client, index) => (
-                                        <ArchitectureCard
-                                            key={client.title}
-                                            icon={Terminal}
-                                            title={client.title}
-                                            subtitle={client.subtitle}
-                                            delay={index * 0.08}
-                                        />
-                                    ))}
-                                </div>
-
-                                <FlowConnector label="TCP/IP Socket Connections" />
-
-                                {/* Server layer */}
-                                <motion.div
-                                    initial={{
-                                        opacity: 0,
-                                        scale: 0.97,
-                                    }}
-                                    whileInView={{
-                                        opacity: 1,
-                                        scale: 1,
-                                    }}
-                                    viewport={{
-                                        once: true,
-                                        amount: 0.35,
-                                    }}
-                                    transition={{
-                                        duration: 0.55,
-                                        delay: 0.15,
-                                        ease: [0.22, 1, 0.36, 1],
-                                    }}
-                                    className="relative overflow-hidden rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-cyan-400/[0.09] via-[#07101f] to-blue-500/[0.07] p-6 shadow-[0_0_45px_rgba(34,211,238,0.08)] sm:p-8"
-                                >
-                                    <div
-                                        aria-hidden="true"
-                                        className="absolute right-0 top-0 h-32 w-32 rounded-full bg-cyan-300/[0.08] blur-3xl"
+                        <div className="relative rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
+                            {/* Client layer */}
+                            <div className="grid gap-5 md:grid-cols-3">
+                                {[
+                                    {
+                                        title: "Client Session 01",
+                                        subtitle:
+                                            "Terminal-based user interface",
+                                    },
+                                    {
+                                        title: "Client Session 02",
+                                        subtitle:
+                                            "Independent authenticated user",
+                                    },
+                                    {
+                                        title: "Client Session N",
+                                        subtitle:
+                                            "Additional concurrent connection",
+                                    },
+                                ].map((client, index) => (
+                                    <ArchitectureCard
+                                        key={client.title}
+                                        icon={Terminal}
+                                        title={client.title}
+                                        subtitle={client.subtitle}
+                                        delay={index * 0.08}
                                     />
+                                ))}
+                            </div>
 
-                                    <div className="relative z-10 flex flex-col justify-between gap-6 md:flex-row md:items-center">
-                                        <div className="flex items-start gap-4">
-                                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/[0.09] text-cyan-200">
-                                                <Server
-                                                    size={27}
-                                                    aria-hidden="true"
-                                                />
-                                            </div>
+                            <FlowConnector label="TCP/IP Socket Connections" />
 
-                                            <div>
-                                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
-                                                    Central Processing Layer
-                                                </p>
+                            {/* Server layer */}
+                            <motion.div
+                                initial={{
+                                    opacity: 0,
+                                    scale: 0.97,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    scale: 1,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.35,
+                                }}
+                                transition={{
+                                    duration: 0.55,
+                                    delay: 0.15,
+                                    ease: [0.22, 1, 0.36, 1],
+                                }}
+                                className="relative overflow-hidden rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-cyan-400/[0.09] via-[#07101f] to-blue-500/[0.07] p-6 shadow-[0_0_45px_rgba(34,211,238,0.08)] sm:p-8"
+                            >
+                                <div
+                                    aria-hidden="true"
+                                    className="absolute right-0 top-0 h-32 w-32 rounded-full bg-cyan-300/[0.08] blur-3xl"
+                                />
 
-                                                <h3 className="mt-2 text-2xl font-black text-white">
-                                                    Multithreaded TCP Server
-                                                </h3>
-
-                                                <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-                                                    Listens for incoming
-                                                    connections, accepts client
-                                                    sockets, and delegates each
-                                                    active session to a
-                                                    dedicated worker thread.
-                                                </p>
-                                            </div>
+                                <div className="relative z-10 flex flex-col justify-between gap-6 md:flex-row md:items-center">
+                                    <div className="flex items-start gap-4">
+                                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/[0.09] text-cyan-200">
+                                            <Server
+                                                size={27}
+                                                aria-hidden="true"
+                                            />
                                         </div>
 
-                                        <div className="flex flex-wrap gap-2">
-                                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
-                                                Port 8080
-                                            </span>
+                                        <div>
+                                            <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+                                                Central Processing Layer
+                                            </p>
 
-                                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
-                                                std::thread
-                                            </span>
+                                            <h3 className="mt-2 text-2xl font-black text-white">
+                                                Multithreaded TCP Server
+                                            </h3>
 
-                                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
-                                                std::mutex
-                                            </span>
+                                            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-300">
+                                                Listens for incoming
+                                                connections, accepts client
+                                                sockets, and delegates each
+                                                active session to a
+                                                dedicated worker thread.
+                                            </p>
                                         </div>
                                     </div>
-                                </motion.div>
 
-                                <FlowConnector label="Command Routing" />
+                                    <div className="flex flex-wrap gap-2">
+                                        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                            Port 8080
+                                        </span>
 
-                                {/* Service layer */}
-                                <div className="grid gap-5 md:grid-cols-3">
-                                    {serverServices.map((service, index) => (
-                                        <ArchitectureCard
-                                            key={service.title}
-                                            icon={service.icon}
-                                            title={service.title}
-                                            subtitle={service.subtitle}
-                                            delay={0.12 + index * 0.08}
-                                        />
-                                    ))}
+                                        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                            std::thread
+                                        </span>
+
+                                        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                            std::mutex
+                                        </span>
+                                    </div>
                                 </div>
+                            </motion.div>
 
-                                <FlowConnector label="Persistent State" />
+                            <FlowConnector label="Command Routing" />
 
-                                {/* Persistence layer */}
-                                <div className="grid gap-5 md:grid-cols-2">
+                            {/* Service layer */}
+                            <div className="grid gap-5 md:grid-cols-3">
+                                {serverServices.map((service, index) => (
                                     <ArchitectureCard
-                                        icon={Users}
-                                        title="users.txt"
-                                        subtitle="Stores registered usernames and passwords so account data remains available across server restarts."
-                                        delay={0.15}
-                                        className="border-emerald-400/15"
+                                        key={service.title}
+                                        icon={service.icon}
+                                        title={service.title}
+                                        subtitle={service.subtitle}
+                                        delay={0.12 + index * 0.08}
                                     />
-
-                                    <ArchitectureCard
-                                        icon={Database}
-                                        title="subscriptions.txt"
-                                        subtitle="Stores each user's saved weather location subscriptions for persistent retrieval and management."
-                                        delay={0.23}
-                                        className="border-emerald-400/15"
-                                    />
-                                </div>
-
-                                <motion.div
-                                    initial={{
-                                        opacity: 0,
-                                    }}
-                                    whileInView={{
-                                        opacity: 1,
-                                    }}
-                                    viewport={{
-                                        once: true,
-                                    }}
-                                    transition={{
-                                        duration: 0.6,
-                                        delay: 0.35,
-                                    }}
-                                    className="mt-8 flex items-center justify-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] px-5 py-4 text-center"
-                                >
-                                    <Network
-                                        size={19}
-                                        className="shrink-0 text-cyan-300"
-                                        aria-hidden="true"
-                                    />
-
-                                    <p className="text-sm leading-6 text-slate-400">
-                                        Each layer has a focused responsibility:
-                                        clients manage interaction, the server
-                                        coordinates application logic, and text
-                                        files preserve durable account and
-                                        subscription state.
-                                    </p>
-                                </motion.div>
+                                ))}
                             </div>
-                        </div>
 
-                        {/* Architecture explanation */}
-                        <div className="mt-14 grid gap-6 lg:grid-cols-3">
-                            {[
-                                {
-                                    number: "01",
-                                    title: "Independent Clients",
-                                    description:
-                                        "Each user runs a separate terminal client that connects to the same centralized server over a TCP socket.",
-                                },
-                                {
-                                    number: "02",
-                                    title: "Concurrent Processing",
-                                    description:
-                                        "The server accepts multiple connections and assigns each active client to a dedicated execution thread.",
-                                },
-                                {
-                                    number: "03",
-                                    title: "Centralized State",
-                                    description:
-                                        "Authentication records and subscription data are managed by the server and restored from persistent files.",
-                                },
-                            ].map((item, index) => (
-                                <motion.article
-                                    key={item.number}
-                                    initial={{
-                                        opacity: 0,
-                                        y: 20,
-                                    }}
-                                    whileInView={{
-                                        opacity: 1,
-                                        y: 0,
-                                    }}
-                                    viewport={{
-                                        once: true,
-                                        amount: 0.35,
-                                    }}
-                                    transition={{
-                                        duration: 0.45,
-                                        delay: index * 0.08,
-                                    }}
-                                    className="rounded-2xl border border-white/[0.08] bg-[#050b18]/75 p-6"
-                                >
-                                    <p className="text-sm font-black tracking-[0.18em] text-cyan-400">
-                                        {item.number}
-                                    </p>
+                            <FlowConnector label="Persistent State" />
 
-                                    <h3 className="mt-3 text-xl font-bold text-white">
-                                        {item.title}
-                                    </h3>
+                            {/* Persistence layer */}
+                            <div className="grid gap-5 md:grid-cols-2">
+                                <ArchitectureCard
+                                    icon={Users}
+                                    title="users.txt"
+                                    subtitle="Stores registered usernames and passwords so account data remains available across server restarts."
+                                    delay={0.15}
+                                    className="border-emerald-400/15"
+                                />
 
-                                    <p className="mt-3 text-sm leading-7 text-slate-400">
-                                        {item.description}
-                                    </p>
-                                </motion.article>
-                            ))}
+                                <ArchitectureCard
+                                    icon={Database}
+                                    title="subscriptions.txt"
+                                    subtitle="Stores each user's saved weather location subscriptions for persistent retrieval and management."
+                                    delay={0.23}
+                                    className="border-emerald-400/15"
+                                />
+                            </div>
+
+                            <motion.div
+                                initial={{
+                                    opacity: 0,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                }}
+                                viewport={{
+                                    once: true,
+                                }}
+                                transition={{
+                                    duration: 0.6,
+                                    delay: 0.35,
+                                }}
+                                className="mt-8 flex items-center justify-center gap-3 rounded-2xl border border-white/[0.07] bg-white/[0.025] px-5 py-4 text-center"
+                            >
+                                <Network
+                                    size={19}
+                                    className="shrink-0 text-cyan-300"
+                                    aria-hidden="true"
+                                />
+
+                                <p className="text-sm leading-6 text-slate-400">
+                                    Each layer has a focused responsibility:
+                                    clients manage interaction, the server
+                                    coordinates application logic, and text
+                                    files preserve durable account and
+                                    subscription state.
+                                </p>
+                            </motion.div>
                         </div>
                     </div>
-                </section>
+
+                    {/* Architecture explanation */}
+                    <div className="mt-14 grid gap-6 lg:grid-cols-3">
+                        {[
+                            {
+                                number: "01",
+                                title: "Independent Clients",
+                                description:
+                                    "Each user runs a separate terminal client that connects to the same centralized server over a TCP socket.",
+                            },
+                            {
+                                number: "02",
+                                title: "Concurrent Processing",
+                                description:
+                                    "The server accepts multiple connections and assigns each active client to a dedicated execution thread.",
+                            },
+                            {
+                                number: "03",
+                                title: "Centralized State",
+                                description:
+                                    "Authentication records and subscription data are managed by the server and restored from persistent files.",
+                            },
+                        ].map((item, index) => (
+                            <motion.article
+                                key={item.number}
+                                initial={{
+                                    opacity: 0,
+                                    y: 20,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    amount: 0.35,
+                                }}
+                                transition={{
+                                    duration: 0.45,
+                                    delay: index * 0.08,
+                                }}
+                                className="rounded-2xl border border-white/[0.08] bg-[#050b18]/75 p-6"
+                            >
+                                <p className="text-sm font-black tracking-[0.18em] text-cyan-400">
+                                    {item.number}
+                                </p>
+
+                                <h3 className="mt-3 text-xl font-bold text-white">
+                                    {item.title}
+                                </h3>
+
+                                <p className="mt-3 text-sm leading-7 text-slate-400">
+                                    {item.description}
+                                </p>
+                            </motion.article>
+                        ))}
+                    </div>
+                </ProjectSection>
                 {/* ============================================================
     Distributed Request Lifecycle
 ============================================================= */}
@@ -2606,8 +2570,8 @@ function WeatherSubscriptionProject() {
                     </div>
                 </section>
                 {/* ============================================================
-    Persistent Storage
-============================================================= */}
+                    Persistent Storage
+                    ============================================================= */}
                 <section
                     aria-labelledby="persistent-storage-heading"
                     className="px-6 py-24 sm:px-8 lg:px-12"
@@ -3305,251 +3269,251 @@ function WeatherSubscriptionProject() {
                     </div>
                 </section>
                 {/* ============================================================
-    Object-Oriented Design
-============================================================= */}
-<section
-    aria-labelledby="object-oriented-heading"
-    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
->
-    <div className="mx-auto max-w-7xl">
-        {/* Heading */}
-        <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mx-auto max-w-4xl text-center"
-        >
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                Object-Oriented Design
-            </p>
-
-            <h2
-                id="object-oriented-heading"
-                className="mt-4 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl"
-            >
-                Clear Separation of Responsibilities
-            </h2>
-
-            <p className="mt-7 text-lg leading-8 text-slate-300">
-                The application is organized around three primary classes that
-                each own a specific responsibility. Rather than placing all
-                networking, account management, and data handling inside one
-                large file, responsibilities are divided between independent
-                components that communicate through well defined interfaces.
-            </p>
-        </motion.div>
-
-        {/* Main diagram */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto_1fr_auto_1fr] items-center">
-
-            {/* Client */}
-            <motion.article
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="rounded-3xl border border-white/10 bg-[#07101f] p-8"
-            >
-                <div className="flex justify-between items-center">
-                    <Terminal className="text-cyan-300" size={28}/>
-                    <span className="font-mono text-cyan-400">CLIENT</span>
-                </div>
-
-                <h3 className="mt-6 text-2xl font-bold text-white">
-                    Client
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-slate-400">
-                    Handles terminal interaction, gathers user input,
-                    communicates with the server through TCP sockets,
-                    displays responses, and maintains the active connection.
-                </p>
-
-                <div className="mt-6 space-y-2">
-                    {[
-                        "Menu system",
-                        "Socket communication",
-                        "Command creation",
-                        "Response display"
-                    ].map(item=>(
-                        <div
-                            key={item}
-                            className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-300"
-                        >
-                            {item}
-                        </div>
-                    ))}
-                </div>
-            </motion.article>
-
-            <Network
-                className="hidden lg:block text-cyan-300"
-                size={36}
-            />
-
-            {/* Server */}
-            <motion.article
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: .1 }}
-                className="rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/[0.08] via-[#07101f] to-blue-500/[0.04] p-8"
-            >
-                <div className="flex justify-between items-center">
-                    <Server className="text-cyan-300" size={28}/>
-                    <span className="font-mono text-cyan-400">SERVER</span>
-                </div>
-
-                <h3 className="mt-6 text-2xl font-bold text-white">
-                    Server
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-slate-400">
-                    Acts as the application's control center. It accepts client
-                    connections, validates requests, manages users,
-                    coordinates messaging, processes subscriptions,
-                    and saves persistent data.
-                </p>
-
-                <div className="mt-6 space-y-2">
-                    {[
-                        "Authentication",
-                        "Subscriptions",
-                        "Messaging",
-                        "Persistence",
-                        "Concurrency"
-                    ].map(item=>(
-                        <div
-                            key={item}
-                            className="rounded-lg border border-cyan-400/15 bg-cyan-400/[0.04] px-4 py-3 text-sm text-slate-300"
-                        >
-                            {item}
-                        </div>
-                    ))}
-                </div>
-            </motion.article>
-
-            <Network
-                className="hidden lg:block text-cyan-300"
-                size={36}
-            />
-
-            {/* User */}
-            <motion.article
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: .2 }}
-                className="rounded-3xl border border-white/10 bg-[#07101f] p-8"
-            >
-                <div className="flex justify-between items-center">
-                    <Users
-                        className="text-cyan-300"
-                        size={28}
-                    />
-
-                    <span className="font-mono text-cyan-400">
-                        USER
-                    </span>
-                </div>
-
-                <h3 className="mt-6 text-2xl font-bold text-white">
-                    User
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-slate-400">
-                    Represents an authenticated account. The object stores the
-                    information associated with one user including credentials,
-                    active socket information, subscriptions, and saved
-                    messages.
-                </p>
-
-                <div className="mt-6 space-y-2">
-                    {[
-                        "Username",
-                        "Password",
-                        "Socket",
-                        "Subscriptions",
-                        "Messages"
-                    ].map(item=>(
-                        <div
-                            key={item}
-                            className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-300"
-                        >
-                            {item}
-                        </div>
-                    ))}
-                </div>
-            </motion.article>
-
-        </div>
-
-        {/* Design Principles */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-
-            {[
-                {
-                    title:"Single Responsibility",
-                    desc:"Each class focuses on one major responsibility instead of combining networking, persistence, and user management together."
-                },
-                {
-                    title:"Encapsulation",
-                    desc:"Internal data is managed by the owning class through member functions rather than being modified directly throughout the application."
-                },
-                {
-                    title:"Maintainability",
-                    desc:"Adding new functionality becomes easier because changes are usually isolated to one class instead of affecting the entire project."
-                },
-                {
-                    title:"Reusability",
-                    desc:"Individual components can be reused or extended without redesigning the complete networking system."
-                }
-            ].map(card=>(
-                <motion.article
-                    key={card.title}
-                    initial={{opacity:0,y:20}}
-                    whileInView={{opacity:1,y:0}}
-                    viewport={{once:true}}
-                    className="rounded-2xl border border-white/10 bg-[#050b18] p-6"
+                    Object-Oriented Design
+                    ============================================================= */}
+                <section
+                    aria-labelledby="object-oriented-heading"
+                    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
                 >
-                    <h3 className="text-xl font-bold text-white">
-                        {card.title}
-                    </h3>
+                    <div className="mx-auto max-w-7xl">
+                        {/* Heading */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="mx-auto max-w-4xl text-center"
+                        >
+                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                                Object-Oriented Design
+                            </p>
 
-                    <p className="mt-4 text-sm leading-7 text-slate-400">
-                        {card.desc}
-                    </p>
-                </motion.article>
-            ))}
+                            <h2
+                                id="object-oriented-heading"
+                                className="mt-4 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl"
+                            >
+                                Clear Separation of Responsibilities
+                            </h2>
 
-        </div>
+                            <p className="mt-7 text-lg leading-8 text-slate-300">
+                                The application is organized around three primary classes that
+                                each own a specific responsibility. Rather than placing all
+                                networking, account management, and data handling inside one
+                                large file, responsibilities are divided between independent
+                                components that communicate through well defined interfaces.
+                            </p>
+                        </motion.div>
 
-        {/* Bottom explanation */}
-        <motion.div
-            initial={{opacity:0,y:20}}
-            whileInView={{opacity:1,y:0}}
-            viewport={{once:true}}
-            className="mt-16 rounded-3xl border border-cyan-400/15 bg-cyan-400/[0.03] p-8"
-        >
-            <h3 className="text-2xl font-black text-white">
-                Why This Design Matters
-            </h3>
+                        {/* Main diagram */}
+                        <div className="mt-16 grid gap-8 lg:grid-cols-[1fr_auto_1fr_auto_1fr] items-center">
 
-            <p className="mt-6 max-w-5xl text-sm leading-8 text-slate-300">
-                Although this project was built for a systems programming
-                course, the architecture follows many of the same principles
-                used in larger software systems. Separating networking,
-                business logic, persistence, and user state into dedicated
-                classes makes the code easier to understand, easier to test,
-                and easier to extend. Future improvements such as replacing
-                text files with a database or introducing encrypted network
-                communication could be added with minimal changes to the
-                surrounding components because responsibilities are already
-                well organized.
-            </p>
-        </motion.div>
-    </div>
-</section>
+                            {/* Client */}
+                            <motion.article
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="rounded-3xl border border-white/10 bg-[#07101f] p-8"
+                            >
+                                <div className="flex justify-between items-center">
+                                    <Terminal className="text-cyan-300" size={28} />
+                                    <span className="font-mono text-cyan-400">CLIENT</span>
+                                </div>
+
+                                <h3 className="mt-6 text-2xl font-bold text-white">
+                                    Client
+                                </h3>
+
+                                <p className="mt-4 text-sm leading-7 text-slate-400">
+                                    Handles terminal interaction, gathers user input,
+                                    communicates with the server through TCP sockets,
+                                    displays responses, and maintains the active connection.
+                                </p>
+
+                                <div className="mt-6 space-y-2">
+                                    {[
+                                        "Menu system",
+                                        "Socket communication",
+                                        "Command creation",
+                                        "Response display"
+                                    ].map(item => (
+                                        <div
+                                            key={item}
+                                            className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-300"
+                                        >
+                                            {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.article>
+
+                            <Network
+                                className="hidden lg:block text-cyan-300"
+                                size={36}
+                            />
+
+                            {/* Server */}
+                            <motion.article
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: .1 }}
+                                className="rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/[0.08] via-[#07101f] to-blue-500/[0.04] p-8"
+                            >
+                                <div className="flex justify-between items-center">
+                                    <Server className="text-cyan-300" size={28} />
+                                    <span className="font-mono text-cyan-400">SERVER</span>
+                                </div>
+
+                                <h3 className="mt-6 text-2xl font-bold text-white">
+                                    Server
+                                </h3>
+
+                                <p className="mt-4 text-sm leading-7 text-slate-400">
+                                    Acts as the application's control center. It accepts client
+                                    connections, validates requests, manages users,
+                                    coordinates messaging, processes subscriptions,
+                                    and saves persistent data.
+                                </p>
+
+                                <div className="mt-6 space-y-2">
+                                    {[
+                                        "Authentication",
+                                        "Subscriptions",
+                                        "Messaging",
+                                        "Persistence",
+                                        "Concurrency"
+                                    ].map(item => (
+                                        <div
+                                            key={item}
+                                            className="rounded-lg border border-cyan-400/15 bg-cyan-400/[0.04] px-4 py-3 text-sm text-slate-300"
+                                        >
+                                            {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.article>
+
+                            <Network
+                                className="hidden lg:block text-cyan-300"
+                                size={36}
+                            />
+
+                            {/* User */}
+                            <motion.article
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: .2 }}
+                                className="rounded-3xl border border-white/10 bg-[#07101f] p-8"
+                            >
+                                <div className="flex justify-between items-center">
+                                    <Users
+                                        className="text-cyan-300"
+                                        size={28}
+                                    />
+
+                                    <span className="font-mono text-cyan-400">
+                                        USER
+                                    </span>
+                                </div>
+
+                                <h3 className="mt-6 text-2xl font-bold text-white">
+                                    User
+                                </h3>
+
+                                <p className="mt-4 text-sm leading-7 text-slate-400">
+                                    Represents an authenticated account. The object stores the
+                                    information associated with one user including credentials,
+                                    active socket information, subscriptions, and saved
+                                    messages.
+                                </p>
+
+                                <div className="mt-6 space-y-2">
+                                    {[
+                                        "Username",
+                                        "Password",
+                                        "Socket",
+                                        "Subscriptions",
+                                        "Messages"
+                                    ].map(item => (
+                                        <div
+                                            key={item}
+                                            className="rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-slate-300"
+                                        >
+                                            {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            </motion.article>
+
+                        </div>
+
+                        {/* Design Principles */}
+                        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+                            {[
+                                {
+                                    title: "Single Responsibility",
+                                    desc: "Each class focuses on one major responsibility instead of combining networking, persistence, and user management together."
+                                },
+                                {
+                                    title: "Encapsulation",
+                                    desc: "Internal data is managed by the owning class through member functions rather than being modified directly throughout the application."
+                                },
+                                {
+                                    title: "Maintainability",
+                                    desc: "Adding new functionality becomes easier because changes are usually isolated to one class instead of affecting the entire project."
+                                },
+                                {
+                                    title: "Reusability",
+                                    desc: "Individual components can be reused or extended without redesigning the complete networking system."
+                                }
+                            ].map(card => (
+                                <motion.article
+                                    key={card.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="rounded-2xl border border-white/10 bg-[#050b18] p-6"
+                                >
+                                    <h3 className="text-xl font-bold text-white">
+                                        {card.title}
+                                    </h3>
+
+                                    <p className="mt-4 text-sm leading-7 text-slate-400">
+                                        {card.desc}
+                                    </p>
+                                </motion.article>
+                            ))}
+
+                        </div>
+
+                        {/* Bottom explanation */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="mt-16 rounded-3xl border border-cyan-400/15 bg-cyan-400/[0.03] p-8"
+                        >
+                            <h3 className="text-2xl font-black text-white">
+                                Why This Design Matters
+                            </h3>
+
+                            <p className="mt-6 max-w-5xl text-sm leading-8 text-slate-300">
+                                Although this project was built for a systems programming
+                                course, the architecture follows many of the same principles
+                                used in larger software systems. Separating networking,
+                                business logic, persistence, and user state into dedicated
+                                classes makes the code easier to understand, easier to test,
+                                and easier to extend. Future improvements such as replacing
+                                text files with a database or introducing encrypted network
+                                communication could be added with minimal changes to the
+                                surrounding components because responsibilities are already
+                                well organized.
+                            </p>
+                        </motion.div>
+                    </div>
+                </section>
             </div>
         </main>
     );

@@ -1,42 +1,58 @@
 import { motion } from "motion/react";
 
-function ProjectSection({
+function SectionHeading({
+    eyebrow,
+    title,
+    description,
+    align = "center",
     id,
-    children,
     className = "",
-    containerClassName = "",
-    background = "",
-    labelledBy,
 }) {
+    const isCenter = align === "center";
+
     return (
-        <section
-            id={id}
-            aria-labelledby={labelledBy}
-            className={`relative px-6 py-24 sm:px-8 lg:px-12 ${background} ${className}`}
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: 24,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+            }}
+            viewport={{
+                once: true,
+                amount: 0.35,
+            }}
+            transition={{
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className={[
+                isCenter ? "mx-auto max-w-4xl text-center" : "",
+                className,
+            ].join(" ")}
         >
-            <motion.div
-                initial={{
-                    opacity: 0,
-                    y: 24,
-                }}
-                whileInView={{
-                    opacity: 1,
-                    y: 0,
-                }}
-                viewport={{
-                    once: true,
-                    amount: 0.15,
-                }}
-                transition={{
-                    duration: 0.6,
-                    ease: [0.22, 1, 0.36, 1],
-                }}
-                className={`mx-auto w-full max-w-7xl ${containerClassName}`}
+            {eyebrow && (
+                <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                    {eyebrow}
+                </p>
+            )}
+
+            <h2
+                id={id}
+                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
             >
-                {children}
-            </motion.div>
-        </section>
+                {title}
+            </h2>
+
+            {description && (
+                <p className="mt-7 text-lg leading-8 text-slate-300">
+                    {description}
+                </p>
+            )}
+        </motion.div>
     );
 }
 
-export default ProjectSection;
+export default SectionHeading;

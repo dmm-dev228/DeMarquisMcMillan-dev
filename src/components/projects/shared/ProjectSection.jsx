@@ -6,10 +6,12 @@ function ProjectSection({
     className = "",
     containerClassName = "",
     background = "",
+    labelledBy,
 }) {
     return (
         <section
             id={id}
+            aria-labelledby={labelledBy}
             className={`relative px-6 py-24 sm:px-8 lg:px-12 ${background} ${className}`}
         >
             <motion.div
