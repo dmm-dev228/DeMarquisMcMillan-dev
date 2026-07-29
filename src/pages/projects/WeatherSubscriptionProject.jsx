@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import {
     ArrowDown,
     CloudSun,
+    Cpu,
     Database,
     KeyRound,
+    Layers3,
+    LockKeyhole,
     LogIn,
     LogOut,
     MessageSquare,
@@ -14,6 +17,7 @@ import {
     Terminal,
     UserPlus,
     Users,
+    Workflow,
 } from "lucide-react";
 
 import WeatherSubPlatform from "../../assets/projects/WeatherSubPlatform.png";
@@ -1485,6 +1489,465 @@ function WeatherSubscriptionProject() {
                         </motion.div>
                     </div>
                 </section>
+                {/* ============================================================
+    Concurrent Client Handling
+============================================================= */}
+<section
+    aria-labelledby="concurrency-heading"
+    className="px-6 py-24 sm:px-8 lg:px-12"
+>
+    <div className="mx-auto w-full max-w-7xl">
+        {/* Section heading */}
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: 24,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+            }}
+            viewport={{
+                once: true,
+                amount: 0.4,
+            }}
+            transition={{
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+            }}
+            className="mx-auto max-w-4xl text-center"
+        >
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                Concurrent Client Handling
+            </p>
+
+            <h2
+                id="concurrency-heading"
+                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
+            >
+                One Server, Multiple Active Sessions
+            </h2>
+
+            <p className="mt-7 text-lg leading-8 text-slate-300">
+                The server uses a thread-per-client model so multiple terminal
+                clients can remain connected and submit requests independently.
+                Each accepted socket is assigned to a dedicated worker thread,
+                allowing one user’s authentication, subscription, or messaging
+                operation to be processed without blocking every other client.
+            </p>
+        </motion.div>
+
+        {/* Main concurrency visualization */}
+        <div className="relative mx-auto mt-16 max-w-6xl">
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 rounded-[3rem] bg-cyan-500/[0.035] blur-3xl"
+            />
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
+                {/* Listening server */}
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        scale: 0.97,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        scale: 1,
+                    }}
+                    viewport={{
+                        once: true,
+                        amount: 0.35,
+                    }}
+                    transition={{
+                        duration: 0.55,
+                        ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="mx-auto max-w-3xl rounded-3xl border border-cyan-400/25 bg-gradient-to-br from-cyan-400/[0.09] via-[#07101f] to-blue-500/[0.07] p-6 shadow-[0_0_45px_rgba(34,211,238,0.08)] sm:p-8"
+                >
+                    <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                        <div className="flex items-start gap-4">
+                            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/[0.09] text-cyan-200">
+                                <Server size={27} aria-hidden="true" />
+                            </div>
+
+                            <div>
+                                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
+                                    Connection Entry Point
+                                </p>
+
+                                <h3 className="mt-2 text-2xl font-black text-white">
+                                    Listening Server Socket
+                                </h3>
+
+                                <p className="mt-3 max-w-xl text-sm leading-7 text-slate-300">
+                                    The server binds to port 8080, listens for
+                                    incoming TCP connections, and accepts each
+                                    client socket as a separate communication
+                                    channel.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2">
+                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                bind()
+                            </span>
+
+                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                listen()
+                            </span>
+
+                            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-slate-300">
+                                accept()
+                            </span>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Animated branching */}
+                <div
+                    aria-hidden="true"
+                    className="relative mx-auto mt-8 hidden h-24 max-w-4xl lg:block"
+                >
+                    <div className="absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300/80 to-cyan-400/20" />
+
+                    <div className="absolute left-[16.66%] right-[16.66%] top-10 h-px bg-gradient-to-r from-cyan-400/20 via-cyan-300/80 to-cyan-400/20" />
+
+                    {[16.66, 50, 83.33].map((position, index) => (
+                        <div
+                            key={position}
+                            className="absolute top-10 h-14 w-px bg-gradient-to-b from-cyan-300/80 to-cyan-400/20"
+                            style={{
+                                left: `${position}%`,
+                            }}
+                        >
+                            <motion.span
+                                animate={{
+                                    y: [0, 42, 0],
+                                    opacity: [0, 1, 0],
+                                }}
+                                transition={{
+                                    duration: 1.8,
+                                    repeat: Infinity,
+                                    delay: index * 0.25,
+                                    ease: "easeInOut",
+                                }}
+                                className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_15px_rgba(103,232,249,0.9)]"
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                {/* Worker threads */}
+                <div className="mt-8 grid gap-6 lg:mt-0 lg:grid-cols-3">
+                    {[
+                        {
+                            number: "01",
+                            title: "Worker Thread 01",
+                            user: "Authenticated Client A",
+                            operation: "Subscription request",
+                        },
+                        {
+                            number: "02",
+                            title: "Worker Thread 02",
+                            user: "Authenticated Client B",
+                            operation: "Direct message request",
+                        },
+                        {
+                            number: "N",
+                            title: "Worker Thread N",
+                            user: "Additional Client",
+                            operation: "Independent request flow",
+                        },
+                    ].map((thread, index) => (
+                        <motion.article
+                            key={thread.title}
+                            initial={{
+                                opacity: 0,
+                                y: 24,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.35,
+                            }}
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.1,
+                                ease: [0.22, 1, 0.36, 1],
+                            }}
+                            whileHover={{
+                                y: -6,
+                            }}
+                            className="group relative overflow-hidden rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-6 transition-colors duration-300 hover:border-cyan-400/30"
+                        >
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 bg-gradient-to-br from-cyan-400/[0.06] via-transparent to-blue-500/[0.04] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            />
+
+                            <div className="relative z-10">
+                                <div className="flex items-center justify-between">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                        <Cpu size={23} aria-hidden="true" />
+                                    </div>
+
+                                    <span className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/60">
+                                        THREAD {thread.number}
+                                    </span>
+                                </div>
+
+                                <h3 className="mt-5 text-xl font-bold text-white">
+                                    {thread.title}
+                                </h3>
+
+                                <div className="mt-5 space-y-3">
+                                    <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
+                                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                                            Connected Session
+                                        </p>
+
+                                        <p className="mt-2 text-sm font-semibold text-slate-300">
+                                            {thread.user}
+                                        </p>
+                                    </div>
+
+                                    <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-4">
+                                        <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
+                                            Example Workload
+                                        </p>
+
+                                        <p className="mt-2 text-sm font-semibold text-cyan-300">
+                                            {thread.operation}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <p className="mt-5 text-sm leading-7 text-slate-400">
+                                    This thread reads requests from its assigned
+                                    socket, invokes server operations, sends
+                                    responses, and continues until the client
+                                    disconnects.
+                                </p>
+                            </div>
+                        </motion.article>
+                    ))}
+                </div>
+
+                {/* Shared state */}
+                <motion.div
+                    initial={{
+                        opacity: 0,
+                        y: 20,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                        amount: 0.35,
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        delay: 0.2,
+                    }}
+                    className="mt-10 rounded-3xl border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8"
+                >
+                    <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+                        <div>
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-amber-300/20 bg-amber-300/[0.07] text-amber-300">
+                                <LockKeyhole size={23} aria-hidden="true" />
+                            </div>
+
+                            <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                                Shared-State Coordination
+                            </p>
+
+                            <h3 className="mt-3 text-2xl font-black text-white">
+                                Protecting Shared Server Data
+                            </h3>
+
+                            <p className="mt-4 text-sm leading-7 text-slate-300">
+                                Worker threads may access shared user records,
+                                subscription data, online-user state, and
+                                persistence files. A mutex provides a
+                                synchronization boundary so critical operations
+                                do not modify shared data at the same time.
+                            </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/[0.08] bg-[#050b18]/80 p-5 sm:p-6">
+                            <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+                                <div className="rounded-xl border border-cyan-400/15 bg-cyan-400/[0.04] p-4 text-center">
+                                    <p className="font-mono text-xs font-bold text-cyan-300">
+                                        THREAD A
+                                    </p>
+
+                                    <p className="mt-2 text-sm text-slate-400">
+                                        Update subscription
+                                    </p>
+                                </div>
+
+                                <div className="flex justify-center">
+                                    <LockKeyhole
+                                        size={22}
+                                        className="text-amber-300"
+                                        aria-hidden="true"
+                                    />
+                                </div>
+
+                                <div className="rounded-xl border border-blue-400/15 bg-blue-400/[0.04] p-4 text-center">
+                                    <p className="font-mono text-xs font-bold text-blue-300">
+                                        THREAD B
+                                    </p>
+
+                                    <p className="mt-2 text-sm text-slate-400">
+                                        Read shared user state
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="mt-5 rounded-xl border border-amber-400/15 bg-amber-400/[0.03] p-4 text-center">
+                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-300">
+                                    Mutual Exclusion Boundary
+                                </p>
+
+                                <p className="mt-2 text-sm leading-6 text-slate-400">
+                                    Only one protected critical section executes
+                                    at a time while other threads wait.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </div>
+
+        {/* Engineering explanation cards */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {[
+                {
+                    icon: Workflow,
+                    title: "Thread Per Client",
+                    description:
+                        "Each accepted socket is handled by a separate execution path, keeping client sessions independent.",
+                },
+                {
+                    icon: Layers3,
+                    title: "Concurrent Workloads",
+                    description:
+                        "Authentication, subscription, and messaging requests can be processed across multiple active sessions.",
+                },
+                {
+                    icon: LockKeyhole,
+                    title: "Mutex Coordination",
+                    description:
+                        "Shared state is protected during critical operations to reduce race-condition risk.",
+                },
+                {
+                    icon: Network,
+                    title: "Persistent Connections",
+                    description:
+                        "The client and server continue exchanging commands through the same socket until logout or disconnection.",
+                },
+            ].map((item, index) => (
+                <motion.article
+                    key={item.title}
+                    initial={{
+                        opacity: 0,
+                        y: 20,
+                    }}
+                    whileInView={{
+                        opacity: 1,
+                        y: 0,
+                    }}
+                    viewport={{
+                        once: true,
+                        amount: 0.35,
+                    }}
+                    transition={{
+                        duration: 0.45,
+                        delay: index * 0.07,
+                    }}
+                    className="rounded-2xl border border-white/[0.08] bg-[#050b18]/75 p-6"
+                >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.06] text-cyan-300">
+                        <item.icon size={20} aria-hidden="true" />
+                    </div>
+
+                    <h3 className="mt-4 text-xl font-bold text-white">
+                        {item.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                        {item.description}
+                    </p>
+                </motion.article>
+            ))}
+        </div>
+
+        {/* Tradeoff explanation */}
+        <motion.div
+            initial={{
+                opacity: 0,
+                y: 20,
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+            }}
+            viewport={{
+                once: true,
+                amount: 0.35,
+            }}
+            transition={{
+                duration: 0.5,
+            }}
+            className="mt-14 grid gap-6 lg:grid-cols-2"
+        >
+            <article className="rounded-[1.75rem] border border-emerald-400/20 bg-emerald-400/[0.035] p-6 sm:p-8">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-300">
+                    Why This Model Works
+                </p>
+
+                <h3 className="mt-3 text-2xl font-black text-white">
+                    Straightforward Session Isolation
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-slate-300">
+                    A thread-per-client design is easy to understand and maps
+                    naturally to the application’s long-lived terminal
+                    sessions. Each thread owns one client socket and can process
+                    that user’s requests sequentially without blocking unrelated
+                    connections.
+                </p>
+            </article>
+
+            <article className="rounded-[1.75rem] border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                    Scalability Tradeoff
+                </p>
+
+                <h3 className="mt-3 text-2xl font-black text-white">
+                    Simple, but Not Unlimited
+                </h3>
+
+                <p className="mt-4 text-sm leading-7 text-slate-300">
+                    Creating one operating-system thread for every connection is
+                    appropriate for a learning-scale system but consumes more
+                    memory and scheduling overhead as client counts grow. A
+                    larger production system could use a fixed thread pool,
+                    non-blocking sockets, or an event-driven I/O model.
+                </p>
+            </article>
+        </motion.div>
+    </div>
+</section>
             </div>
         </main>
     );
