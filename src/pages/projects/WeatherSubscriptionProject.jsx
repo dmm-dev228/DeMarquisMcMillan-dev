@@ -627,51 +627,14 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
     Distributed Request Lifecycle
 ============================================================= */}
-                <section
-                    aria-labelledby="request-lifecycle-heading"
-                    className="px-6 py-24 sm:px-8 lg:px-12"
-                >
-                    <div className="mx-auto w-full max-w-7xl">
-                        {/* Section heading */}
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 24,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                                amount: 0.4,
-                            }}
-                            transition={{
-                                duration: 0.6,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="mx-auto max-w-4xl text-center"
-                        >
-                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                                Request Lifecycle
-                            </p>
-
-                            <h2
-                                id="request-lifecycle-heading"
-                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
-                            >
-                                From Terminal Input to Server Response
-                            </h2>
-
-                            <p className="mt-7 text-lg leading-8 text-slate-300">
-                                Every action follows a structured network lifecycle. The client
-                                translates a menu selection into a protocol command, sends it
-                                through the TCP connection, and waits for the server to process
-                                the request. The server validates the command, executes the
-                                corresponding operation, updates persistent state when needed,
-                                and returns a formatted response.
-                            </p>
-                        </motion.div>
+              <ProjectSection labelledBy="request-lifecycle-heading">
+                {/* Section heading */}
+<SectionHeading
+    id="request-lifecycle-heading"
+    eyebrow="Request Lifecycle"
+    title="From Terminal Input to Server Response"
+    description="Every action follows a structured network lifecycle. The client translates a menu selection into a protocol command, sends it through the TCP connection, and waits for the server to process the request. The server validates the command, executes the corresponding operation, updates persistent state when needed, and returns a formatted response."
+/>
 
                         {/* Lifecycle diagram */}
                         <div className="relative mx-auto mt-16 max-w-6xl">
@@ -1038,8 +1001,7 @@ function WeatherSubscriptionProject() {
                                 </motion.article>
                             ))}
                         </div>
-                    </div>
-                </section>
+                   </ProjectSection>
                 {/* ============================================================
     Authentication & User Management
 ============================================================= */}
