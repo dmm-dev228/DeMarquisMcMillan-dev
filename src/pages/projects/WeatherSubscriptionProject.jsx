@@ -1806,52 +1806,16 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
     Custom TCP Protocol
 ============================================================= */}
-                <section
-                    aria-labelledby="tcp-protocol-heading"
-                    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
-                >
-                    <div className="mx-auto w-full max-w-7xl">
-                        {/* Section heading */}
-                        <motion.div
-                            initial={{
-                                opacity: 0,
-                                y: 24,
-                            }}
-                            whileInView={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            viewport={{
-                                once: true,
-                                amount: 0.4,
-                            }}
-                            transition={{
-                                duration: 0.6,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                            className="mx-auto max-w-4xl text-center"
-                        >
-                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                                Custom TCP Protocol
-                            </p>
-
-                            <h2
-                                id="tcp-protocol-heading"
-                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
-                            >
-                                Structured Commands Over Raw Sockets
-                            </h2>
-
-                            <p className="mt-7 text-lg leading-8 text-slate-300">
-                                The client and server communicate through a custom
-                                application layer protocol built on top of TCP. Instead of
-                                exchanging objects directly, the client converts user actions
-                                into structured text messages. The server parses each message,
-                                identifies the requested operation, executes the matching
-                                handler, and sends a text response through the same socket.
-                            </p>
-                        </motion.div>
-
+                <ProjectSection
+    labelledBy="protocol-heading"
+    background="border-y border-white/[0.06] bg-[#030816]/70"
+>
+                       <SectionHeading
+    id="protocol-heading"
+    eyebrow="Custom TCP Protocol"
+    title="A Structured Command Language Over Raw Sockets"
+    description="The client and server communicate using a custom text based protocol layered on top of TCP. Each request follows a predictable command format so the server can identify the requested operation, parse its arguments, execute the corresponding logic, and return a formatted response to the client."
+/>
                         {/* Protocol overview */}
                         <div className="relative mx-auto mt-16 max-w-6xl">
                             <div
@@ -2452,8 +2416,7 @@ function WeatherSubscriptionProject() {
                                 </div>
                             </div>
                         </motion.div>
-                    </div>
-                </section>
+                    </ProjectSection>
                 {/* ============================================================
                     Persistent Storage
                     ============================================================= */}
