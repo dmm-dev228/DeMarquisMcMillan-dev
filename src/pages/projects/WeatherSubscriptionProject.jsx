@@ -3453,7 +3453,7 @@ function WeatherSubscriptionProject() {
                                 <p className="mt-3 leading-7 text-slate-300">
                                     The server loads persisted records into memory during startup
                                     and saves updated account and subscription information when
-                                    supported state-changing operations occur.
+                                    supported state changing operations occur.
                                 </p>
                             </div>
                         </motion.article>
@@ -3501,7 +3501,7 @@ function WeatherSubscriptionProject() {
                                 </p>
 
                                 <p className="mt-3 leading-7 text-slate-300">
-                                    Requests use predictable text-based command structures, giving
+                                    Requests use predictable text based command structures, giving
                                     the client a consistent way to encode operations and the server
                                     a repeatable process for parsing and dispatching them.
                                 </p>
@@ -3520,7 +3520,7 @@ function WeatherSubscriptionProject() {
                         id="engineering-decisions-heading"
                         eyebrow="Engineering Decisions & Tradeoffs"
                         title="Choosing Simplicity Without Ignoring Scalability"
-                        description="The platform was designed as a focused systems programming project rather than a production-scale distributed service. Each major decision prioritized clarity, direct control over networking behavior, and hands-on experience with concurrency, persistence, and protocol design while introducing tradeoffs that would need to be revisited at greater scale."
+                        description="The platform was designed as a focused systems programming project rather than a production scale distributed service. Each major decision prioritized clarity, direct control over networking behavior, and hands on experience with concurrency, persistence, and protocol design while introducing tradeoffs that would need to be revisited at greater scale."
                     />
 
                     <div className="mt-16 grid gap-6 lg:grid-cols-2">
@@ -3697,7 +3697,7 @@ function WeatherSubscriptionProject() {
                             title="Bounded Worker Pool"
                             badge="Concurrency"
                             delay={0.05}
-                            description="Replace the unbounded thread-per-client model with a controlled pool of reusable worker threads."
+                            description="Replace the unbounded thread per client model with a controlled pool of reusable worker threads."
                         >
                             <div className="rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
                                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
@@ -3798,10 +3798,10 @@ function WeatherSubscriptionProject() {
 
         <ProjectCard
             eyebrow="Lesson 02"
-            title="Concurrency Creates Shared-State Risk"
+            title="Concurrency Creates Shared State Risk"
             badge="Thread Safety"
             delay={0.1}
-            description="Handling clients independently improves responsiveness, but shared user records, subscriptions, messages, and active-session data require careful ownership and synchronization."
+            description="Handling clients independently improves responsiveness, but shared user records, subscriptions, messages, and active session data require careful ownership and synchronization."
         />
 
         <ProjectCard
@@ -3863,19 +3863,19 @@ function WeatherSubscriptionProject() {
                 question:
                     "Why did you choose TCP instead of UDP?",
                 answer:
-                    "The application requires reliable, ordered communication for authentication, account updates, subscriptions, and messaging. TCP provides connection-oriented delivery that better matches those requirements.",
+                    "The application requires reliable, ordered communication for authentication, account updates, subscriptions, and messaging. TCP provides connection oriented delivery that better matches those requirements.",
             },
             {
                 number: "03",
                 question:
                     "How is authenticated session state maintained?",
                 answer:
-                    "After login, the server associates the active connection with the authenticated user. Protected operations are processed using server-controlled session information instead of trusting arbitrary identity values supplied by the client.",
+                    "After login, the server associates the active connection with the authenticated user. Protected operations are processed using server controlled session information instead of trusting arbitrary identity values supplied by the client.",
             },
             {
                 number: "04",
                 question:
-                    "What are the limitations of the text-based protocol?",
+                    "What are the limitations of the text based protocol?",
                 answer:
                     "The protocol is readable and easy to debug, but manual parsing requires strict delimiter rules, coordinated client-server updates, validation, and stronger handling of message boundaries and partial reads.",
             },
@@ -3884,7 +3884,7 @@ function WeatherSubscriptionProject() {
                 question:
                     "What concurrency risks exist in the application?",
                 answer:
-                    "Multiple client threads may access shared user, subscription, online-session, and message data. A larger production version would need clearly defined synchronization, immutable data where appropriate, or concurrent data structures.",
+                    "Multiple client threads may access shared user, subscription, online session, and message data. A larger production version would need clearly defined synchronization, immutable data where appropriate, or concurrent data structures.",
             },
             {
                 number: "06",
@@ -3898,7 +3898,7 @@ function WeatherSubscriptionProject() {
                 question:
                     "How would you redesign the system for greater scale?",
                 answer:
-                    "I would introduce bounded concurrency or event-driven I/O, structured message framing, database-backed persistence, stronger synchronization, centralized logging, health monitoring, secure transport, and automated integration tests.",
+                    "I would introduce bounded concurrency or event driven I/O, structured message framing, database backed persistence, stronger synchronization, centralized logging, health monitoring, secure transport, and automated integration tests.",
             },
             {
                 number: "08",
@@ -3975,7 +3975,7 @@ function WeatherSubscriptionProject() {
             <div className="space-y-6 text-lg leading-8 text-slate-300">
                 <p>
                     The Weather Subscription Platform began with basic TCP
-                    communication and evolved into a complete multi-user system
+                    communication and evolved into a complete multi user system
                     with authentication, persistent accounts, location
                     subscriptions, direct messaging, group messaging, active-user
                     tracking, password changes, and concurrent client handling.
@@ -3993,7 +3993,7 @@ function WeatherSubscriptionProject() {
                     design honestly: understand why the original decisions were
                     appropriate, recognize where they become limiting, and
                     describe a practical path toward a more scalable and
-                    production-ready architecture.
+                    production ready architecture.
                 </p>
             </div>
         </div>
@@ -4038,7 +4038,7 @@ function WeatherSubscriptionProject() {
                     "Online-user discovery",
                     "Persistent user records",
                     "Persistent subscription data",
-                    "Server-controlled session state",
+                    "Server controlled session state",
                     "Object-oriented C++ design",
                 ].map((capability) => (
                     <div

@@ -80,31 +80,31 @@ function StockHousingProject() {
                             }}
                         >
                             <div className="inline-flex min-h-10 items-center rounded-full border border-cyan-400/30 bg-cyan-400/[0.06] px-4 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
-                                Machine Learning / Data Engineering
+                                Data Engineering / Numerical Computing
                             </div>
 
                             <p className="mt-8 text-sm font-bold uppercase tracking-[0.2em] text-slate-500">
-                                C++ Regression & Data Pipeline
+                                C++ Predictive Analytics Pipeline
                             </p>
 
                             <h1 className="mt-3 text-5xl font-black tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl">
-                                Stock & Housing
+                                Predictive Data
                                 <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
                                     Regression Engine
                                 </span>
                             </h1>
 
                             <p className="mt-6 max-w-2xl text-xl leading-9 text-slate-300">
-                                Linear regression from first principles,
-                                powered by real-world data.
+                                A C++ predictive analytics pipeline built from first principles,
+                                powered by real-world public data.
                             </p>
 
                             <p className="mt-5 max-w-2xl text-base leading-7 text-slate-400">
-                                An end-to-end C++ data pipeline that retrieves
-                                housing and stock-market datasets, persists and
-                                parses CSV records, converts them into typed
-                                model inputs, and applies ordinary least-squares
-                                linear regression implemented from scratch.
+                                A complete C++ workflow that acquires housing and market data,
+                                establishes a reproducible CSV boundary, validates and
+                                transforms records into typed model inputs, and trains
+                                ordinary least-squares regression without depending on a
+                                machine-learning framework.
                             </p>
 
                             {/* Project actions */}
@@ -156,7 +156,7 @@ function StockHousingProject() {
                                 {[
                                     ["2", "Regression Models"],
                                     ["2", "Data Sources"],
-                                    ["4", "CLI Programs"],
+                                    ["4", "Executable Programs"],
                                     ["6", "Stock Fields"],
                                 ].map(([value, label]) => (
                                     <div
@@ -332,7 +332,7 @@ function StockHousingProject() {
                             ease: [0.22, 1, 0.36, 1],
                         }}
                     >
-                        <div className="mb-8 max-w-3xl">
+                        <div className="mx-auto mb-8 max-w-4xl text-center">
                             <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                                 Visual Overview
                             </p>
@@ -387,20 +387,20 @@ function StockHousingProject() {
                             duration: 0.65,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="max-w-4xl"
+                        className="mx-auto max-w-4xl text-center"
                     >
                         <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                             Project Overview
                         </p>
 
                         <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-                            One regression concept.
+                            One mathematical engine.
                             <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-                                Two real-world data pipelines.
+                                Two independent data domains.
                             </span>
                         </h2>
 
-                        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
                             The project applies the same ordinary least-squares regression
                             idea to two different domains: historical stock-market records
                             and Connecticut real-estate data.
@@ -413,7 +413,7 @@ function StockHousingProject() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.55 }}
-                            className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl"
+                            className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-[#071022]/90"
                         >
                             <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
                                 01 / Data
@@ -489,20 +489,20 @@ function StockHousingProject() {
                             duration: 0.65,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="max-w-4xl"
+                        className="mx-auto max-w-4xl text-center"
                     >
                         <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                             Model Paths
                         </p>
 
                         <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-                            Same algorithm.
+                            Shared regression logic.
                             <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-                                Different data domains.
+                                Domain-specific preprocessing.
                             </span>
                         </h2>
 
-                        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
                             Both pipelines end in simple linear regression, but the source
                             schemas, preprocessing, and model inputs are different.
                         </p>
@@ -611,7 +611,7 @@ function StockHousingProject() {
                                     </div>
 
                                     <span className="rounded-full border border-amber-400/30 bg-amber-400/[0.07] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-amber-300">
-                                        Needs Correction
+                                        Known Constraint
                                     </span>
                                 </div>
 
@@ -681,7 +681,7 @@ function StockHousingProject() {
                             duration: 0.65,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="max-w-4xl"
+                        className="mx-auto max-w-4xl text-center"
                     >
                         <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                             Linear Regression From Scratch
@@ -694,7 +694,7 @@ function StockHousingProject() {
                             </span>
                         </h2>
 
-                        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
                             Instead of relying on a machine-learning framework, the project
                             directly implements the ordinary least-squares calculations
                             needed to train a simple linear regression model.
@@ -951,7 +951,7 @@ function StockHousingProject() {
                             duration: 0.65,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="max-w-4xl"
+                        className="mx-auto max-w-4xl text-center"
                     >
                         <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                             Data Acquisition & Preprocessing
@@ -964,7 +964,7 @@ function StockHousingProject() {
                             </span>
                         </h2>
 
-                        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
                             Before regression can happen, the project has to retrieve remote
                             datasets, persist them locally, parse CSV records, validate values,
                             and convert text-based data into typed numerical inputs.
@@ -1275,7 +1275,7 @@ function StockHousingProject() {
                             duration: 0.65,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="max-w-4xl"
+                        className="mx-auto max-w-4xl text-center"
                     >
                         <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                             Defensive Engineering
@@ -1288,7 +1288,7 @@ function StockHousingProject() {
                             </span>
                         </h2>
 
-                        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
                             Regression code can fail silently if the dataset is malformed,
                             undersized, numerically degenerate, or missing entirely. The
                             implementation includes explicit checks around both data
@@ -1346,7 +1346,7 @@ function StockHousingProject() {
                                     delay: index * 0.04,
                                     ease: [0.22, 1, 0.36, 1],
                                 }}
-                                className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl"
+                                className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-[#071022]/90"
                             >
                                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
                                     {item.label}
@@ -1517,7 +1517,7 @@ function StockHousingProject() {
                 duration: 0.65,
                 ease: [0.22, 1, 0.36, 1],
             }}
-            className="max-w-4xl"
+            className="mx-auto max-w-4xl text-center"
         >
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                 Engineering Decisions
@@ -1530,7 +1530,7 @@ function StockHousingProject() {
                 </span>
             </h2>
 
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
                 The project was intentionally scoped around understanding the
                 mechanics of regression and data pipelines, so several design
                 choices favor clarity and learning over production complexity.
@@ -1817,6 +1817,30 @@ function StockHousingProject() {
                         title: "Secure Configuration",
                         text: "Rotate exposed credentials and load API secrets through environment configuration.",
                     },
+                    {
+                        title: "Reusable Model Abstraction",
+                        text: "Extract duplicated training logic into a shared LinearRegression class with stored preprocessing metadata.",
+                    },
+                    {
+                        title: "Multiple Regression",
+                        text: "Expand beyond one feature so housing and stock models can represent interactions among several predictors.",
+                    },
+                    {
+                        title: "Model Persistence",
+                        text: "Serialize trained parameters and preprocessing configuration so inference does not require retraining.",
+                    },
+                    {
+                        title: "Service Layer",
+                        text: "Expose prediction and model metadata through a small REST API backed by the C++ engine.",
+                    },
+                    {
+                        title: "Interactive Dashboard",
+                        text: "Visualize datasets, regression lines, residuals, metrics, and predictions in a responsive frontend.",
+                    },
+                    {
+                        title: "Containerized Delivery",
+                        text: "Package the data pipeline and prediction service with Docker for repeatable local and cloud execution.",
+                    },
                 ].map((item) => (
                     <div
                         key={item.title}
@@ -1858,6 +1882,370 @@ function StockHousingProject() {
         </motion.div>
     </div>
 </section>
+
+            {/* ========================================================================
+                System Architecture
+            ========================================================================= */}
+            <section className="px-6 py-24 sm:px-8 lg:px-12">
+                <div className="mx-auto w-full max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            System Architecture
+                        </p>
+
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            Domain-specific ingestion.
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                Shared numerical foundation.
+                            </span>
+                        </h2>
+
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            The stock and housing paths begin with different schemas,
+                            but both follow the same engineering lifecycle: acquire,
+                            persist, parse, validate, transform, train, and predict.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{
+                            duration: 0.75,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mt-14 overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-[#050b18]/85 p-6 backdrop-blur-xl sm:p-8"
+                    >
+                        <div className="grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">
+                            <div className="space-y-4">
+                                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.04] p-5">
+                                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-400">
+                                        Market Domain
+                                    </p>
+                                    <h3 className="mt-3 text-xl font-black text-white">
+                                        Alpha Vantage Daily Records
+                                    </h3>
+                                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                                        Date, open, high, low, close, and volume are parsed
+                                        into typed stock records before feature extraction.
+                                    </p>
+                                </div>
+
+                                <div className="rounded-2xl border border-blue-400/20 bg-blue-400/[0.04] p-5">
+                                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-400">
+                                        Housing Domain
+                                    </p>
+                                    <h3 className="mt-3 text-xl font-black text-white">
+                                        Connecticut Property Records
+                                    </h3>
+                                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                                        Public real-estate rows are filtered and converted
+                                        into the numerical feature and target pair used by
+                                        the housing model.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="hidden items-center justify-center px-2 lg:flex">
+                                <span className="text-3xl text-cyan-400">→</span>
+                            </div>
+
+                            <div className="rounded-2xl border border-cyan-400/25 bg-cyan-400/[0.04] p-5 sm:p-6">
+                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-400">
+                                    Shared Processing Lifecycle
+                                </p>
+
+                                <div className="mt-5 space-y-3">
+                                    {[
+                                        "HTTP acquisition with libcurl",
+                                        "Local CSV persistence",
+                                        "Schema-aware parsing",
+                                        "Typed C++ record construction",
+                                        "Input and numerical validation",
+                                        "Feature and target extraction",
+                                        "Consistent normalization",
+                                        "OLS parameter calculation",
+                                        "Command-line prediction",
+                                    ].map((step, index) => (
+                                        <motion.div
+                                            key={step}
+                                            initial={{ opacity: 0, x: 14 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.4, delay: index * 0.035 }}
+                                            className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.025] p-3.5"
+                                        >
+                                            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-cyan-400/[0.07] text-[0.65rem] font-black text-cyan-300">
+                                                {String(index + 1).padStart(2, "0")}
+                                            </span>
+                                            <p className="text-sm font-semibold text-slate-300">
+                                                {step}
+                                            </p>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ========================================================================
+                Why Linear Regression
+            ========================================================================= */}
+            <section className="px-6 py-24 sm:px-8 lg:px-12">
+                <div className="mx-auto w-full max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Why Linear Regression?
+                        </p>
+
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            A transparent baseline
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                before model complexity.
+                            </span>
+                        </h2>
+
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            Simple linear regression was selected because every
+                            transformation and parameter remains explainable. That made it
+                            appropriate for studying the boundary between mathematics,
+                            data quality, and working software.
+                        </p>
+                    </motion.div>
+
+                    <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                        {[
+                            {
+                                label: "Interpretability",
+                                text: "Slope and intercept provide a direct explanation of how the selected feature relates to the target.",
+                            },
+                            {
+                                label: "Implementation Depth",
+                                text: "The complete training process can be implemented and validated directly in C++.",
+                            },
+                            {
+                                label: "Baseline Value",
+                                text: "A simple model establishes a reference point before introducing more complex algorithms.",
+                            },
+                            {
+                                label: "Visible Assumptions",
+                                text: "Linearity, variance, preprocessing consistency, and data quality cannot be hidden behind a framework.",
+                            },
+                        ].map((item, index) => (
+                            <motion.article
+                                key={item.label}
+                                initial={{ opacity: 0, y: 22 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.5, delay: index * 0.05 }}
+                                className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-6 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-300/20"
+                            >
+                                <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-400">
+                                    {String(index + 1).padStart(2, "0")}
+                                </p>
+                                <h3 className="mt-4 text-xl font-black text-white">
+                                    {item.label}
+                                </h3>
+                                <p className="mt-3 text-sm leading-6 text-slate-400">
+                                    {item.text}
+                                </p>
+                            </motion.article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ========================================================================
+                Engineering Insights
+            ========================================================================= */}
+            <section className="px-6 py-24 sm:px-8 lg:px-12">
+                <div className="mx-auto w-full max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Engineering Insights
+                        </p>
+
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            What the project revealed
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                beyond the regression formula.
+                            </span>
+                        </h2>
+
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            The most important lessons came from the boundaries around the
+                            model: data contracts, repeatable preprocessing, numerical
+                            safeguards, and honest evaluation.
+                        </p>
+                    </motion.div>
+
+                    <div className="mt-14 grid gap-5 lg:grid-cols-3">
+                        {[
+                            {
+                                title: "Data contracts matter",
+                                text: "A misleading field name or incorrect column mapping can invalidate a mathematically correct model. Schema meaning must stay aligned from source to prediction.",
+                            },
+                            {
+                                title: "Training and inference are one system",
+                                text: "The transformation used during training must be preserved and reused during prediction. Preprocessing is part of the model contract.",
+                            },
+                            {
+                                title: "Correct output is not validated output",
+                                text: "A program producing a number is not enough. Holdout evaluation, error metrics, residual inspection, and repeatable tests are required to establish trust.",
+                            },
+                            {
+                                title: "Persistence creates reproducibility",
+                                text: "Saving source responses creates a stable input boundary that supports repeated experiments and isolates model work from network availability.",
+                            },
+                            {
+                                title: "Manual math improves understanding",
+                                text: "Implementing OLS directly exposes every assumption, denominator, transformation, and failure mode that a framework might otherwise conceal.",
+                            },
+                            {
+                                title: "Security belongs in small projects",
+                                text: "API credentials should remain outside source control from the beginning. Project size does not remove the need for secure configuration.",
+                            },
+                        ].map((item, index) => (
+                            <motion.article
+                                key={item.title}
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.55, delay: index * 0.045 }}
+                                whileHover={{ y: -6 }}
+                                className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl"
+                            >
+                                <span className="grid h-10 w-10 place-items-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.05] text-sm font-black text-cyan-300">
+                                    {String(index + 1).padStart(2, "0")}
+                                </span>
+                                <h3 className="mt-5 text-2xl font-black text-white">
+                                    {item.title}
+                                </h3>
+                                <p className="mt-4 leading-7 text-slate-400">
+                                    {item.text}
+                                </p>
+                            </motion.article>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ========================================================================
+                Project Evolution
+            ========================================================================= */}
+            <section className="px-6 py-24 sm:px-8 lg:px-12">
+                <div className="mx-auto w-full max-w-7xl">
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Project Evolution
+                        </p>
+
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            From formula
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                to complete data workflow.
+                            </span>
+                        </h2>
+
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            The project grew from implementing a regression equation into a
+                            broader exercise in ingestion, parsing, domain modeling,
+                            numerical validation, and engineering review.
+                        </p>
+                    </motion.div>
+
+                    <div className="mx-auto mt-14 max-w-5xl">
+                        {[
+                            {
+                                phase: "01",
+                                title: "Implement the mathematical core",
+                                text: "Translate means, covariance, variance, slope, intercept, and prediction into C++.",
+                            },
+                            {
+                                phase: "02",
+                                title: "Connect real-world datasets",
+                                text: "Use libcurl to retrieve housing and market records instead of relying only on hardcoded samples.",
+                            },
+                            {
+                                phase: "03",
+                                title: "Build typed preprocessing paths",
+                                text: "Parse source-specific schemas and convert CSV text into domain records and numerical vectors.",
+                            },
+                            {
+                                phase: "04",
+                                title: "Add validation around the model",
+                                text: "Reject missing, mismatched, undersized, and numerically degenerate training data.",
+                            },
+                            {
+                                phase: "05",
+                                title: "Review assumptions and limitations",
+                                text: "Identify schema mismatch, normalization inconsistency, evaluation gaps, parser limits, and credential risk.",
+                            },
+                        ].map((item, index) => (
+                            <motion.div
+                                key={item.phase}
+                                initial={{ opacity: 0, x: index % 2 === 0 ? -22 : 22 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.25 }}
+                                transition={{ duration: 0.55, delay: index * 0.04 }}
+                                className="relative grid gap-4 border-l border-cyan-400/20 pb-10 pl-8 last:pb-0 sm:grid-cols-[auto_1fr]"
+                            >
+                                <span className="absolute -left-4 top-0 grid h-8 w-8 place-items-center rounded-full border border-cyan-400/30 bg-[#050b18] text-[0.65rem] font-black text-cyan-300">
+                                    {item.phase}
+                                </span>
+                                <div>
+                                    <h3 className="text-xl font-black text-white">
+                                        {item.title}
+                                    </h3>
+                                    <p className="mt-3 leading-7 text-slate-400">
+                                        {item.text}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
 {/* ========================================================================
     Technology Stack, Build & Run
 ========================================================================= */}
@@ -1871,7 +2259,7 @@ function StockHousingProject() {
                 duration: 0.65,
                 ease: [0.22, 1, 0.36, 1],
             }}
-            className="max-w-4xl"
+            className="mx-auto max-w-4xl text-center"
         >
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
                 Technology & Build
@@ -1884,7 +2272,7 @@ function StockHousingProject() {
                 </span>
             </h2>
 
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
                 The project combines standard-library C++, native HTTP
                 integration, file-based preprocessing, and manually implemented
                 regression logic without a machine-learning framework.
@@ -1935,7 +2323,7 @@ function StockHousingProject() {
                         delay: index * 0.04,
                         ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl"
+                    className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-300/20 hover:bg-[#071022]/90"
                 >
                     <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
                         {technology.label}
