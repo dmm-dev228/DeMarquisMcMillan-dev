@@ -5,10 +5,14 @@ import {
     CloudSun,
     Database,
     KeyRound,
+    LogIn,
+    LogOut,
     MessageSquare,
     Network,
+    RefreshCw,
     Server,
     Terminal,
+    UserPlus,
     Users,
 } from "lucide-react";
 
@@ -649,140 +653,388 @@ function WeatherSubscriptionProject() {
                 {/* ============================================================
     Distributed Request Lifecycle
 ============================================================= */}
-<section
-    aria-labelledby="request-lifecycle-heading"
-    className="px-6 py-24 sm:px-8 lg:px-12"
->
-    <div className="mx-auto w-full max-w-7xl">
-        {/* Section heading */}
-        <motion.div
-            initial={{
-                opacity: 0,
-                y: 24,
-            }}
-            whileInView={{
-                opacity: 1,
-                y: 0,
-            }}
-            viewport={{
-                once: true,
-                amount: 0.4,
-            }}
-            transition={{
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
-            }}
-            className="mx-auto max-w-4xl text-center"
-        >
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
-                Request Lifecycle
-            </p>
-
-            <h2
-                id="request-lifecycle-heading"
-                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
-            >
-                From Terminal Input to Server Response
-            </h2>
-
-            <p className="mt-7 text-lg leading-8 text-slate-300">
-                Every action follows a structured network lifecycle. The client
-                translates a menu selection into a protocol command, sends it
-                through the TCP connection, and waits for the server to process
-                the request. The server validates the command, executes the
-                corresponding operation, updates persistent state when needed,
-                and returns a formatted response.
-            </p>
-        </motion.div>
-
-        {/* Lifecycle diagram */}
-        <div className="relative mx-auto mt-16 max-w-6xl">
-            <div
-                aria-hidden="true"
-                className="absolute inset-0 rounded-[3rem] bg-blue-500/[0.035] blur-3xl"
-            />
-
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
-                {/* Example request label */}
-                <motion.div
-                    initial={{
-                        opacity: 0,
-                        scale: 0.96,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        scale: 1,
-                    }}
-                    viewport={{
-                        once: true,
-                    }}
-                    transition={{
-                        duration: 0.5,
-                    }}
-                    className="mx-auto mb-10 flex max-w-xl flex-col items-center rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.05] px-6 py-5 text-center"
+                <section
+                    aria-labelledby="request-lifecycle-heading"
+                    className="px-6 py-24 sm:px-8 lg:px-12"
                 >
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
-                        Example Operation
-                    </p>
+                    <div className="mx-auto w-full max-w-7xl">
+                        {/* Section heading */}
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 24,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.4,
+                            }}
+                            transition={{
+                                duration: 0.6,
+                                ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="mx-auto max-w-4xl text-center"
+                        >
+                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                                Request Lifecycle
+                            </p>
 
-                    <p className="mt-2 font-mono text-sm text-cyan-200 sm:text-base">
-                        SUBSCRIBE username Pensacola
-                    </p>
-
-                    <p className="mt-3 text-sm leading-6 text-slate-400">
-                        A user requests that a new weather location be attached
-                        to their authenticated account.
-                    </p>
-                </motion.div>
-
-                {/* Desktop horizontal lifecycle */}
-                <div className="hidden lg:block">
-                    <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-3">
-                        {[
-                            {
-                                number: "01",
-                                icon: Terminal,
-                                title: "User Action",
-                                description:
-                                    "The user selects Subscribe and enters a location through the terminal menu.",
-                            },
-                            {
-                                number: "02",
-                                icon: Network,
-                                title: "Protocol Message",
-                                description:
-                                    "The client serializes the operation into a structured text command.",
-                            },
-                            {
-                                number: "03",
-                                icon: Server,
-                                title: "Server Routing",
-                                description:
-                                    "The assigned worker thread receives and identifies the requested command.",
-                            },
-                            {
-                                number: "04",
-                                icon: Database,
-                                title: "State Update",
-                                description:
-                                    "The server updates the user object and saves the subscription to storage.",
-                            },
-                            {
-                                number: "05",
-                                icon: MessageSquare,
-                                title: "Client Response",
-                                description:
-                                    "A success or error message is returned through the active TCP socket.",
-                            },
-                        ].map((step, index, steps) => (
-                            <div
-                                key={step.number}
-                                className="contents"
+                            <h2
+                                id="request-lifecycle-heading"
+                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
                             >
-                                <motion.article
+                                From Terminal Input to Server Response
+                            </h2>
+
+                            <p className="mt-7 text-lg leading-8 text-slate-300">
+                                Every action follows a structured network lifecycle. The client
+                                translates a menu selection into a protocol command, sends it
+                                through the TCP connection, and waits for the server to process
+                                the request. The server validates the command, executes the
+                                corresponding operation, updates persistent state when needed,
+                                and returns a formatted response.
+                            </p>
+                        </motion.div>
+
+                        {/* Lifecycle diagram */}
+                        <div className="relative mx-auto mt-16 max-w-6xl">
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 rounded-[3rem] bg-blue-500/[0.035] blur-3xl"
+                            />
+
+                            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
+                                {/* Example request label */}
+                                <motion.div
                                     initial={{
                                         opacity: 0,
-                                        y: 22,
+                                        scale: 0.96,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        scale: 1,
+                                    }}
+                                    viewport={{
+                                        once: true,
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                    }}
+                                    className="mx-auto mb-10 flex max-w-xl flex-col items-center rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.05] px-6 py-5 text-center"
+                                >
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                                        Example Operation
+                                    </p>
+
+                                    <p className="mt-2 font-mono text-sm text-cyan-200 sm:text-base">
+                                        SUBSCRIBE username Pensacola
+                                    </p>
+
+                                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                                        A user requests that a new weather location be attached
+                                        to their authenticated account.
+                                    </p>
+                                </motion.div>
+
+                                {/* Desktop horizontal lifecycle */}
+                                <div className="hidden lg:block">
+                                    <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] items-center gap-3">
+                                        {[
+                                            {
+                                                number: "01",
+                                                icon: Terminal,
+                                                title: "User Action",
+                                                description:
+                                                    "The user selects Subscribe and enters a location through the terminal menu.",
+                                            },
+                                            {
+                                                number: "02",
+                                                icon: Network,
+                                                title: "Protocol Message",
+                                                description:
+                                                    "The client serializes the operation into a structured text command.",
+                                            },
+                                            {
+                                                number: "03",
+                                                icon: Server,
+                                                title: "Server Routing",
+                                                description:
+                                                    "The assigned worker thread receives and identifies the requested command.",
+                                            },
+                                            {
+                                                number: "04",
+                                                icon: Database,
+                                                title: "State Update",
+                                                description:
+                                                    "The server updates the user object and saves the subscription to storage.",
+                                            },
+                                            {
+                                                number: "05",
+                                                icon: MessageSquare,
+                                                title: "Client Response",
+                                                description:
+                                                    "A success or error message is returned through the active TCP socket.",
+                                            },
+                                        ].map((step, index, steps) => (
+                                            <div
+                                                key={step.number}
+                                                className="contents"
+                                            >
+                                                <motion.article
+                                                    initial={{
+                                                        opacity: 0,
+                                                        y: 22,
+                                                    }}
+                                                    whileInView={{
+                                                        opacity: 1,
+                                                        y: 0,
+                                                    }}
+                                                    viewport={{
+                                                        once: true,
+                                                        amount: 0.35,
+                                                    }}
+                                                    transition={{
+                                                        duration: 0.5,
+                                                        delay: index * 0.1,
+                                                        ease: [0.22, 1, 0.36, 1],
+                                                    }}
+                                                    whileHover={{
+                                                        y: -6,
+                                                    }}
+                                                    className="group h-full min-h-64 rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-5 transition-colors duration-300 hover:border-cyan-400/30"
+                                                >
+                                                    <div className="flex items-center justify-between">
+                                                        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                                            <step.icon
+                                                                size={21}
+                                                                aria-hidden="true"
+                                                            />
+                                                        </div>
+
+                                                        <span className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/70">
+                                                            {step.number}
+                                                        </span>
+                                                    </div>
+
+                                                    <h3 className="mt-5 text-lg font-bold text-white">
+                                                        {step.title}
+                                                    </h3>
+
+                                                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                                                        {step.description}
+                                                    </p>
+                                                </motion.article>
+
+                                                {index < steps.length - 1 && (
+                                                    <div
+                                                        aria-hidden="true"
+                                                        className="relative flex w-10 items-center justify-center"
+                                                    >
+                                                        <div className="h-px w-full bg-gradient-to-r from-cyan-400/20 via-cyan-300/80 to-cyan-400/20" />
+
+                                                        <motion.span
+                                                            animate={{
+                                                                x: [-12, 12, -12],
+                                                                opacity: [0, 1, 0],
+                                                            }}
+                                                            transition={{
+                                                                duration: 2,
+                                                                repeat: Infinity,
+                                                                delay: index * 0.2,
+                                                                ease: "easeInOut",
+                                                            }}
+                                                            className="absolute h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_16px_rgba(103,232,249,0.9)]"
+                                                        />
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Mobile and tablet vertical lifecycle */}
+                                <div className="lg:hidden">
+                                    {[
+                                        {
+                                            number: "01",
+                                            icon: Terminal,
+                                            title: "User Action",
+                                            description:
+                                                "The user selects Subscribe and enters a location through the terminal menu.",
+                                        },
+                                        {
+                                            number: "02",
+                                            icon: Network,
+                                            title: "Protocol Message",
+                                            description:
+                                                "The client serializes the operation into a structured text command.",
+                                        },
+                                        {
+                                            number: "03",
+                                            icon: Server,
+                                            title: "Server Routing",
+                                            description:
+                                                "The assigned worker thread receives and identifies the requested command.",
+                                        },
+                                        {
+                                            number: "04",
+                                            icon: Database,
+                                            title: "State Update",
+                                            description:
+                                                "The server updates the user object and saves the subscription to storage.",
+                                        },
+                                        {
+                                            number: "05",
+                                            icon: MessageSquare,
+                                            title: "Client Response",
+                                            description:
+                                                "A success or error message is returned through the active TCP socket.",
+                                        },
+                                    ].map((step, index, steps) => (
+                                        <div key={step.number}>
+                                            <motion.article
+                                                initial={{
+                                                    opacity: 0,
+                                                    x: index % 2 === 0 ? -20 : 20,
+                                                }}
+                                                whileInView={{
+                                                    opacity: 1,
+                                                    x: 0,
+                                                }}
+                                                viewport={{
+                                                    once: true,
+                                                    amount: 0.35,
+                                                }}
+                                                transition={{
+                                                    duration: 0.5,
+                                                    delay: index * 0.06,
+                                                    ease: [0.22, 1, 0.36, 1],
+                                                }}
+                                                className="rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-5"
+                                            >
+                                                <div className="flex items-start gap-4">
+                                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                                        <step.icon
+                                                            size={21}
+                                                            aria-hidden="true"
+                                                        />
+                                                    </div>
+
+                                                    <div>
+                                                        <p className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/70">
+                                                            STEP {step.number}
+                                                        </p>
+
+                                                        <h3 className="mt-2 text-lg font-bold text-white">
+                                                            {step.title}
+                                                        </h3>
+
+                                                        <p className="mt-2 text-sm leading-6 text-slate-400">
+                                                            {step.description}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </motion.article>
+
+                                            {index < steps.length - 1 && (
+                                                <div
+                                                    aria-hidden="true"
+                                                    className="flex h-12 justify-center"
+                                                >
+                                                    <div className="relative w-px bg-gradient-to-b from-cyan-400/20 via-cyan-300/70 to-cyan-400/20">
+                                                        <motion.span
+                                                            animate={{
+                                                                y: [0, 35, 0],
+                                                                opacity: [0, 1, 0],
+                                                            }}
+                                                            transition={{
+                                                                duration: 1.8,
+                                                                repeat: Infinity,
+                                                                delay: index * 0.15,
+                                                            }}
+                                                            className="absolute h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Response example */}
+                                <motion.div
+                                    initial={{
+                                        opacity: 0,
+                                        y: 18,
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    viewport={{
+                                        once: true,
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                        delay: 0.25,
+                                    }}
+                                    className="mt-10 grid gap-4 md:grid-cols-2"
+                                >
+                                    <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.045] p-5">
+                                        <p className="text-xs font-bold uppercase tracking-[0.17em] text-emerald-300">
+                                            Success Response
+                                        </p>
+
+                                        <code className="mt-3 block font-mono text-sm text-emerald-200">
+                                            SUCCESS Subscribed to Pensacola
+                                        </code>
+                                    </div>
+
+                                    <div className="rounded-2xl border border-rose-400/20 bg-rose-400/[0.04] p-5">
+                                        <p className="text-xs font-bold uppercase tracking-[0.17em] text-rose-300">
+                                            Error Response
+                                        </p>
+
+                                        <code className="mt-3 block font-mono text-sm text-rose-200">
+                                            ERROR Location already subscribed
+                                        </code>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
+
+                        {/* Lifecycle details */}
+                        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                            {[
+                                {
+                                    title: "Structured Commands",
+                                    description:
+                                        "Client operations are translated into recognizable command strings that the server can route to the appropriate handler.",
+                                },
+                                {
+                                    title: "Central Validation",
+                                    description:
+                                        "The server validates user identity, request arguments, and application state before performing protected operations.",
+                                },
+                                {
+                                    title: "State Synchronization",
+                                    description:
+                                        "In-memory user data and persistent text files are updated together when account or subscription information changes.",
+                                },
+                                {
+                                    title: "Explicit Responses",
+                                    description:
+                                        "Every request produces a server response that communicates whether the operation succeeded or why it failed.",
+                                },
+                            ].map((item, index) => (
+                                <motion.article
+                                    key={item.title}
+                                    initial={{
+                                        opacity: 0,
+                                        y: 20,
                                     }}
                                     whileInView={{
                                         opacity: 1,
@@ -793,275 +1045,446 @@ function WeatherSubscriptionProject() {
                                         amount: 0.35,
                                     }}
                                     transition={{
-                                        duration: 0.5,
-                                        delay: index * 0.1,
-                                        ease: [0.22, 1, 0.36, 1],
+                                        duration: 0.45,
+                                        delay: index * 0.07,
                                     }}
-                                    whileHover={{
-                                        y: -6,
-                                    }}
-                                    className="group h-full min-h-64 rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-5 transition-colors duration-300 hover:border-cyan-400/30"
+                                    className="rounded-2xl border border-white/[0.08] bg-[#050b18]/75 p-6"
                                 >
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
-                                            <step.icon
-                                                size={21}
-                                                aria-hidden="true"
-                                            />
-                                        </div>
-
-                                        <span className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/70">
-                                            {step.number}
-                                        </span>
+                                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-400/[0.06] font-mono text-xs font-black text-cyan-300">
+                                        {String(index + 1).padStart(2, "0")}
                                     </div>
 
-                                    <h3 className="mt-5 text-lg font-bold text-white">
-                                        {step.title}
+                                    <h3 className="mt-4 text-xl font-bold text-white">
+                                        {item.title}
                                     </h3>
 
-                                    <p className="mt-3 text-sm leading-6 text-slate-400">
-                                        {step.description}
+                                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                                        {item.description}
                                     </p>
                                 </motion.article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+                {/* ============================================================
+    Authentication & User Management
+============================================================= */}
+                <section
+                    aria-labelledby="authentication-heading"
+                    className="border-y border-white/[0.06] bg-[#030816]/70 px-6 py-24 sm:px-8 lg:px-12"
+                >
+                    <div className="mx-auto w-full max-w-7xl">
+                        {/* Section heading */}
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 24,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.4,
+                            }}
+                            transition={{
+                                duration: 0.6,
+                                ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="mx-auto max-w-4xl text-center"
+                        >
+                            <p className="text-sm font-bold uppercase tracking-[0.22em] text-cyan-400">
+                                Authentication & User Management
+                            </p>
 
-                                {index < steps.length - 1 && (
-                                    <div
-                                        aria-hidden="true"
-                                        className="relative flex w-10 items-center justify-center"
-                                    >
-                                        <div className="h-px w-full bg-gradient-to-r from-cyan-400/20 via-cyan-300/80 to-cyan-400/20" />
+                            <h2
+                                id="authentication-heading"
+                                className="mt-4 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl"
+                            >
+                                Server-Controlled Account Access
+                            </h2>
 
-                                        <motion.span
-                                            animate={{
-                                                x: [-12, 12, -12],
-                                                opacity: [0, 1, 0],
+                            <p className="mt-7 text-lg leading-8 text-slate-300">
+                                User identity is managed centrally by the server rather than
+                                trusted to the terminal client. Registration, login, password
+                                changes, and logout requests are transmitted through the TCP
+                                connection and processed against the server’s account records.
+                                Successful authentication allows the client to access protected
+                                subscription and messaging operations.
+                            </p>
+                        </motion.div>
+
+                        {/* Authentication lifecycle */}
+                        <div className="relative mx-auto mt-16 max-w-6xl">
+                            <div
+                                aria-hidden="true"
+                                className="absolute inset-0 rounded-[3rem] bg-cyan-500/[0.03] blur-3xl"
+                            />
+
+                            <div className="relative rounded-[2rem] border border-white/10 bg-[#040a17]/90 p-5 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8 lg:p-10">
+                                <div className="grid gap-6 lg:grid-cols-4">
+                                    {[
+                                        {
+                                            icon: UserPlus,
+                                            number: "01",
+                                            title: "Register",
+                                            description:
+                                                "A new username and password are submitted to the server, validated, added to the in-memory user collection, and written to persistent storage.",
+                                            detail: "Creates a persistent account",
+                                        },
+                                        {
+                                            icon: LogIn,
+                                            number: "02",
+                                            title: "Login",
+                                            description:
+                                                "The server compares submitted credentials with existing account records before allowing access to authenticated client operations.",
+                                            detail: "Validates account credentials",
+                                        },
+                                        {
+                                            icon: RefreshCw,
+                                            number: "03",
+                                            title: "Change Password",
+                                            description:
+                                                "An authenticated user can replace the password associated with their account, and the updated account state is saved to disk.",
+                                            detail: "Updates stored credentials",
+                                        },
+                                        {
+                                            icon: LogOut,
+                                            number: "04",
+                                            title: "Logout",
+                                            description:
+                                                "The client leaves the authenticated menu and ends the active application session without deleting the persistent account.",
+                                            detail: "Ends authenticated access",
+                                        },
+                                    ].map((operation, index) => (
+                                        <motion.article
+                                            key={operation.title}
+                                            initial={{
+                                                opacity: 0,
+                                                y: 22,
+                                            }}
+                                            whileInView={{
+                                                opacity: 1,
+                                                y: 0,
+                                            }}
+                                            viewport={{
+                                                once: true,
+                                                amount: 0.35,
                                             }}
                                             transition={{
-                                                duration: 2,
-                                                repeat: Infinity,
-                                                delay: index * 0.2,
-                                                ease: "easeInOut",
+                                                duration: 0.5,
+                                                delay: index * 0.08,
+                                                ease: [0.22, 1, 0.36, 1],
                                             }}
-                                            className="absolute h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_16px_rgba(103,232,249,0.9)]"
-                                        />
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                                            whileHover={{
+                                                y: -6,
+                                            }}
+                                            className="group relative overflow-hidden rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-6 transition-colors duration-300 hover:border-cyan-400/30"
+                                        >
+                                            <div
+                                                aria-hidden="true"
+                                                className="absolute inset-0 bg-gradient-to-br from-cyan-400/[0.06] via-transparent to-blue-500/[0.04] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                            />
 
-                {/* Mobile and tablet vertical lifecycle */}
-                <div className="lg:hidden">
-                    {[
-                        {
-                            number: "01",
-                            icon: Terminal,
-                            title: "User Action",
-                            description:
-                                "The user selects Subscribe and enters a location through the terminal menu.",
-                        },
-                        {
-                            number: "02",
-                            icon: Network,
-                            title: "Protocol Message",
-                            description:
-                                "The client serializes the operation into a structured text command.",
-                        },
-                        {
-                            number: "03",
-                            icon: Server,
-                            title: "Server Routing",
-                            description:
-                                "The assigned worker thread receives and identifies the requested command.",
-                        },
-                        {
-                            number: "04",
-                            icon: Database,
-                            title: "State Update",
-                            description:
-                                "The server updates the user object and saves the subscription to storage.",
-                        },
-                        {
-                            number: "05",
-                            icon: MessageSquare,
-                            title: "Client Response",
-                            description:
-                                "A success or error message is returned through the active TCP socket.",
-                        },
-                    ].map((step, index, steps) => (
-                        <div key={step.number}>
-                            <motion.article
-                                initial={{
-                                    opacity: 0,
-                                    x: index % 2 === 0 ? -20 : 20,
-                                }}
-                                whileInView={{
-                                    opacity: 1,
-                                    x: 0,
-                                }}
-                                viewport={{
-                                    once: true,
-                                    amount: 0.35,
-                                }}
-                                transition={{
-                                    duration: 0.5,
-                                    delay: index * 0.06,
-                                    ease: [0.22, 1, 0.36, 1],
-                                }}
-                                className="rounded-2xl border border-white/[0.09] bg-[#07101f]/90 p-5"
-                            >
-                                <div className="flex items-start gap-4">
-                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
-                                        <step.icon
-                                            size={21}
+                                            <div className="relative z-10">
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                                        <operation.icon
+                                                            size={23}
+                                                            aria-hidden="true"
+                                                        />
+                                                    </div>
+
+                                                    <span className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/60">
+                                                        {operation.number}
+                                                    </span>
+                                                </div>
+
+                                                <h3 className="mt-5 text-xl font-bold text-white">
+                                                    {operation.title}
+                                                </h3>
+
+                                                <p className="mt-3 text-sm leading-7 text-slate-400">
+                                                    {operation.description}
+                                                </p>
+
+                                                <div className="mt-5 border-t border-white/[0.07] pt-4">
+                                                    <p className="text-xs font-semibold uppercase tracking-[0.13em] text-cyan-300">
+                                                        {operation.detail}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </motion.article>
+                                    ))}
+                                </div>
+
+                                {/* Authentication flow */}
+                                <div className="mt-10 rounded-3xl border border-cyan-400/15 bg-cyan-400/[0.025] p-6 sm:p-8">
+                                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                                        <div className="max-w-2xl">
+                                            <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
+                                                Login Request Flow
+                                            </p>
+
+                                            <h3 className="mt-3 text-2xl font-black text-white">
+                                                Credentials Are Evaluated on the Server
+                                            </h3>
+
+                                            <p className="mt-4 text-sm leading-7 text-slate-400">
+                                                The terminal client collects the username and
+                                                password, formats the login request, and sends it
+                                                over the existing socket. The server searches its
+                                                loaded user records, compares the credentials,
+                                                and returns either a successful authentication
+                                                response or an error.
+                                            </p>
+                                        </div>
+
+                                        <div className="flex shrink-0 flex-wrap gap-2">
+                                            {[
+                                                "Client Input",
+                                                "TCP Request",
+                                                "Server Validation",
+                                                "Access Result",
+                                            ].map((item) => (
+                                                <span
+                                                    key={item}
+                                                    className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold text-slate-300"
+                                                >
+                                                    {item}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-8 grid gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
+                                        <div className="rounded-2xl border border-white/[0.08] bg-[#07101f]/90 p-5">
+                                            <div className="flex items-center gap-3">
+                                                <Terminal
+                                                    size={20}
+                                                    className="text-cyan-300"
+                                                    aria-hidden="true"
+                                                />
+
+                                                <p className="font-bold text-white">
+                                                    Terminal Client
+                                                </p>
+                                            </div>
+
+                                            <p className="mt-3 font-mono text-xs leading-6 text-slate-400">
+                                                Username: John
+                                                <br />
+                                                Password: •••
+                                            </p>
+                                        </div>
+
+                                        <div
                                             aria-hidden="true"
+                                            className="hidden h-px w-12 bg-gradient-to-r from-cyan-400/20 to-cyan-300/80 md:block"
                                         />
+
+                                        <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.05] p-5">
+                                            <div className="flex items-center gap-3">
+                                                <Server
+                                                    size={20}
+                                                    className="text-cyan-300"
+                                                    aria-hidden="true"
+                                                />
+
+                                                <p className="font-bold text-white">
+                                                    Server Validation
+                                                </p>
+                                            </div>
+
+                                            <p className="mt-3 text-xs leading-6 text-slate-400">
+                                                Find the username, compare the submitted
+                                                password, and return the authentication result.
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            aria-hidden="true"
+                                            className="hidden h-px w-12 bg-gradient-to-r from-cyan-400/20 to-cyan-300/80 md:block"
+                                        />
+
+                                        <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.045] p-5">
+                                            <div className="flex items-center gap-3">
+                                                <KeyRound
+                                                    size={20}
+                                                    className="text-emerald-300"
+                                                    aria-hidden="true"
+                                                />
+
+                                                <p className="font-bold text-white">
+                                                    Authenticated Access
+                                                </p>
+                                            </div>
+
+                                            <p className="mt-3 text-xs leading-6 text-slate-400">
+                                                The client enters the protected menu and may
+                                                manage subscriptions, messages, and account
+                                                settings.
+                                            </p>
+                                        </div>
                                     </div>
+                                </div>
 
-                                    <div>
-                                        <p className="font-mono text-xs font-bold tracking-[0.16em] text-cyan-400/70">
-                                            STEP {step.number}
-                                        </p>
+                                {/* Protected operations */}
+                                <div className="mt-8 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+                                    <motion.article
+                                        initial={{
+                                            opacity: 0,
+                                            x: -20,
+                                        }}
+                                        whileInView={{
+                                            opacity: 1,
+                                            x: 0,
+                                        }}
+                                        viewport={{
+                                            once: true,
+                                            amount: 0.35,
+                                        }}
+                                        transition={{
+                                            duration: 0.5,
+                                        }}
+                                        className="rounded-2xl border border-white/[0.08] bg-[#07101f]/80 p-6"
+                                    >
+                                        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                            <KeyRound size={21} aria-hidden="true" />
+                                        </div>
 
-                                        <h3 className="mt-2 text-lg font-bold text-white">
-                                            {step.title}
+                                        <h3 className="mt-4 text-xl font-bold text-white">
+                                            Protected Operations
                                         </h3>
 
-                                        <p className="mt-2 text-sm leading-6 text-slate-400">
-                                            {step.description}
+                                        <p className="mt-3 text-sm leading-7 text-slate-400">
+                                            Account-specific features become available after
+                                            login. These operations rely on the authenticated
+                                            username to determine which subscriptions, messages,
+                                            and account data should be accessed.
                                         </p>
-                                    </div>
-                                </div>
-                            </motion.article>
 
-                            {index < steps.length - 1 && (
-                                <div
-                                    aria-hidden="true"
-                                    className="flex h-12 justify-center"
-                                >
-                                    <div className="relative w-px bg-gradient-to-b from-cyan-400/20 via-cyan-300/70 to-cyan-400/20">
-                                        <motion.span
-                                            animate={{
-                                                y: [0, 35, 0],
-                                                opacity: [0, 1, 0],
-                                            }}
-                                            transition={{
-                                                duration: 1.8,
-                                                repeat: Infinity,
-                                                delay: index * 0.15,
-                                            }}
-                                            className="absolute h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]"
-                                        />
-                                    </div>
+                                        <div className="mt-5 flex flex-wrap gap-2">
+                                            {[
+                                                "Subscribe",
+                                                "Unsubscribe",
+                                                "View Locations",
+                                                "Direct Message",
+                                                "Group Message",
+                                                "Change Password",
+                                            ].map((operation) => (
+                                                <span
+                                                    key={operation}
+                                                    className="rounded-full border border-white/[0.08] bg-white/[0.035] px-3 py-1.5 text-xs font-semibold text-slate-300"
+                                                >
+                                                    {operation}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </motion.article>
+
+                                    <motion.article
+                                        initial={{
+                                            opacity: 0,
+                                            x: 20,
+                                        }}
+                                        whileInView={{
+                                            opacity: 1,
+                                            x: 0,
+                                        }}
+                                        viewport={{
+                                            once: true,
+                                            amount: 0.35,
+                                        }}
+                                        transition={{
+                                            duration: 0.5,
+                                            delay: 0.08,
+                                        }}
+                                        className="rounded-2xl border border-white/[0.08] bg-[#07101f]/80 p-6"
+                                    >
+                                        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-300">
+                                            <Database size={21} aria-hidden="true" />
+                                        </div>
+
+                                        <h3 className="mt-4 text-xl font-bold text-white">
+                                            Persistent Account Records
+                                        </h3>
+
+                                        <p className="mt-3 text-sm leading-7 text-slate-400">
+                                            Registered accounts are loaded from{" "}
+                                            <code className="rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-cyan-300">
+                                                users.txt
+                                            </code>{" "}
+                                            when the server starts. Registration and password
+                                            changes update the persistent account file so those
+                                            changes remain available after the process stops and
+                                            restarts.
+                                        </p>
+
+                                        <div className="mt-5 rounded-xl border border-white/[0.07] bg-[#030816] p-4">
+                                            <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-500">
+                                                Stored Account Shape
+                                            </p>
+
+                                            <code className="mt-3 block font-mono text-sm text-cyan-200">
+                                                username password subscriptions
+                                            </code>
+                                        </div>
+                                    </motion.article>
                                 </div>
-                            )}
+                            </div>
                         </div>
-                    ))}
-                </div>
 
-                {/* Response example */}
-                <motion.div
-                    initial={{
-                        opacity: 0,
-                        y: 18,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                    }}
-                    transition={{
-                        duration: 0.5,
-                        delay: 0.25,
-                    }}
-                    className="mt-10 grid gap-4 md:grid-cols-2"
-                >
-                    <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.045] p-5">
-                        <p className="text-xs font-bold uppercase tracking-[0.17em] text-emerald-300">
-                            Success Response
-                        </p>
+                        {/* Security assessment */}
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 20,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.35,
+                            }}
+                            transition={{
+                                duration: 0.5,
+                            }}
+                            className="mt-14 rounded-[1.75rem] border border-amber-400/20 bg-amber-400/[0.035] p-6 sm:p-8"
+                        >
+                            <div className="flex flex-col gap-5 md:flex-row md:items-start">
+                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-amber-300/20 bg-amber-300/[0.07] text-amber-300">
+                                    <KeyRound size={23} aria-hidden="true" />
+                                </div>
 
-                        <code className="mt-3 block font-mono text-sm text-emerald-200">
-                            SUCCESS Subscribed to Pensacola
-                        </code>
+                                <div>
+                                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-300">
+                                        Security Assessment
+                                    </p>
+
+                                    <h3 className="mt-2 text-2xl font-black text-white">
+                                        Functional Authentication With Clear Production
+                                        Limitations
+                                    </h3>
+
+                                    <p className="mt-4 max-w-5xl text-sm leading-7 text-slate-300">
+                                        The implementation demonstrates account lifecycle,
+                                        credential validation, authenticated feature access, and
+                                        persistent account management. It is not presented as a
+                                        production security system: credentials are stored in a
+                                        text-based persistence format, and communication does not
+                                        use transport encryption. A production version would add
+                                        salted password hashing, TLS, stronger session controls,
+                                        secure database storage, and request rate limiting.
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
-
-                    <div className="rounded-2xl border border-rose-400/20 bg-rose-400/[0.04] p-5">
-                        <p className="text-xs font-bold uppercase tracking-[0.17em] text-rose-300">
-                            Error Response
-                        </p>
-
-                        <code className="mt-3 block font-mono text-sm text-rose-200">
-                            ERROR Location already subscribed
-                        </code>
-                    </div>
-                </motion.div>
-            </div>
-        </div>
-
-        {/* Lifecycle details */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {[
-                {
-                    title: "Structured Commands",
-                    description:
-                        "Client operations are translated into recognizable command strings that the server can route to the appropriate handler.",
-                },
-                {
-                    title: "Central Validation",
-                    description:
-                        "The server validates user identity, request arguments, and application state before performing protected operations.",
-                },
-                {
-                    title: "State Synchronization",
-                    description:
-                        "In-memory user data and persistent text files are updated together when account or subscription information changes.",
-                },
-                {
-                    title: "Explicit Responses",
-                    description:
-                        "Every request produces a server response that communicates whether the operation succeeded or why it failed.",
-                },
-            ].map((item, index) => (
-                <motion.article
-                    key={item.title}
-                    initial={{
-                        opacity: 0,
-                        y: 20,
-                    }}
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    viewport={{
-                        once: true,
-                        amount: 0.35,
-                    }}
-                    transition={{
-                        duration: 0.45,
-                        delay: index * 0.07,
-                    }}
-                    className="rounded-2xl border border-white/[0.08] bg-[#050b18]/75 p-6"
-                >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/20 bg-cyan-400/[0.06] font-mono text-xs font-black text-cyan-300">
-                        {String(index + 1).padStart(2, "0")}
-                    </div>
-
-                    <h3 className="mt-4 text-xl font-bold text-white">
-                        {item.title}
-                    </h3>
-
-                    <p className="mt-3 text-sm leading-7 text-slate-400">
-                        {item.description}
-                    </p>
-                </motion.article>
-            ))}
-        </div>
-    </div>
-</section>
+                </section>
             </div>
         </main>
     );
