@@ -3684,6 +3684,99 @@ function WeatherSubscriptionProject() {
         </p>
     </motion.div>
 </ProjectSection>
+{/* ============================================================
+    Version 2 Architecture
+============================================================= */}
+<ProjectSection labelledBy="version-two-heading">
+    <SectionHeading
+        id="version-two-heading"
+        eyebrow="Version 2 Architecture"
+        title="Evolving the Platform Beyond Its Initial Design"
+        description="A production-oriented second version would preserve the project's core client-server model while replacing the most limiting architectural choices with stronger concurrency control, structured communication, transactional persistence, and more resilient deployment."
+    />
+
+    <div className="mt-16 grid gap-6 lg:grid-cols-2">
+        <ProjectCard
+            eyebrow="Improvement 01"
+            title="Bounded Worker Pool"
+            badge="Concurrency"
+            delay={0.05}
+            description="Replace the unbounded thread-per-client model with a controlled pool of reusable worker threads."
+        >
+            <div className="rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                    Expected Impact
+                </p>
+
+                <p className="mt-3 leading-7 text-slate-300">
+                    The server could support more simultaneous connections while
+                    limiting operating system thread creation and protecting
+                    resources under heavier workloads.
+                </p>
+            </div>
+        </ProjectCard>
+
+        <ProjectCard
+            eyebrow="Improvement 02"
+            title="Structured Message Framing"
+            badge="Protocol"
+            delay={0.1}
+            description="Introduce explicit message boundaries and structured request fields instead of relying entirely on manually parsed command strings."
+        >
+            <div className="rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                    Expected Impact
+                </p>
+
+                <p className="mt-3 leading-7 text-slate-300">
+                    Requests would be easier to validate, extend, and debug while
+                    reducing ambiguity caused by delimiters and partial network
+                    reads.
+                </p>
+            </div>
+        </ProjectCard>
+
+        <ProjectCard
+            eyebrow="Improvement 03"
+            title="Database Backed Persistence"
+            badge="Data"
+            delay={0.15}
+            description="Move user accounts, subscriptions, and message records from text files into a structured relational database."
+        >
+            <div className="rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                    Expected Impact
+                </p>
+
+                <p className="mt-3 leading-7 text-slate-300">
+                    The platform would gain stronger validation, transactional
+                    updates, indexed queries, safer concurrent writes, and
+                    clearer relationships between stored records.
+                </p>
+            </div>
+        </ProjectCard>
+
+        <ProjectCard
+            eyebrow="Improvement 04"
+            title="Resilient Server Deployment"
+            badge="Reliability"
+            delay={0.2}
+            description="Package and deploy the server with centralized configuration, health monitoring, structured logs, and controlled restart behavior."
+        >
+            <div className="rounded-2xl border border-white/[0.06] bg-[#020611]/70 p-5">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">
+                    Expected Impact
+                </p>
+
+                <p className="mt-3 leading-7 text-slate-300">
+                    Operational failures would become easier to detect and
+                    recover from without changing the core responsibilities of
+                    the client and server.
+                </p>
+            </div>
+        </ProjectCard>
+    </div>
+</ProjectSection>
             </div>
         </main>
     );
