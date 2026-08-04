@@ -6,6 +6,7 @@ import CogniHavenProject from "./pages/projects/CogniHavenProject";
 import ConnectMProject from "./pages/projects/ConnectMProject";
 import StockHousingProject from "./pages/projects/StockHousingProject";
 import WeatherSubscriptionProject from "./pages/projects/WeatherSubscriptionProject";
+import Contact from "./pages/Contact";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/contact" element={<Contact />} />                         
                 <Route
                     path="/projects/cognihaven"
                     element={<CogniHavenProject />}
