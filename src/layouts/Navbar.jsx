@@ -75,8 +75,9 @@ function Navbar() {
     return (
         <>
             <header
-                className={`portfolio-navbar ${isScrolled ? "portfolio-navbar--scrolled" : ""
-                    }`}
+                className={`portfolio-navbar ${
+                    isScrolled ? "portfolio-navbar--scrolled" : ""
+                }`}
             >
                 <nav
                     className="portfolio-navbar__container"
@@ -100,9 +101,9 @@ function Navbar() {
 
                     {/* Desktop navigation */}
                     <div className="portfolio-navbar__links">
-                        <a href="/#about">
+                        <Link to="/about">
                             About
-                        </a>
+                        </Link>
 
                         <Link to="/projects">
                             Projects
@@ -112,10 +113,7 @@ function Navbar() {
                             Experience
                         </a>
 
-                        <Link
-                            to="/contact"
-                            onClick={closeMenu}
-                        >
+                        <Link to="/contact">
                             Contact
                         </Link>
                     </div>
@@ -134,10 +132,11 @@ function Navbar() {
                     {/* Mobile menu button */}
                     <button
                         type="button"
-                        className={`portfolio-navbar__menu-button ${isMenuOpen
-                            ? "portfolio-navbar__menu-button--open"
-                            : ""
-                            }`}
+                        className={`portfolio-navbar__menu-button ${
+                            isMenuOpen
+                                ? "portfolio-navbar__menu-button--open"
+                                : ""
+                        }`}
                         aria-label={
                             isMenuOpen
                                 ? "Close navigation menu"
@@ -158,18 +157,19 @@ function Navbar() {
                 {/* Mobile navigation */}
                 <div
                     id="mobile-navigation"
-                    className={`portfolio-navbar__mobile-menu ${isMenuOpen
-                        ? "portfolio-navbar__mobile-menu--open"
-                        : ""
-                        }`}
+                    className={`portfolio-navbar__mobile-menu ${
+                        isMenuOpen
+                            ? "portfolio-navbar__mobile-menu--open"
+                            : ""
+                    }`}
                     aria-hidden={!isMenuOpen}
                 >
-                    <a
-                        href="/#about"
+                    <Link
+                        to="/about"
                         onClick={closeMenu}
                     >
                         About
-                    </a>
+                    </Link>
 
                     <Link
                         to="/projects"
@@ -185,12 +185,12 @@ function Navbar() {
                         Experience
                     </a>
 
-                    <a
-                        href="/#contact"
+                    <Link
+                        to="/contact"
                         onClick={closeMenu}
                     >
                         Contact
-                    </a>
+                    </Link>
 
                     <a
                         href="/resume.pdf"
@@ -207,10 +207,11 @@ function Navbar() {
             {/* Mobile menu backdrop */}
             <button
                 type="button"
-                className={`portfolio-navbar__overlay ${isMenuOpen
-                    ? "portfolio-navbar__overlay--visible"
-                    : ""
-                    }`}
+                className={`portfolio-navbar__overlay ${
+                    isMenuOpen
+                        ? "portfolio-navbar__overlay--visible"
+                        : ""
+                }`}
                 aria-label="Close navigation menu"
                 tabIndex={isMenuOpen ? 0 : -1}
                 onClick={closeMenu}

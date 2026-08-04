@@ -7,6 +7,7 @@ import ConnectMProject from "./pages/projects/ConnectMProject";
 import StockHousingProject from "./pages/projects/StockHousingProject";
 import WeatherSubscriptionProject from "./pages/projects/WeatherSubscriptionProject";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 
 function App() {
     return (
@@ -14,7 +15,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />                         
+                <Route path="/contact" element={<Contact />} />    
+                <Route path="/about" element={<About />} />                       
                 <Route
                     path="/projects/cognihaven"
                     element={<CogniHavenProject />}
