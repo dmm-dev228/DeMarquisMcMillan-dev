@@ -1,4 +1,14 @@
 import { motion } from "motion/react";
+import GithubLogo from "../../assets/icons/github.png";
+import GmailLogo from "../../assets/icons/gmail.png";
+import LinkedinLogo from "../../assets/icons/linkedin.svg";
+import CogniHavenLogo from "../../assets/icons/cognihaven-logo.png";
+import {
+    ArrowRight,
+    ArrowUpRight,
+    Copy,
+    FileText,
+} from "lucide-react";
 
 const contactMethods = [
     {
@@ -10,7 +20,7 @@ const contactMethods = [
             "The best way to reach me about software engineering opportunities, interviews, or collaboration.",
         href: "mailto:dmmcmillan2018@gmail.com?subject=Software%20Engineering%20Opportunity",
         action: "Start an Email",
-        symbol: "@",
+        logo: GmailLogo,
         tone: "cyan",
     },
     {
@@ -22,7 +32,7 @@ const contactMethods = [
             "View my experience, professional updates, and connect with me directly.",
         href: "https://www.linkedin.com/in/demarquis-mcmillan/",
         action: "Open LinkedIn",
-        symbol: "in",
+        logo: LinkedinLogo,
         tone: "blue",
     },
     {
@@ -34,8 +44,9 @@ const contactMethods = [
             "Explore the repositories, code, commit history, and engineering work behind my portfolio projects.",
         href: "https://github.com/dmm-dev228",
         action: "View GitHub",
-        symbol: "</>",
+        logo: GithubLogo,
         tone: "purple",
+        logoClassName: "h-9 w-9 object-contain invert",
     },
     {
         id: "resume",
@@ -46,7 +57,7 @@ const contactMethods = [
             "Review my technical skills, projects, education, and professional background in one document.",
         href: "/resume.pdf",
         action: "Open Resume",
-        symbol: "CV",
+        icon: FileText,
         tone: "emerald",
     },
     {
@@ -58,7 +69,7 @@ const contactMethods = [
             "Explore my deployed AI-powered cognitive wellness platform and see the product running in production.",
         href: "https://www.cognihaven.net",
         action: "Launch CogniHaven",
-        symbol: "CH",
+        logo: CogniHavenLogo,
         tone: "amber",
     },
 ];
@@ -68,7 +79,7 @@ const toneClasses = {
         border: "border-cyan-400/20",
         background: "bg-cyan-400/[0.045]",
         accent: "text-cyan-300",
-        symbol: "border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-200",
+        icon: "border-cyan-400/20 bg-cyan-400/[0.07] text-cyan-200",
         hover: "hover:border-cyan-300/40 hover:bg-cyan-400/[0.07]",
         glow: "shadow-[0_0_35px_rgba(34,211,238,0.06)]",
     },
@@ -76,7 +87,7 @@ const toneClasses = {
         border: "border-blue-400/20",
         background: "bg-blue-400/[0.045]",
         accent: "text-blue-300",
-        symbol: "border-blue-400/20 bg-blue-400/[0.07] text-blue-200",
+        icon: "border-blue-400/20 bg-blue-400/[0.07] text-blue-200",
         hover: "hover:border-blue-300/40 hover:bg-blue-400/[0.07]",
         glow: "shadow-[0_0_35px_rgba(96,165,250,0.06)]",
     },
@@ -84,7 +95,7 @@ const toneClasses = {
         border: "border-purple-400/20",
         background: "bg-purple-400/[0.045]",
         accent: "text-purple-300",
-        symbol: "border-purple-400/20 bg-purple-400/[0.07] text-purple-200",
+        icon: "border-purple-400/20 bg-purple-400/[0.07] text-purple-200",
         hover: "hover:border-purple-300/40 hover:bg-purple-400/[0.07]",
         glow: "shadow-[0_0_35px_rgba(192,132,252,0.06)]",
     },
@@ -92,8 +103,7 @@ const toneClasses = {
         border: "border-emerald-400/20",
         background: "bg-emerald-400/[0.045]",
         accent: "text-emerald-300",
-        symbol:
-            "border-emerald-400/20 bg-emerald-400/[0.07] text-emerald-200",
+        icon: "border-emerald-400/20 bg-emerald-400/[0.07] text-emerald-200",
         hover: "hover:border-emerald-300/40 hover:bg-emerald-400/[0.07]",
         glow: "shadow-[0_0_35px_rgba(52,211,153,0.06)]",
     },
@@ -101,7 +111,7 @@ const toneClasses = {
         border: "border-amber-400/20",
         background: "bg-amber-400/[0.045]",
         accent: "text-amber-300",
-        symbol: "border-amber-400/20 bg-amber-400/[0.07] text-amber-200",
+        icon: "border-amber-400/20 bg-amber-400/[0.07] text-amber-200",
         hover: "hover:border-amber-300/40 hover:bg-amber-400/[0.07]",
         glow: "shadow-[0_0_35px_rgba(251,191,36,0.06)]",
     },
@@ -150,6 +160,7 @@ function ContactCards() {
                 <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                     {contactMethods.map((method, index) => {
                         const tone = toneClasses[method.tone];
+                        const IconComponent = method.icon;
                         const isExternal =
                             method.href.startsWith("http") ||
                             method.href.endsWith(".pdf");
@@ -178,18 +189,33 @@ function ContactCards() {
                                 />
 
                                 <div className="flex items-start justify-between gap-5">
-                                    <span
-                                        className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl border text-sm font-black ${tone.symbol}`}
+                                    <div
+                                        className={`grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-2xl border ${tone.icon}`}
                                     >
-                                        {method.symbol}
-                                    </span>
+                                        {method.logo ? (
+                                            <img
+                                                src={method.logo}
+                                                alt={`${method.title} logo`}
+                                                className={
+                                                    method.logoClassName ??
+                                                    "h-9 w-9 object-contain"
+                                                }
+                                            />
+                                        ) : IconComponent ? (
+                                            <IconComponent
+                                                size={26}
+                                                strokeWidth={2}
+                                                aria-hidden="true"
+                                            />
+                                        ) : null}
+                                    </div>
 
-                                    <span
+                                    <ArrowUpRight
+                                        size={20}
+                                        strokeWidth={2}
                                         aria-hidden="true"
-                                        className={`text-lg transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${tone.accent}`}
-                                    >
-                                        ↗
-                                    </span>
+                                        className={`transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${tone.accent}`}
+                                    />
                                 </div>
 
                                 <p
@@ -215,12 +241,12 @@ function ContactCards() {
                                         {method.action}
                                     </span>
 
-                                    <span
+                                    <ArrowRight
+                                        size={18}
+                                        strokeWidth={2}
                                         aria-hidden="true"
                                         className={`transition-transform duration-300 group-hover:translate-x-1 ${tone.accent}`}
-                                    >
-                                        →
-                                    </span>
+                                    />
                                 </div>
                             </motion.a>
                         );
@@ -235,7 +261,7 @@ function ContactCards() {
                             delay: 0.3,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="relative overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#050b18]/80 p-6 backdrop-blur-xl sm:p-7 xl:col-span-1"
+                        className="relative overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#050b18]/80 p-6 backdrop-blur-xl sm:p-7"
                     >
                         <div
                             aria-hidden="true"
@@ -243,11 +269,15 @@ function ContactCards() {
                         />
 
                         <div className="relative">
-                            <span className="grid h-12 w-12 place-items-center rounded-2xl border border-white/10 bg-white/[0.04] text-sm font-black text-white">
-                                DM
-                            </span>
+                            <div className="grid h-14 w-14 place-items-center rounded-2xl border border-cyan-400/20 bg-cyan-400/[0.06] text-cyan-200">
+                                <Copy
+                                    size={25}
+                                    strokeWidth={2}
+                                    aria-hidden="true"
+                                />
+                            </div>
 
-                            <p className="mt-7 text-xs font-bold uppercase tracking-[0.17em] text-slate-500">
+                            <p className="mt-7 text-xs font-bold uppercase tracking-[0.17em] text-cyan-300">
                                 Direct Contact
                             </p>
 
