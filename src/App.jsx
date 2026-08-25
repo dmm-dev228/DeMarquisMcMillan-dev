@@ -9,6 +9,7 @@ import WeatherSubscriptionProject from "./pages/projects/WeatherSubscriptionProj
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
+import MunchifyProject from "./pages/projects/MunchifyProject";
 
 function App() {
     return (
@@ -34,6 +35,10 @@ function App() {
                 <Route
                     path="/projects/weather-subscription-platform"
                     element={<WeatherSubscriptionProject />}
+                />
+                <Route
+                    path="/projects/munchify"
+                    element={<MunchifyProject />}
                 />
 
             </Routes>

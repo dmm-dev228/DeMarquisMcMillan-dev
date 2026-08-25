@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-
+import githubIcon from "../../assets/icons/github.png";
 import stockHousingVisual from "../../assets/projects/stockhousing.png";
 
 /*

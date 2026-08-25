@@ -4,6 +4,7 @@ import WeatherSubPlatform from "../../assets/projects/WeatherSubPlatform.png";
 import ProjectSection from "../../components/projects/shared/ProjectSection";
 import SectionHeading from "../../components/projects/shared/SectionHeading";
 import ProjectCard from "../../components/projects/shared/ProjectCard";
+import githubIcon from "../../assets/icons/github.png";
 import {
     AlertTriangle,
     ArrowDown,
