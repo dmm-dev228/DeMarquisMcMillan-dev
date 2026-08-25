@@ -1,5 +1,4 @@
 import Hero from "../components/home/Hero";
-import FeaturedWork from "../components/home/FeaturedWork";
 
 /*
  * ============================================================================
@@ -8,8 +7,8 @@ import FeaturedWork from "../components/home/FeaturedWork";
  *
  * Landing page for the portfolio.
  *
- * This page introduces DeMarquis McMillan and guides recruiters through
- * featured engineering projects, technical experience, and contact information.
+ * This page introduces DeMarquis McMillan and directs visitors toward
+ * projects, experience, and contact information.
  * ============================================================================
  */
 
@@ -17,7 +16,6 @@ function Home() {
     return (
         <main id="home">
             <Hero />
-            <FeaturedWork />
         </main>
     );
 }
