@@ -198,13 +198,12 @@ function ContactHero() {
                                         secure, deployable, and user-centered applications.
                                     </p>
                                 </div>
-
                                 <motion.div
                                     animate={{
-                                        boxShadow: [
-                                            "0 0 0 rgba(34,211,238,0)",
-                                            "0 0 28px rgba(34,211,238,0.18)",
-                                            "0 0 0 rgba(34,211,238,0)",
+                                        filter: [
+                                            "drop-shadow(0 0 4px rgba(34,211,238,0.20))",
+                                            "drop-shadow(0 0 14px rgba(34,211,238,0.55))",
+                                            "drop-shadow(0 0 4px rgba(34,211,238,0.20))",
                                         ],
                                     }}
                                     transition={{
@@ -212,9 +211,14 @@ function ContactHero() {
                                         repeat: Infinity,
                                         ease: "easeInOut",
                                     }}
-                                    className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-cyan-400/25 bg-cyan-400/[0.08] text-sm font-black text-cyan-100"
+                                    className="h-16 w-20 shrink-0"
                                 >
-                                    DM
+                                    <img
+                                        src="/favicon.png"
+                                        alt=""
+                                        aria-hidden="true"
+                                        className="h-full w-full object-contain"
+                                    />
                                 </motion.div>
                             </div>
 
