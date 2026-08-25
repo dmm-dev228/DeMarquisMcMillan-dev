@@ -129,38 +129,64 @@ function Projects() {
                     Page Introduction
                 ============================================================= */}
                 <motion.header
-                    className="max-w-4xl"
-                    initial={{
-                        opacity: 0,
-                        y: 24,
-                    }}
-                    animate={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    transition={{
-                        duration: 0.65,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                >
-                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-                        Engineering Portfolio
-                    </p>
+    className="mx-auto max-w-6xl"
+    initial={{
+        opacity: 0,
+        y: 24,
+    }}
+    animate={{
+        opacity: 1,
+        y: 0,
+    }}
+    transition={{
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
+    }}
+>
+    {/* Eyebrow */}
+    <div className="flex items-center justify-center gap-4">
+        <span
+            aria-hidden="true"
+            className="h-px w-12 bg-gradient-to-r from-transparent to-cyan-400/70 sm:w-20"
+        />
 
-                    <h1 className="mt-4 text-5xl font-black tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
-                        Built to solve.
-                        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-                            Built to ship.
-                        </span>
-                    </h1>
+        <p className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-400 sm:text-sm">
+            Engineering Portfolio
+        </p>
 
-                    <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-                        Full-stack products, backend systems, networking
-                        applications, algorithms, and data-focused software.
-                        Explore each project to see the engineering behind the
-                        implementation.
-                    </p>
-                </motion.header>
+        <span
+            aria-hidden="true"
+            className="h-px w-12 bg-gradient-to-l from-transparent to-cyan-400/70 sm:w-20"
+        />
+    </div>
+
+    {/* Main headline */}
+    <h1 className="mx-auto mt-7 max-w-5xl text-center text-5xl font-black leading-[0.95] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl">
+        Built to solve.
+        <span className="ml-3 bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-600 bg-clip-text text-transparent sm:ml-4">
+            Built to ship.
+        </span>
+    </h1>
+
+    {/* Supporting copy */}
+    <p className="mx-auto mt-7 max-w-3xl text-center text-base leading-8 text-slate-400 sm:text-lg">
+        Full-stack products, backend systems, networking applications,
+        algorithms, and data-focused software.
+        <span className="text-slate-300">
+            {" "}
+            Explore the engineering decisions behind each implementation.
+        </span>
+    </p>
+
+    {/* Bottom accent */}
+    <div className="mx-auto mt-10 flex max-w-5xl items-center gap-4">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-white/10" />
+
+        <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.9)]" />
+
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent via-white/10 to-white/10" />
+    </div>
+</motion.header>
 
                 {/* ============================================================
                     Project Gallery
