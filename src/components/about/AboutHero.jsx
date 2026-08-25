@@ -207,45 +207,37 @@ function AboutHero() {
                                 className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent"
                             />
 
-                            <div className="relative overflow-hidden rounded-[1.6rem] border border-white/[0.08] bg-gradient-to-br from-cyan-400/[0.07] via-[#07111f] to-blue-500/[0.05]">
-                                <div className="aspect-[4/5] min-h-[430px]">
-                                    <div className="flex h-full flex-col items-center justify-center px-8 text-center">
-                                        <motion.div
-                                            animate={{
-                                                boxShadow: [
-                                                    "0 0 0 rgba(34,211,238,0)",
-                                                    "0 0 38px rgba(34,211,238,0.18)",
-                                                    "0 0 0 rgba(34,211,238,0)",
-                                                ],
-                                            }}
-                                            transition={{
-                                                duration: 3.6,
-                                                repeat: Infinity,
-                                                ease: "easeInOut",
-                                            }}
-                                            className="grid h-24 w-24 place-items-center rounded-[1.75rem] border border-cyan-400/25 bg-cyan-400/[0.08] text-2xl font-black text-cyan-100"
-                                        >
-                                            DM
-                                        </motion.div>
+                            <div className="group relative overflow-hidden rounded-[1.6rem] border border-white/[0.08] bg-gradient-to-br from-cyan-400/[0.07] via-[#07111f] to-blue-500/[0.05]">
+                                <motion.div
+                                    animate={{ opacity: [0.2, 0.42, 0.2] }}
+                                    transition={{
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
+                                    aria-hidden="true"
+                                    className="pointer-events-none absolute -inset-px z-20 rounded-[1.6rem] border border-cyan-300/25"
+                                />
 
-                                        <p className="mt-7 text-xs font-bold uppercase tracking-[0.18em] text-cyan-400">
-                                            Professional Headshot
-                                        </p>
+                                <div className="relative aspect-[4/5] min-h-[430px] overflow-hidden">
+                                    <img
+                                        src="/photo.jpg"
+                                        alt="DeMarquis McMillan, software engineer"
+                                        className="h-full w-full object-cover object-[center_18%] transition duration-700 ease-out group-hover:scale-[1.025]"
+                                    />
 
-                                        <h2 className="mt-3 text-2xl font-black text-white">
-                                            Photo coming next.
-                                        </h2>
+                                    <div
+                                        aria-hidden="true"
+                                        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050b18]/70 via-transparent to-slate-950/5"
+                                    />
 
-                                        <p className="mt-4 max-w-sm text-sm leading-7 text-slate-400">
-                                            This placeholder is ready for your
-                                            professional headshot. Once added,
-                                            the image will become the visual
-                                            anchor of your About page.
-                                        </p>
-                                    </div>
+                                    <div
+                                        aria-hidden="true"
+                                        className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#050b18]/80 to-transparent"
+                                    />
                                 </div>
 
-                                <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-emerald-400/20 bg-[#050b18]/85 px-3 py-2 backdrop-blur-xl">
+                                <div className="absolute left-5 top-5 z-30 flex items-center gap-2 rounded-full border border-emerald-400/20 bg-[#050b18]/85 px-3 py-2 shadow-[0_0_24px_rgba(52,211,153,0.08)] backdrop-blur-xl">
                                     <span className="relative flex h-2 w-2">
                                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-65" />
                                         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -254,6 +246,16 @@ function AboutHero() {
                                     <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-emerald-300">
                                         Available
                                     </span>
+                                </div>
+
+                                <div className="absolute inset-x-5 bottom-5 z-30 rounded-2xl border border-white/[0.09] bg-[#050b18]/75 p-4 backdrop-blur-md">
+                                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-300">
+                                        Software Engineer
+                                    </p>
+
+                                    <p className="mt-1 text-sm font-semibold text-slate-200">
+                                        Pensacola, Florida
+                                    </p>
                                 </div>
                             </div>
 
