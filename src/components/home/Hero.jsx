@@ -4,6 +4,7 @@ import mysqlLogo from "../../assets/technologies/mysql.png";
 import dockerLogo from "../../assets/technologies/docker.png";
 import openaiLogo from "../../assets/technologies/openai.png";
 import cogniHavenScreenshot from "../../assets/projects/cognihaven-dashboard.png";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 function Hero() {
@@ -48,29 +49,29 @@ function Hero() {
 
                     <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                         {/* Primary CTA */}
-                        <a
-                            href="#projects"
-                            className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-300 to-blue-500 px-6 py-3.5 font-semibold text-slate-950 shadow-[0_0_30px_rgba(56,189,248,0.18)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(56,189,248,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-                        >
-                            Explore My Work
+                      <Link
+    to="/projects"
+    className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-300 to-blue-500 px-6 py-3.5 font-semibold text-slate-950 shadow-[0_0_30px_rgba(56,189,248,0.18)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_35px_rgba(56,189,248,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+>
+    Explore My Work
 
-                            <span
-                                aria-hidden="true"
-                                className="transition-transform duration-200 group-hover:translate-x-1"
-                            >
-                                →
-                            </span>
-                        </a>
+    <span
+        aria-hidden="true"
+        className="transition-transform duration-200 group-hover:translate-x-1"
+    >
+        →
+    </span>
+</Link>
 
                         {/* Secondary CTA */}
-                        <a
-                            href="/DeMarquis-McMillan-Resume.pdf"
-                            download
-                            className="inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-300/20 bg-white/5 px-6 py-3.5 font-semibold text-slate-200 backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-                        >
-                            Download Resume
-                            <span aria-hidden="true">↓</span>
-                        </a>
+                      <a
+    href="/resume.pdf"
+    download="DeMarquis-McMillan-Resume.pdf"
+    className="inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-300/20 bg-white/5 px-6 py-3.5 font-semibold text-slate-200 backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+>
+    Download Resume
+    <span aria-hidden="true">↓</span>
+</a>
                     </div>
                     <div className="mt-10">
                         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">

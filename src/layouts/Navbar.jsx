@@ -75,9 +75,8 @@ function Navbar() {
     return (
         <>
             <header
-                className={`portfolio-navbar ${
-                    isScrolled ? "portfolio-navbar--scrolled" : ""
-                }`}
+                className={`portfolio-navbar ${isScrolled ? "portfolio-navbar--scrolled" : ""
+                    }`}
             >
                 <nav
                     className="portfolio-navbar__container"
@@ -101,6 +100,10 @@ function Navbar() {
 
                     {/* Desktop navigation */}
                     <div className="portfolio-navbar__links">
+                        <Link to="/">
+                            Home
+                        </Link>
+
                         <Link to="/about">
                             About
                         </Link>
@@ -132,11 +135,10 @@ function Navbar() {
                     {/* Mobile menu button */}
                     <button
                         type="button"
-                        className={`portfolio-navbar__menu-button ${
-                            isMenuOpen
+                        className={`portfolio-navbar__menu-button ${isMenuOpen
                                 ? "portfolio-navbar__menu-button--open"
                                 : ""
-                        }`}
+                            }`}
                         aria-label={
                             isMenuOpen
                                 ? "Close navigation menu"
@@ -157,11 +159,10 @@ function Navbar() {
                 {/* Mobile navigation */}
                 <div
                     id="mobile-navigation"
-                    className={`portfolio-navbar__mobile-menu ${
-                        isMenuOpen
+                    className={`portfolio-navbar__mobile-menu ${isMenuOpen
                             ? "portfolio-navbar__mobile-menu--open"
                             : ""
-                    }`}
+                        }`}
                     aria-hidden={!isMenuOpen}
                 >
                     <Link
@@ -191,6 +192,12 @@ function Navbar() {
                     >
                         Contact
                     </Link>
+                    <Link
+                        to="/"
+                        onClick={closeMenu}
+                    >
+                        Home
+                    </Link>
 
                     <a
                         href="/resume.pdf"
@@ -207,11 +214,10 @@ function Navbar() {
             {/* Mobile menu backdrop */}
             <button
                 type="button"
-                className={`portfolio-navbar__overlay ${
-                    isMenuOpen
+                className={`portfolio-navbar__overlay ${isMenuOpen
                         ? "portfolio-navbar__overlay--visible"
                         : ""
-                }`}
+                    }`}
                 aria-label="Close navigation menu"
                 tabIndex={isMenuOpen ? 0 : -1}
                 onClick={closeMenu}
