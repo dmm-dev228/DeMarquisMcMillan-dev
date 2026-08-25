@@ -8,6 +8,7 @@ import StockHousingProject from "./pages/projects/StockHousingProject";
 import WeatherSubscriptionProject from "./pages/projects/WeatherSubscriptionProject";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import Experience from "./pages/Experience";
 
 function App() {
     return (
@@ -15,8 +16,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />    
-                <Route path="/about" element={<About />} />                       
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/experience" element={<Experience />} />
                 <Route
                     path="/projects/cognihaven"
                     element={<CogniHavenProject />}
@@ -33,6 +35,7 @@ function App() {
                     path="/projects/weather-subscription-platform"
                     element={<WeatherSubscriptionProject />}
                 />
+
             </Routes>
         </MainLayout>
     );

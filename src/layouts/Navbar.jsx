@@ -112,9 +112,9 @@ function Navbar() {
                             Projects
                         </Link>
 
-                        <a href="/#experience">
+                        <Link to="/experience">
                             Experience
-                        </a>
+                        </Link>
 
                         <Link to="/contact">
                             Contact
@@ -136,8 +136,8 @@ function Navbar() {
                     <button
                         type="button"
                         className={`portfolio-navbar__menu-button ${isMenuOpen
-                                ? "portfolio-navbar__menu-button--open"
-                                : ""
+                            ? "portfolio-navbar__menu-button--open"
+                            : ""
                             }`}
                         aria-label={
                             isMenuOpen
@@ -160,8 +160,8 @@ function Navbar() {
                 <div
                     id="mobile-navigation"
                     className={`portfolio-navbar__mobile-menu ${isMenuOpen
-                            ? "portfolio-navbar__mobile-menu--open"
-                            : ""
+                        ? "portfolio-navbar__mobile-menu--open"
+                        : ""
                         }`}
                     aria-hidden={!isMenuOpen}
                 >
@@ -215,8 +215,8 @@ function Navbar() {
             <button
                 type="button"
                 className={`portfolio-navbar__overlay ${isMenuOpen
-                        ? "portfolio-navbar__overlay--visible"
-                        : ""
+                    ? "portfolio-navbar__overlay--visible"
+                    : ""
                     }`}
                 aria-label="Close navigation menu"
                 tabIndex={isMenuOpen ? 0 : -1}
