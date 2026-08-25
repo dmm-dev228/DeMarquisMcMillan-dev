@@ -9,7 +9,6 @@
  * - Blueprint grid
  * - Ambient cyan glow
  * - Animated binary rain
- * - Fixed architectural annotations
  *
  * The entire background is decorative and hidden from assistive technology.
  * ============================================================================
@@ -46,73 +45,67 @@ function BlueprintBackground() {
             {/* Engineering grid */}
             <div className="blueprint-background__grid" />
 
-            {/* Animated binary rain */}
-          {/* Far binary layer */}
-<div className="blueprint-background__binary blueprint-background__binary--far">
-    {binaryColumns.map((binary, index) => (
-        <span
-            key={`far-${index}`}
-            className="blueprint-background__binary-column"
-            style={{
-                "--column-index": index,
-                "--column-delay": `${(index % 7) * -1.8}s`,
-                "--column-duration": `${18 + (index % 5) * 3}s`,
-            }}
-        >
-            {binary.split("").map((digit, digitIndex) => (
-                <span key={digitIndex}>{digit}</span>
-            ))}
-        </span>
-    ))}
-</div>
-
-{/* Mid binary layer */}
-<div className="blueprint-background__binary blueprint-background__binary--mid">
-    {binaryColumns.map((binary, index) => (
-        <span
-            key={`mid-${index}`}
-            className="blueprint-background__binary-column"
-            style={{
-                "--column-index": index,
-                "--column-delay": `${(index % 6) * -1.4}s`,
-                "--column-duration": `${12 + (index % 5) * 2}s`,
-            }}
-        >
-            {binary.split("").map((digit, digitIndex) => (
-                <span key={digitIndex}>{digit}</span>
-            ))}
-        </span>
-    ))}
-</div>
-
-{/* Near binary layer */}
-<div className="blueprint-background__binary blueprint-background__binary--near">
-    {binaryColumns.map((binary, index) => (
-        <span
-            key={`near-${index}`}
-            className="blueprint-background__binary-column"
-            style={{
-                "--column-index": index,
-                "--column-delay": `${(index % 5) * -1.1}s`,
-                "--column-duration": `${8 + (index % 4) * 1.5}s`,
-            }}
-        >
-            {binary.split("").map((digit, digitIndex) => (
-                <span key={digitIndex}>{digit}</span>
-            ))}
-        </span>
-    ))}
-</div>
-
-            {/* Fixed engineering annotations */}
-            <div className="blueprint-background__annotation blueprint-background__annotation--top-left">
-                <span>SYS-01</span>
-                <div className="blueprint-background__annotation-line" />
+            {/* Far binary layer */}
+            <div className="blueprint-background__binary blueprint-background__binary--far">
+                {binaryColumns.map((binary, index) => (
+                    <span
+                        key={`far-${index}`}
+                        className="blueprint-background__binary-column"
+                        style={{
+                            "--column-index": index,
+                            "--column-delay": `${(index % 7) * -1.8}s`,
+                            "--column-duration": `${18 + (index % 5) * 3}s`,
+                        }}
+                    >
+                        {binary.split("").map((digit, digitIndex) => (
+                            <span key={digitIndex}>
+                                {digit}
+                            </span>
+                        ))}
+                    </span>
+                ))}
             </div>
 
-            <div className="blueprint-background__annotation blueprint-background__annotation--bottom-right">
-                <span>ARCHITECTURE / ACTIVE</span>
-                <div className="blueprint-background__annotation-line" />
+            {/* Mid binary layer */}
+            <div className="blueprint-background__binary blueprint-background__binary--mid">
+                {binaryColumns.map((binary, index) => (
+                    <span
+                        key={`mid-${index}`}
+                        className="blueprint-background__binary-column"
+                        style={{
+                            "--column-index": index,
+                            "--column-delay": `${(index % 6) * -1.4}s`,
+                            "--column-duration": `${12 + (index % 5) * 2}s`,
+                        }}
+                    >
+                        {binary.split("").map((digit, digitIndex) => (
+                            <span key={digitIndex}>
+                                {digit}
+                            </span>
+                        ))}
+                    </span>
+                ))}
+            </div>
+
+            {/* Near binary layer */}
+            <div className="blueprint-background__binary blueprint-background__binary--near">
+                {binaryColumns.map((binary, index) => (
+                    <span
+                        key={`near-${index}`}
+                        className="blueprint-background__binary-column"
+                        style={{
+                            "--column-index": index,
+                            "--column-delay": `${(index % 5) * -1.1}s`,
+                            "--column-duration": `${8 + (index % 4) * 1.5}s`,
+                        }}
+                    >
+                        {binary.split("").map((digit, digitIndex) => (
+                            <span key={digitIndex}>
+                                {digit}
+                            </span>
+                        ))}
+                    </span>
+                ))}
             </div>
         </div>
     );

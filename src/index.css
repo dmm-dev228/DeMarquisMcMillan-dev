@@ -618,7 +618,13 @@ img {
         background: rgba(97, 217, 255, 0.1);
     }
 }
-
+.portfolio-navbar__logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
 @media (max-width: 480px) {
     .portfolio-navbar__name {
         max-width: 8rem;

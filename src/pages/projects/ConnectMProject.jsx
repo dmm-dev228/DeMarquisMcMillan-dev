@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-
+import githubIcon from "../../assets/icons/github.png";
 import connectMScreenshot from "../../assets/projects/ConnectM.png";
 
 /*
@@ -505,25 +505,25 @@ function ConnectMProject() {
                         }}
                     >
                         <div className="mx-auto mb-8 max-w-3xl text-center">
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Visual Overview
-    </p>
+                            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                                Visual Overview
+                            </p>
 
-    <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl">
-        Gameplay meets
-        <span className="bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            {" "}
-            adversarial search.
-        </span>
-    </h2>
+                            <h2 className="mt-4 text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl">
+                                Gameplay meets
+                                <span className="bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                    {" "}
+                                    adversarial search.
+                                </span>
+                            </h2>
 
-    <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">
-        A conceptual visualization of the configurable
-        board, recursive search tree, Minimax evaluation,
-        and Alpha-Beta pruning used to select the
-        computer&apos;s next move.
-    </p>
-</div>
+                            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+                                A conceptual visualization of the configurable
+                                board, recursive search tree, Minimax evaluation,
+                                and Alpha-Beta pruning used to select the
+                                computer&apos;s next move.
+                            </p>
+                        </div>
 
                         <figure className="group relative overflow-hidden rounded-[2rem] border border-cyan-400/30 bg-[#050b18]/90 shadow-[0_0_55px_rgba(34,211,238,0.08)] backdrop-blur-xl">
                             <div
@@ -575,33 +575,33 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        How the AI Thinks
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            How the AI Thinks
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        Simulate the future.
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            Choose the strongest branch.
-        </span>
-    </h2>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            Simulate the future.
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                Choose the strongest branch.
+                            </span>
+                        </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        Every valid AI move becomes the starting point for a
-        recursive search. The computer tries to maximize the
-        resulting score while assuming the human will always
-        choose the response that minimizes it.
-    </p>
-</motion.div>
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            Every valid AI move becomes the starting point for a
+                            recursive search. The computer tries to maximize the
+                            resulting score while assuming the human will always
+                            choose the response that minimizes it.
+                        </p>
+                    </motion.div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 28 }}
@@ -722,22 +722,20 @@ function ConnectMProject() {
                                 ].map(([score, label, tone]) => (
                                     <div
                                         key={label}
-                                        className={`rounded-2xl border p-5 text-center ${
-                                            tone === "emerald"
+                                        className={`rounded-2xl border p-5 text-center ${tone === "emerald"
                                                 ? "border-emerald-400/20 bg-emerald-400/[0.05]"
                                                 : tone === "red"
-                                                  ? "border-red-400/20 bg-red-400/[0.05]"
-                                                  : "border-white/10 bg-white/[0.025]"
-                                        }`}
+                                                    ? "border-red-400/20 bg-red-400/[0.05]"
+                                                    : "border-white/10 bg-white/[0.025]"
+                                            }`}
                                     >
                                         <p
-                                            className={`text-3xl font-black ${
-                                                tone === "emerald"
+                                            className={`text-3xl font-black ${tone === "emerald"
                                                     ? "text-emerald-400"
                                                     : tone === "red"
-                                                      ? "text-red-400"
-                                                      : "text-slate-300"
-                                            }`}
+                                                        ? "text-red-400"
+                                                        : "text-slate-300"
+                                                }`}
                                         >
                                             {score}
                                         </p>
@@ -758,32 +756,32 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Search Optimization
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Search Optimization
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        Search deeper.
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            Skip what cannot matter.
-        </span>
-    </h2>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            Search deeper.
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                Skip what cannot matter.
+                            </span>
+                        </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        ConnectM combines Alpha-Beta pruning with reversible
-        board updates so the AI can avoid unnecessary
-        branches while safely exploring hypothetical moves.
-    </p>
-</motion.div>
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            ConnectM combines Alpha-Beta pruning with reversible
+                            board updates so the AI can avoid unnecessary
+                            branches while safely exploring hypothetical moves.
+                        </p>
+                    </motion.div>
 
                     <motion.article
                         initial={{ opacity: 0, y: 28 }}
@@ -984,33 +982,33 @@ function ConnectMProject() {
             ===================================================================== */}
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
-                   <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Game Architecture
-    </p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Game Architecture
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        Generalized rules.
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            Reusable game logic.
-        </span>
-    </h2>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            Generalized rules.
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                Reusable game logic.
+                            </span>
+                        </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        Board size and the required winning sequence are
-        runtime parameters, so move handling and victory
-        detection must work across different configurations.
-    </p>
-</motion.div>
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            Board size and the required winning sequence are
+                            runtime parameters, so move handling and victory
+                            detection must work across different configurations.
+                        </p>
+                    </motion.div>
 
                     <div className="mt-14 grid gap-6 lg:grid-cols-2">
                         <motion.article
@@ -1172,22 +1170,20 @@ function ConnectMProject() {
                                     className="contents"
                                 >
                                     <div
-                                        className={`rounded-2xl border p-5 text-center ${
-                                            item.tone === "purple"
+                                        className={`rounded-2xl border p-5 text-center ${item.tone === "purple"
                                                 ? "border-purple-400/20 bg-purple-400/[0.04]"
                                                 : item.tone === "emerald"
-                                                  ? "border-emerald-400/20 bg-emerald-400/[0.04]"
-                                                  : "border-white/10 bg-white/[0.025]"
-                                        }`}
+                                                    ? "border-emerald-400/20 bg-emerald-400/[0.04]"
+                                                    : "border-white/10 bg-white/[0.025]"
+                                            }`}
                                     >
                                         <p
-                                            className={`text-xs font-bold uppercase tracking-[0.15em] ${
-                                                item.tone === "purple"
+                                            className={`text-xs font-bold uppercase tracking-[0.15em] ${item.tone === "purple"
                                                     ? "text-purple-400"
                                                     : item.tone === "emerald"
-                                                      ? "text-emerald-400"
-                                                      : "text-slate-500"
-                                            }`}
+                                                        ? "text-emerald-400"
+                                                        : "text-slate-500"
+                                                }`}
                                         >
                                             {item.eyebrow}
                                         </p>
@@ -1220,32 +1216,32 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Complexity & Tradeoffs
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Complexity & Tradeoffs
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        Stronger search has
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            a computational cost.
-        </span>
-    </h2>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            Stronger search has
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                a computational cost.
+                            </span>
+                        </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        ConnectM limits search depth to keep decisions
-        computationally manageable as configurable board
-        sizes increase the number of possible future states.
-    </p>
-</motion.div>
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            ConnectM limits search depth to keep decisions
+                            computationally manageable as configurable board
+                            sizes increase the number of possible future states.
+                        </p>
+                    </motion.div>
 
                     <div className="mt-14 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
                         <div className="rounded-[1.75rem] border border-cyan-400/15 bg-[#050b18]/80 p-7 backdrop-blur-xl">
@@ -1311,15 +1307,14 @@ function ConnectMProject() {
                                 className="rounded-[1.75rem] border border-white/10 bg-[#050b18]/80 p-7 backdrop-blur-xl"
                             >
                                 <p
-                                    className={`text-xs font-bold uppercase tracking-[0.18em] ${
-                                        tradeoff.accent === "amber"
+                                    className={`text-xs font-bold uppercase tracking-[0.18em] ${tradeoff.accent === "amber"
                                             ? "text-amber-400"
                                             : tradeoff.accent === "red"
-                                              ? "text-red-400"
-                                              : tradeoff.accent === "blue"
-                                                ? "text-blue-400"
-                                                : "text-cyan-400"
-                                    }`}
+                                                ? "text-red-400"
+                                                : tradeoff.accent === "blue"
+                                                    ? "text-blue-400"
+                                                    : "text-cyan-400"
+                                        }`}
                                 >
                                     Tradeoff / {tradeoff.number}
                                 </p>
@@ -1375,32 +1370,32 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Engineering Challenges
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Engineering Challenges
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        The hard parts were
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            deeper than the game board.
-        </span>
-    </h2>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            The hard parts were
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                deeper than the game board.
+                            </span>
+                        </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        The project required generalized rule design,
-        recursive state management, adversarial reasoning,
-        and careful control of search complexity.
-    </p>
-</motion.div>
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            The project required generalized rule design,
+                            recursive state management, adversarial reasoning,
+                            and careful control of search complexity.
+                        </p>
+                    </motion.div>
 
                     <div className="mt-14 grid gap-6 lg:grid-cols-2">
                         {engineeringChallenges.map((challenge) => (
@@ -1466,28 +1461,28 @@ function ConnectMProject() {
             ===================================================================== */}
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
-                
-<motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-purple-400">
-        Engineering Decisions & Tradeoffs
-    </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        Every clean decision
-        <span className="block bg-gradient-to-r from-purple-300 via-cyan-400 to-blue-700 bg-clip-text text-transparent">
-            carries a consequence.
-        </span>
-    </h2>
-</motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-purple-400">
+                            Engineering Decisions & Tradeoffs
+                        </p>
+
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            Every clean decision
+                            <span className="block bg-gradient-to-r from-purple-300 via-cyan-400 to-blue-700 bg-clip-text text-transparent">
+                                carries a consequence.
+                            </span>
+                        </h2>
+                    </motion.div>
                     <div className="mt-14 grid gap-6 lg:grid-cols-2">
                         {engineeringDecisions.map((item) => (
                             <motion.article
@@ -1553,26 +1548,26 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-400">
-        Lessons Learned
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-emerald-400">
+                            Lessons Learned
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        What the implementation
-        <span className="block bg-gradient-to-r from-emerald-300 via-cyan-400 to-blue-700 bg-clip-text text-transparent">
-            taught me about algorithms.
-        </span>
-    </h2>
-</motion.div>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            What the implementation
+                            <span className="block bg-gradient-to-r from-emerald-300 via-cyan-400 to-blue-700 bg-clip-text text-transparent">
+                                taught me about algorithms.
+                            </span>
+                        </h2>
+                    </motion.div>
 
                     <div className="mt-14 grid gap-5 md:grid-cols-2">
                         {lessons.map((lesson, index) => (
@@ -1609,26 +1604,26 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Interview Questions
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Interview Questions
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        The questions behind
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            the engineering decisions.
-        </span>
-    </h2>
-</motion.div>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            The questions behind
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                the engineering decisions.
+                            </span>
+                        </h2>
+                    </motion.div>
 
                     <div className="mt-14 grid gap-5 lg:grid-cols-2">
                         {interviewQuestions.map((item, index) => (
@@ -1723,26 +1718,26 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Project Summary
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Project Summary
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        What ConnectM
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            demonstrates.
-        </span>
-    </h2>
-</motion.div>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            What ConnectM
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                demonstrates.
+                            </span>
+                        </h2>
+                    </motion.div>
 
                     <motion.div
                         initial={{ opacity: 0, y: 25 }}
@@ -1808,32 +1803,32 @@ function ConnectMProject() {
             <section className="px-6 py-24 sm:px-8 lg:px-12">
                 <div className="mx-auto w-full max-w-7xl">
                     <motion.div
-    initial={{ opacity: 0, y: 28 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-        duration: 0.65,
-        ease: [0.22, 1, 0.36, 1],
-    }}
-    className="mx-auto max-w-4xl text-center"
->
-    <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        Build & Run
-    </p>
+                        initial={{ opacity: 0, y: 28 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="mx-auto max-w-4xl text-center"
+                    >
+                        <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+                            Build & Run
+                        </p>
 
-    <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
-        Small runtime.
-        <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
-            Algorithm-heavy core.
-        </span>
-    </h2>
+                        <h2 className="mt-4 text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl">
+                            Small runtime.
+                            <span className="block bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-800 bg-clip-text text-transparent">
+                                Algorithm-heavy core.
+                            </span>
+                        </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        ConnectM has no external services, database, or
-        runtime dependencies beyond a C++17-compatible
-        compiler and GNU Make.
-    </p>
-</motion.div>
+                        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300">
+                            ConnectM has no external services, database, or
+                            runtime dependencies beyond a C++17-compatible
+                            compiler and GNU Make.
+                        </p>
+                    </motion.div>
 
                     <div className="mt-14 grid gap-6 lg:grid-cols-2">
                         <motion.article
@@ -1966,7 +1961,14 @@ function ConnectMProject() {
                                     rel="noreferrer"
                                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-400/30 bg-cyan-400/[0.06] px-6 py-3.5 font-semibold text-cyan-300 transition duration-200 hover:border-cyan-300/60 hover:bg-cyan-400/[0.1] hover:text-white"
                                 >
+
                                     View GitHub
+                                    <img
+                                        src={githubIcon}
+                                        alt=""
+                                        aria-hidden="true"
+                                        className="h-[18px] w-[18px] object-contain transition-transform duration-300 group-hover:scale-110"
+                                    />
                                     <span aria-hidden="true">↗</span>
                                 </a>
 

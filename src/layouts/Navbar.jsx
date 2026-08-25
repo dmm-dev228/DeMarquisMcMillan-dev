@@ -75,8 +75,9 @@ function Navbar() {
     return (
         <>
             <header
-                className={`portfolio-navbar ${isScrolled ? "portfolio-navbar--scrolled" : ""
-                    }`}
+                className={`portfolio-navbar ${
+                    isScrolled ? "portfolio-navbar--scrolled" : ""
+                }`}
             >
                 <nav
                     className="portfolio-navbar__container"
@@ -89,9 +90,12 @@ function Navbar() {
                         aria-label="DeMarquis McMillan home"
                         onClick={closeMenu}
                     >
-                        <span className="portfolio-navbar__monogram">
-                            DM
-                        </span>
+                        <img
+                            src="/favicon.png"
+                            alt=""
+                            aria-hidden="true"
+                            className="portfolio-navbar__logo"
+                        />
 
                         <span className="portfolio-navbar__name">
                             DeMarquis McMillan
@@ -112,9 +116,9 @@ function Navbar() {
                             Projects
                         </Link>
 
-                        <a href="/#experience">
+                        <Link to="/experience">
                             Experience
-                        </a>
+                        </Link>
 
                         <Link to="/contact">
                             Contact
@@ -135,10 +139,11 @@ function Navbar() {
                     {/* Mobile menu button */}
                     <button
                         type="button"
-                        className={`portfolio-navbar__menu-button ${isMenuOpen
+                        className={`portfolio-navbar__menu-button ${
+                            isMenuOpen
                                 ? "portfolio-navbar__menu-button--open"
                                 : ""
-                            }`}
+                        }`}
                         aria-label={
                             isMenuOpen
                                 ? "Close navigation menu"
@@ -159,12 +164,20 @@ function Navbar() {
                 {/* Mobile navigation */}
                 <div
                     id="mobile-navigation"
-                    className={`portfolio-navbar__mobile-menu ${isMenuOpen
+                    className={`portfolio-navbar__mobile-menu ${
+                        isMenuOpen
                             ? "portfolio-navbar__mobile-menu--open"
                             : ""
-                        }`}
+                    }`}
                     aria-hidden={!isMenuOpen}
                 >
+                    <Link
+                        to="/"
+                        onClick={closeMenu}
+                    >
+                        Home
+                    </Link>
+
                     <Link
                         to="/about"
                         onClick={closeMenu}
@@ -179,24 +192,18 @@ function Navbar() {
                         Projects
                     </Link>
 
-                    <a
-                        href="/#experience"
+                    <Link
+                        to="/experience"
                         onClick={closeMenu}
                     >
                         Experience
-                    </a>
+                    </Link>
 
                     <Link
                         to="/contact"
                         onClick={closeMenu}
                     >
                         Contact
-                    </Link>
-                    <Link
-                        to="/"
-                        onClick={closeMenu}
-                    >
-                        Home
                     </Link>
 
                     <a
@@ -214,10 +221,11 @@ function Navbar() {
             {/* Mobile menu backdrop */}
             <button
                 type="button"
-                className={`portfolio-navbar__overlay ${isMenuOpen
+                className={`portfolio-navbar__overlay ${
+                    isMenuOpen
                         ? "portfolio-navbar__overlay--visible"
                         : ""
-                    }`}
+                }`}
                 aria-label="Close navigation menu"
                 tabIndex={isMenuOpen ? 0 : -1}
                 onClick={closeMenu}
