@@ -37,7 +37,7 @@ const technologies = [
 
 function AboutHero() {
     return (
-        <section className="relative overflow-hidden px-6 pb-24 pt-32 sm:px-8 lg:px-12 lg:pb-32 lg:pt-36">
+        <section className="relative overflow-hidden px-5 pb-20 pt-16 sm:px-8 sm:pt-24 lg:px-12 lg:pb-32 lg:pt-36">
             <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0"
@@ -93,7 +93,7 @@ function AboutHero() {
                             />
                         </div>
 
-                        <h1 className="mt-6 max-w-5xl text-5xl font-black leading-[0.98] tracking-[-0.055em] text-white sm:text-6xl lg:text-[4.5rem]">
+                        <h1 className="mt-6 max-w-5xl text-[2.65rem] font-black leading-[1.02] tracking-[-0.045em] text-white sm:text-6xl sm:leading-[0.98] sm:tracking-[-0.055em] lg:text-[4.5rem]">
                             I build software that turns{" "}
                             <span className="bg-gradient-to-r from-cyan-300 via-sky-500 to-blue-700 bg-clip-text text-transparent">
                                 complex problems
@@ -101,7 +101,7 @@ function AboutHero() {
                             into clear, reliable products.
                         </h1>
 
-                        <p className="mt-7 max-w-3xl text-xl leading-9 text-slate-300">
+                        <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300 sm:mt-7 sm:text-xl sm:leading-9">
                             I&apos;m DeMarquis McMillan, a software engineer
                             focused on full-stack and backend development. I
                             enjoy designing systems from the database and API
@@ -109,7 +109,7 @@ function AboutHero() {
                             them as working products.
                         </p>
 
-                        <p className="mt-5 max-w-3xl leading-8 text-slate-400">
+                        <p className="mt-5 max-w-3xl text-[0.95rem] leading-7 text-slate-400 sm:text-base sm:leading-8">
                             My work spans Java, Spring Boot, React, SQL, Docker,
                             cloud deployment, testing, AI integrations, and C++.
                             I care about writing maintainable code,
@@ -117,14 +117,14 @@ function AboutHero() {
                             software that creates meaningful value for users.
                         </p>
 
-                        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                        <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
                             <motion.div
                                 whileHover={{ y: -3 }}
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <Link
                                     to="/projects"
-                                    className="group inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl border border-cyan-300/35 bg-cyan-400/[0.1] px-7 py-4 font-black text-cyan-100 shadow-[0_0_30px_rgba(34,211,238,0.08)] transition duration-300 hover:border-cyan-200/60 hover:bg-cyan-400/[0.16] hover:text-white"
+                             className="group inline-flex min-h-14 w-full max-w-full items-center justify-center gap-3 rounded-2xl border border-cyan-300/35 bg-cyan-400/[0.1] px-5 py-4 font-black text-cyan-100 shadow-[0_0_30px_rgba(34,211,238,0.08)] transition duration-300 hover:border-cyan-200/60 hover:bg-cyan-400/[0.16] hover:text-white sm:px-7"
                                 >
                                     Explore My Projects
 
@@ -164,7 +164,7 @@ function AboutHero() {
                                             delay: 0.25 + index * 0.08,
                                         }}
                                         whileHover={{ y: -4 }}
-                                        className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 transition duration-300 hover:border-cyan-300/20 hover:bg-cyan-400/[0.025]"
+className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4 sm:p-4 transition duration-300 hover:border-cyan-300/20 hover:bg-cyan-400/[0.025]"
                                     >
                                         <Icon
                                             size={20}
@@ -173,7 +173,7 @@ function AboutHero() {
                                             className="text-cyan-300"
                                         />
 
-                                        <p className="mt-4 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-slate-500">
+                                        <p className="mt-3 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-slate-500 sm:mt-4 sm:text-[0.68rem]">
                                             {item.label}
                                         </p>
 
@@ -201,7 +201,7 @@ function AboutHero() {
                             className="pointer-events-none absolute -inset-8 rounded-full bg-cyan-400/[0.05] blur-3xl"
                         />
 
-                        <div className="relative overflow-hidden rounded-[2rem] border border-cyan-400/25 bg-[#050b18]/90 p-6 shadow-[0_30px_90px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:p-8">
+                        <div className="relative w-full max-w-full overflow-hidden rounded-[1.5rem] border border-cyan-400/25 bg-[#050b18]/90 p-3 shadow-[0_30px_90px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:rounded-[2rem] sm:p-8">
                             <div
                                 aria-hidden="true"
                                 className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent"
@@ -219,7 +219,7 @@ function AboutHero() {
                                     className="pointer-events-none absolute -inset-px z-20 rounded-[1.6rem] border border-cyan-300/25"
                                 />
 
-                                <div className="relative aspect-[4/5] min-h-[430px] overflow-hidden">
+                               <div className="relative aspect-[4/5] min-h-[360px] overflow-hidden sm:min-h-[430px]">
                                     <img
                                         src="/photo.jpg"
                                         alt="DeMarquis McMillan, software engineer"

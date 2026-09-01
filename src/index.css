@@ -298,7 +298,7 @@ img {
     top: 0;
     z-index: 50;
     width: 100%;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1.5rem;
 }
 
 .portfolio-navbar__container {
@@ -552,8 +552,8 @@ img {
 
 @media (max-width: 800px) {
     .portfolio-navbar {
-        padding: 0.75rem;
-    }
+    padding: 0.5rem 0.75rem;
+}
 
     .portfolio-navbar__container {
         min-height: 4rem;
@@ -626,17 +626,41 @@ img {
     display: block;
 }
 @media (max-width: 480px) {
-    .portfolio-navbar__name {
-        max-width: 8rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-size: 0.85rem;
+    .portfolio-navbar {
+        padding: 0.5rem 0.75rem;
     }
 
-    .portfolio-navbar__monogram {
-        width: 2.5rem;
-        height: 2.5rem;
+    .portfolio-navbar__container {
+        min-height: 3.75rem;
+        padding: 0.5rem 0.65rem;
+    }
+
+    .portfolio-navbar__brand {
+        min-width: 0;
+        gap: 0.55rem;
+        flex: 1;
+    }
+
+    .portfolio-navbar__logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .portfolio-navbar__name {
+        max-width: none;
+        overflow: visible;
+        text-overflow: clip;
+        white-space: nowrap;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0;
+    }
+
+    .portfolio-navbar__menu-button {
+        width: 2.6rem;
+        height: 2.6rem;
+        flex-shrink: 0;
+        margin-left: 0.5rem;
     }
 }
 
