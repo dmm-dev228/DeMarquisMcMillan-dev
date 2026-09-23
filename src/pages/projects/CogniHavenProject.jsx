@@ -780,6 +780,11 @@ function CogniHavenProject() {
                             ["Authentication & Verification", "https://www.youtube.com/embed/Ng3uUpbvEks", "Signup, JWT authentication, email verification, protected access, and automatic login after successful account verification."],
                             ["Medication & Notifications", "https://www.youtube.com/embed/fY1184p3D3Y", "Persistent medication scheduling with multiple reminder times, in-app delivery, email delivery, and reminder management."],
                             ["Cognitive Games", "https://www.youtube.com/embed/ChKPjOAyg5I", "Memory, pattern, story, and word experiences with difficulty, scoring, history, voice, and AI-assisted reflection."],
+                            [
+                                "Game Analytics & AI Insights",
+                                "https://www.youtube.com/embed/7W3tpMeWHFM",
+                                "Performance tracking across CogniHaven's cognitive games with historical results, progress trends, AI-generated performance summaries, personalized guidance, and recommendations for which game to focus on next.",
+                            ],
                         ].map(([title, src, body], index) => (
                             <motion.article
                                 key={title}
