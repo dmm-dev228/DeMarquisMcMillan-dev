@@ -261,6 +261,18 @@ function CogniHavenProject() {
                                     View Source Code
                                     <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
                                 </a>
+                                <a
+                                    href="#demos"
+                                    className="group inline-flex items-center justify-center gap-2 rounded-xl border border-cyan-400/25 bg-cyan-400/[0.05] px-6 py-3.5 font-semibold text-cyan-200 backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/50 hover:bg-cyan-300/[0.1] hover:text-white"
+                                >
+                                    View Demos
+                                    <span
+                                        aria-hidden="true"
+                                        className="transition-transform duration-200 group-hover:translate-y-0.5"
+                                    >
+                                        ↓
+                                    </span>
+                                </a>
                             </div>
 
                             <div className="mt-10">
@@ -765,7 +777,10 @@ function CogniHavenProject() {
             </section>
 
             {/* Product Demos */}
-            <section className="px-6 py-24 sm:px-8 lg:px-12">
+            <section
+                id="demos"
+                className="scroll-mt-24 px-6 py-24 sm:px-8 lg:px-12"
+            >
                 <div className="mx-auto w-full max-w-7xl">
                     <SectionHeader
                         eyebrow="Product Demos"
